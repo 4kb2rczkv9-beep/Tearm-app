@@ -109,7 +109,7 @@
      가족 릴레이 카드
      ========================================================= */
   .relay{
-    position:relative;margin-top:4px;padding:14px 15px 12px;border-radius:22px;
+    position:relative;margin-top:2px;padding:15px 14px 13px;border-radius:20px;
     background:linear-gradient(152deg,#FFFDF8 0%,#FDF7EC 54%,#FAF0E1 100%);
     border:1px solid rgba(160,118,64,.16);
     box-shadow:0 1px 2px rgba(90,62,30,.05), 0 16px 30px -24px rgba(140,92,40,.75);
@@ -123,7 +123,7 @@
   .relay-eyebrow{font-size:11px;font-weight:800;color:#A9805A;letter-spacing:-.1px}
   .relay-sum{font-size:11.5px;font-weight:700;color:#8A7358;font-variant-numeric:tabular-nums}
   .relay-sum b{font-size:14px;font-weight:800;color:#3B2E20;margin:0 1px}
-  .relay-members{display:flex;align-items:center;gap:6px;margin-top:9px;position:relative;z-index:1;flex-wrap:wrap}
+  .relay-members{display:flex;align-items:center;gap:5px;margin-top:9px;position:relative;z-index:1;flex-wrap:wrap}
   .mbadge{
     display:inline-flex;align-items:center;gap:6px;padding:3px 9px 3px 3px;border-radius:999px;
     background:rgba(255,255,255,.9);border:1px solid rgba(150,112,62,.16);
@@ -134,14 +134,14 @@
   .mbadge b{font-size:12px;font-weight:800;letter-spacing:-.3px}
   .mbadge i{font-style:normal;font-size:11px;font-weight:800;color:#A9805A;font-variant-numeric:tabular-nums}
   .relay-bar{
-    display:flex;height:7px;border-radius:999px;overflow:hidden;margin-top:11px;
+    display:flex;height:6px;border-radius:999px;overflow:hidden;margin-top:10px;
     background:rgba(150,112,62,.14);position:relative;z-index:1;
   }
   .relay-bar i{display:block;height:100%;transition:width .55s cubic-bezier(.32,.72,0,1)}
   .relay-bar .a{background:linear-gradient(90deg,#6C88C4,#4B65A3)}
   .relay-bar .b{background:linear-gradient(90deg,#E5A6B7,#CE7E97)}
   .relay-feed{
-    display:flex;align-items:center;gap:7px;margin-top:11px;padding:8px 10px;border-radius:11px;
+    display:flex;align-items:center;gap:7px;margin-top:10px;padding:8px 9px;border-radius:10px;
     background:rgba(255,255,255,.78);border:1px solid rgba(150,112,62,.12);position:relative;z-index:1;
   }
   .relay-feed .pulse{
@@ -153,14 +153,14 @@
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   }
   .me-switch{
-    display:flex;align-items:center;gap:9px;margin-top:11px;padding-top:10px;
+    display:flex;align-items:center;gap:9px;margin-top:10px;padding-top:9px;
     border-top:1px dashed rgba(160,118,64,.24);position:relative;z-index:1;
   }
   .me-lbl{flex:none;font-size:11px;font-weight:800;color:#A9805A;letter-spacing:-.1px}
   .me-track{flex:1;display:flex;gap:2px;padding:2px;border-radius:999px;background:rgba(150,112,62,.13)}
   .me-btn{
     flex:1;display:inline-flex;align-items:center;justify-content:center;gap:5px;
-    border:0;background:transparent;border-radius:999px;padding:5px 6px;cursor:pointer;
+    border:0;background:transparent;border-radius:999px;padding:4px 6px;cursor:pointer;
     font-size:11.5px;font-weight:800;color:#8A7358;letter-spacing:-.2px;
     transition:background .18s ease,color .18s ease,box-shadow .18s ease;
   }
@@ -175,10 +175,10 @@
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 2px 9px}
   .sec-head h2{margin:0;font-size:14px;font-weight:800;letter-spacing:-.45px}
   .sec-head span{font-size:11px;font-weight:700;color:var(--ink4);letter-spacing:-.15px}
-  .rooms{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .rooms{display:grid;grid-template-columns:1fr 1fr;gap:10px 8px}
   .room{
-    position:relative;text-align:left;border:1px solid rgba(120,95,60,.13);border-radius:18px;
-    padding:11px 11px 10px;cursor:pointer;overflow:hidden;
+    position:relative;text-align:left;border:1px solid rgba(120,95,60,.13);border-radius:16px;
+    padding:11px 10px 11px;cursor:pointer;overflow:hidden;
     background:linear-gradient(158deg,#FFFFFF 0%,#FFFFFF 26%,var(--soft) 100%);
     box-shadow:0 1px 2px rgba(90,62,30,.04);
     transition:transform .12s ease, box-shadow .2s ease, border-color .2s ease;
@@ -190,33 +190,89 @@
   }
   .room-top{display:flex;align-items:center;gap:6px;min-width:0}
   .room-ic{font-size:15px;line-height:1;flex:none}
-  .room-name{font-size:13px;font-weight:800;letter-spacing:-.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .room-name{font-size:12.5px;font-weight:800;letter-spacing:-.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .room-arw{flex:none;font-size:13px;font-weight:800;color:#C3BBAB;line-height:1;margin-left:1px;transform:translateY(-1px)}
   .room-n{
     margin-left:auto;flex:none;font-size:10px;font-weight:800;color:var(--deep);
     background:rgba(255,255,255,.85);border:1px solid rgba(120,95,60,.13);border-radius:999px;padding:1px 6px;
     font-variant-numeric:tabular-nums;
   }
-  .rpills{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+  .rpills{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px}
   .rpill{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:800;padding:2px 6px 2px 5px;border-radius:6px;letter-spacing:-.1px;font-variant-numeric:tabular-nums}
   .rpill i{width:4px;height:4px;border-radius:50%;flex:none}
-  .rprev{margin-top:8px;display:flex;flex-direction:column;gap:3px}
-  .rp-row{display:flex;align-items:center;gap:4px;min-width:0;font-size:10px;font-weight:600;color:var(--ink3)}
+  .rprev{margin-top:7px;display:flex;flex-direction:column;gap:2px;border-top:1px dashed rgba(120,95,60,.13);padding-top:6px}
+  .rp-row{display:flex;align-items:center;gap:4px;min-width:0;font-size:9.5px;font-weight:600;color:var(--ink3)}
   .rp-row .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .rp-row .d{margin-left:auto;flex:none;font-weight:800;font-size:9.5px;font-variant-numeric:tabular-nums}
   .rp-empty{font-size:10px;font-weight:600;color:var(--ink4)}
 
   /* =========================================================
-     리스트
+     생필품 진입 카드 (홈 하단)
      ========================================================= */
-  .list-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:19px 2px 8px;scroll-margin-top:8px}
-  .list-head h2{margin:0;font-size:14px;font-weight:800;letter-spacing:-.45px;display:flex;align-items:center;gap:6px}
-  .list-head .em{font-size:13px}
-  .list-head span{font-size:11px;font-weight:700;color:var(--ink4);letter-spacing:-.15px}
-  .filters{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;scrollbar-width:none}
-  .filters::-webkit-scrollbar{display:none}
+  .entry{margin-top:16px;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+  .entry-main{
+    position:relative;display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+    border:1px solid rgba(150,112,62,.18);border-radius:18px;padding:14px 13px;cursor:pointer;
+    background:linear-gradient(148deg,#FFFFFF 0%,#FFFCF6 56%,#FAF0E1 100%);
+    box-shadow:0 1px 2px rgba(90,62,30,.05), 0 14px 26px -22px rgba(140,92,40,.9);
+    transition:transform .12s ease, box-shadow .2s ease;
+  }
+  .entry-main:active{transform:scale(.99);box-shadow:0 0 0 1px rgba(150,112,62,.2) inset}
+  .entry-ic{
+    flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    font-size:20px;line-height:1;background:#F7E9D7;border:1px solid rgba(160,118,64,.16);
+  }
+  .entry-txt{display:flex;flex-direction:column;min-width:0;gap:2px}
+  .entry-t{font-size:14.5px;font-weight:800;letter-spacing:-.5px}
+  .entry-s{font-size:11.5px;font-weight:700;color:var(--ink3);letter-spacing:-.2px;font-variant-numeric:tabular-nums}
+  .entry-go{
+    margin-left:auto;flex:none;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(150,112,62,.1);color:#8A7358;
+  }
+  .entry-go svg{width:14px;height:14px;stroke-width:2.6}
+  .entry-chip{
+    display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(180,70,47,.2);
+    background:#FDF1EC;color:#A4402A;padding:6px 11px;border-radius:999px;cursor:pointer;
+    font-size:11.5px;font-weight:800;letter-spacing:-.25px;
+  }
+  .entry-chip .ec-n{font-variant-numeric:tabular-nums;background:#fff;border:1px solid rgba(180,70,47,.22);border-radius:999px;padding:1px 5px;font-size:10px}
+  .entry-chip:active{transform:scale(.98)}
+
+  #view-home{display:flex;flex-direction:column;padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+  #view-home>*{flex:none}
+  .home-foot{margin:auto 6px 0;padding-top:18px;font-size:10.5px;line-height:1.7;color:#B0A897;text-align:center;letter-spacing:-.1px}
+  .home-foot b{color:#948C7C;font-weight:800}
+
+  /* =========================================================
+     리스트 서브뷰
+     ========================================================= */
+  .subhead{flex:1;min-width:0;display:flex;align-items:center;gap:9px}
+  .btn-back{
+    flex:none;display:inline-flex;align-items:center;gap:1px;border:1px solid rgba(120,95,60,.16);
+    background:#fff;padding:6px 10px 6px 5px;border-radius:999px;cursor:pointer;
+    font-size:12px;font-weight:800;color:#5C5145;letter-spacing:-.2px;
+    box-shadow:0 1px 2px rgba(90,62,30,.05);
+  }
+  .btn-back svg{width:15px;height:15px;stroke-width:2.7}
+  .btn-back:active{background:#F5F1E8;transform:scale(.97)}
+  .subhead-txt{min-width:0}
+  .subhead-title{font-size:16px;font-weight:800;letter-spacing:-.6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.15}
+  .subhead-meta{font-size:10.5px;font-weight:700;color:var(--ink4);letter-spacing:-.15px;margin-top:2px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  .filters{
+    display:flex;flex-direction:column;gap:5px;
+    position:sticky;top:0;z-index:6;margin:0 -16px 9px;padding:5px 16px 8px;
+    background:rgba(250,247,241,.9);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  }
+  .frow{display:flex;flex-wrap:wrap;gap:5px}
+  .filters::after{
+    content:"";position:absolute;left:0;right:0;top:100%;height:9px;pointer-events:none;
+    background:linear-gradient(rgba(250,247,241,.86),rgba(250,247,241,0));
+  }
   .fchip{
     flex:none;border:1px solid rgba(120,95,60,.16);background:#fff;color:#5C5145;
-    font-size:11.5px;font-weight:800;padding:6px 11px;border-radius:999px;cursor:pointer;
+    font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px;cursor:pointer;
     letter-spacing:-.2px;transition:background .16s,color .16s,border-color .16s;
   }
   .fchip.on{background:#241F19;border-color:#241F19;color:#fff}
@@ -494,12 +550,22 @@
     <div class="app">
 
       <header class="appbar">
-        <div class="brand">
+        <div class="brand" id="homeBrand">
           <div class="brand-row">
             <span class="wordmark">텀</span>
             <span class="brand-sub">우리 집 보드</span>
           </div>
           <div class="today-line" id="todayLine"></div>
+        </div>
+        <div class="subhead" id="listBrand" hidden>
+          <button class="btn-back" id="btnBack" type="button" aria-label="홈 화면으로 돌아가기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6 8.5 12l6 6"/></svg>
+            <span>홈</span>
+          </button>
+          <div class="subhead-txt">
+            <div class="subhead-title" id="subTitle">전체 생필품</div>
+            <div class="subhead-meta" id="subMeta"></div>
+          </div>
         </div>
         <button class="btn-add" id="openAdd">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"/></svg>
@@ -543,22 +609,50 @@
           <div class="rooms" id="rooms"></div>
         </section>
 
-        <!-- 생필품 리스트 -->
-        <section aria-label="생필품 목록">
-          <div class="list-head" id="listHead">
-            <h2 id="listTitle">전체 생필품</h2>
-            <span id="listMeta"></span>
-          </div>
-          <div class="filters">
-            <button class="fchip" id="chipAll" data-scope="all" type="button">전체</button>
-            <button class="fchip urgent" id="chipUrgent" data-scope="urgent" type="button">⚡ 전체 급한 것만 모아보기</button>
-          </div>
-          <div id="list"></div>
-          <p class="foot-note">
-            카드를 누르면 상세·이력이 열립니다.<br>
-            <b>교체 완료</b>를 누르면 지금 선택한 가족 이름으로 기록되고, 3초 동안 되돌릴 수 있어요.
-          </p>
+        <!-- 생필품 진입 카드 -->
+        <section class="entry" aria-label="생필품 목록 열기">
+          <button class="entry-main" id="goAll" type="button">
+            <span class="entry-ic" aria-hidden="true">📦</span>
+            <span class="entry-txt">
+              <span class="entry-t">전체 생필품 보기</span>
+              <span class="entry-s" id="entrySub">총 12개 · 지금 챙길 것 0개</span>
+            </span>
+            <span class="entry-go" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg>
+            </span>
+          </button>
+          <button class="entry-chip" id="goUrgent" type="button">
+            <span aria-hidden="true">⚡</span>
+            <span>급한 것만 보기</span>
+            <span class="ec-n" id="urgentN">(0개)</span>
+          </button>
         </section>
+
+        <p class="home-foot">
+          방 카드나 버튼을 누르면 생필품 목록이 열려요.<br>
+          <b>교체 완료</b>는 3초 동안 되돌릴 수 있어요.
+        </p>
+      </main>
+
+      <!-- ================= LIST (생필품 서브뷰) ================= -->
+      <main class="view" id="view-list" hidden>
+        <div class="filters" id="listFilters" role="group" aria-label="생필품 필터">
+          <div class="frow">
+            <button class="fchip" data-scope="all" type="button">전체</button>
+            <button class="fchip urgent" data-scope="urgent" type="button">⚡ 급한 것</button>
+          </div>
+          <div class="frow">
+            <button class="fchip" data-scope="space:bath" type="button">🚿 욕실</button>
+            <button class="fchip" data-scope="space:kitchen" type="button">🍳 주방</button>
+            <button class="fchip" data-scope="space:baby" type="button">🧸 아기방</button>
+            <button class="fchip" data-scope="space:living" type="button">🛋️ 거실/가전</button>
+          </div>
+        </div>
+        <div id="list"></div>
+        <p class="foot-note">
+          카드를 누르면 상세·이력이 열려요.<br>
+          <b>교체 완료</b>는 3초 동안 되돌릴 수 있어요.
+        </p>
       </main>
 
       <!-- ================= FAMILY ================= -->
@@ -935,6 +1029,7 @@
 
   const state = {
     tab: 'home',
+    view: 'home',          // home | list
     me: '영민',
     scope: 'all',          // all | urgent | space:<id>
     detailId: null,
@@ -1089,19 +1184,30 @@
     $('#rooms').innerHTML = SPACE_ORDER.map(id => {
       const sp = SPACES[id];
       const n = items.filter(i => i.space === id).length;
-      const on = state.scope === 'space:' + id;
-      return '<button class="room' + (on ? ' on' : '') + '" data-room="' + id + '" type="button" ' +
+      return '<button class="room" data-room="' + id + '" type="button" ' +
         'style="--accent:' + sp.accent + ';--soft:' + sp.soft + ';--deep:' + sp.deep + '" ' +
-        'aria-pressed="' + (on ? 'true' : 'false') + '" aria-label="' + sp.name + ' ' + n + '개">' +
+        'aria-label="' + sp.name + ' ' + n + '개 목록 열기">' +
         '<div class="room-top">' +
           '<span class="room-ic">' + sp.emoji + '</span>' +
           '<span class="room-name">' + sp.name + '</span>' +
           '<span class="room-n">' + n + '</span>' +
+          '<span class="room-arw" aria-hidden="true">›</span>' +
         '</div>' +
         '<div class="rpills">' + roomPills(id) + '</div>' +
         '<div class="rprev">' + roomPreview(id) + '</div>' +
       '</button>';
     }).join('');
+  }
+
+  /* =========================================================
+     렌더: 홈 생필품 진입 카드
+     ========================================================= */
+  const urgentList = () => items.filter(it => daysLeft(it) <= 7);
+
+  function renderEntry(){
+    const n = urgentList().length;
+    $('#entrySub').textContent = '총 ' + items.length + '개 · 지금 챙길 것 ' + n + '개';
+    $('#urgentN').textContent = '(' + n + '개)';
   }
 
   /* =========================================================
@@ -1148,20 +1254,21 @@
       const sp = SPACES[state.scope.slice(6)];
       title = sp.name; em = sp.emoji;
     }
-    $('#listTitle').innerHTML = (em ? '<span class="em">' + em + '</span>' : '') + title;
-    $('#listMeta').textContent = list.length + '개 · 교체일 가까운 순';
+    $('#subTitle').textContent = (em ? em + ' ' : '') + title;
+    $('#subMeta').textContent = list.length + '개 · 교체일 가까운 순';
 
-    $('#chipAll').classList.toggle('on', state.scope === 'all');
-    $('#chipUrgent').classList.toggle('on', state.scope === 'urgent');
-    $('#chipAll').textContent = state.scope.indexOf('space:') === 0 ? '전체로 보기' : '전체';
-    $('#chipAll').classList.toggle('reset', state.scope.indexOf('space:') === 0);
+    $$('#listFilters .fchip').forEach(b => b.classList.toggle('on', b.dataset.scope === state.scope));
 
     if(!list.length){
       const msg = state.scope === 'urgent'
         ? '지금 급한 생필품이 없어요. 여유롭네요!'
-        : '이 공간에 등록된 생필품이 없어요.';
-      $('#list').innerHTML = '<div class="empty">' + IC_EMPTY + '<p>' + msg + '</p>' +
-        '<button class="btn-soft" style="flex:none;padding:8px 14px" data-scope="all" type="button">전체 보기</button></div>';
+        : state.scope.indexOf('space:') === 0
+          ? '이 공간에 등록된 생필품이 없어요.'
+          : '아직 등록된 생필품이 없어요.';
+      const cta = state.scope === 'all'
+        ? '<button class="btn-soft" style="flex:none;padding:8px 14px" data-act="add" type="button">＋ 생필품 추가</button>'
+        : '<button class="btn-soft" style="flex:none;padding:8px 14px" data-scope="all" type="button">전체 보기</button>';
+      $('#list').innerHTML = '<div class="empty">' + IC_EMPTY + '<p>' + msg + '</p>' + cta + '</div>';
       return;
     }
     $('#list').innerHTML = list.map(itemHTML).join('');
@@ -1170,6 +1277,7 @@
   function renderAll(){
     renderRelay();
     renderRooms();
+    renderEntry();
     renderList();
     if(state.detailId) renderDetail();
     state.flashId = null;
@@ -1405,7 +1513,11 @@
     log.sort((a,b) => b.at - a.at);
 
     state.scope = 'space:' + it.space;
+    state.tab = 'home';
+    state.view = 'list';
     state.flashId = it.id;
+    $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === 'home'));
+    applyView();
     renderAll();
     if(closeSheet) closeSheets();
     showToast('‘' + it.name + '’ ' + SPACES[it.space].name + '에 추가 · ' + cycleLabel(it.cycle), {
@@ -1468,13 +1580,45 @@
   /* =========================================================
      탭
      ========================================================= */
+  function applyView(){
+    const homeTab = state.tab === 'home';
+    const showHome = homeTab && state.view === 'home';
+    const showList = homeTab && state.view === 'list';
+    $('#view-home').hidden = !showHome;
+    $('#view-list').hidden = !showList;
+    $('#view-family').hidden = state.tab !== 'family';
+    $('#view-settings').hidden = state.tab !== 'settings';
+    $('#homeBrand').hidden = !showHome;
+    $('#listBrand').hidden = !showList;
+    $('#openAdd').style.display = homeTab ? '' : 'none';
+  }
+
+  function goList(scope){
+    if(scope) state.scope = scope;
+    state.tab = 'home';
+    state.view = 'list';
+    $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === 'home'));
+    applyView();
+    renderAll();
+    $('#view-list').scrollTop = 0;
+  }
+
+  function goHome(){
+    state.tab = 'home';
+    state.view = 'home';
+    state.scope = 'all';
+    $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === 'home'));
+    applyView();
+    renderAll();
+    $('#view-home').scrollTop = 0;
+  }
+
   function switchTab(tab){
+    if(tab === 'home' && state.tab === 'home' && state.view === 'list'){ goHome(); return; }
     state.tab = tab;
-    $('#view-home').hidden = tab !== 'home';
-    $('#view-family').hidden = tab !== 'family';
-    $('#view-settings').hidden = tab !== 'settings';
+    if(tab === 'home') state.view = 'home';
+    applyView();
     $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-    $('#openAdd').style.display = tab === 'home' ? '' : 'none';
     const v = document.querySelector('.view:not([hidden])');
     if(v) v.scrollTop = 0;
     closeSheets();
@@ -1507,21 +1651,14 @@
     const meBtn = t.closest('#meTrack .me-btn');
     if(meBtn){ setMe(meBtn.dataset.me); return; }
 
-    // 공간 카드
+    // 공간 카드 → 해당 공간 리스트
     const room = t.closest('.room');
-    if(room){
-      const id = room.dataset.room;
-      state.scope = (state.scope === 'space:' + id) ? 'all' : 'space:' + id;
-      renderAll();
-      if(state.scope !== 'all'){
-        const v = $('#view-home'), head = $('#listHead');
-        if(v && head){
-          const top = v.scrollTop + head.getBoundingClientRect().top - v.getBoundingClientRect().top - 6;
-          try{ v.scrollTo({ top: Math.max(0, top), behavior: 'smooth' }); }catch(err){ v.scrollTop = Math.max(0, top); }
-        }
-      }
-      return;
-    }
+    if(room){ goList('space:' + room.dataset.room); return; }
+
+    // 홈 진입 카드
+    if(t.closest('#goAll')){ goList('all'); return; }
+    if(t.closest('#goUrgent')){ goList('urgent'); return; }
+    if(t.closest('#btnBack')){ goHome(); return; }
 
     // 범위 칩
     const chip = t.closest('[data-scope]');
@@ -1561,6 +1698,7 @@
     if(act){
       const a = act.dataset.act;
       if(a === 'close'){ closeSheets(); return; }
+      if(a === 'add'){ openAdd(); return; }
       if(a === 'complete'){ completeItem(state.detailId); return; }
       if(a === 'edit'){ state.editMode = true; state.deleteArmed = false; renderDetail(); return; }
       if(a === 'edit-cancel'){ state.editMode = false; renderDetail(); return; }
@@ -1703,7 +1841,9 @@
     get log(){ return log; },
     get me(){ return state.me; },
     get scope(){ return state.scope; },
+    get view(){ return state.view; },
     relay: relayCounts,
+    urgent: urgentList,
     today: TODAY
   };
 })();

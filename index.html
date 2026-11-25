@@ -78,7 +78,7 @@
      ========================================================= */
   .appbar{
     flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:calc(13px + env(safe-area-inset-top)) 18px 8px;
+    padding:calc(12px + env(safe-area-inset-top)) 18px 6px;
   }
   .brand-row{display:flex;align-items:baseline;gap:8px}
   .wordmark{font-size:24px;font-weight:800;letter-spacing:-1.5px;line-height:1}
@@ -86,7 +86,7 @@
     font-size:10.5px;font-weight:800;color:#A9703F;background:var(--warm-soft);
     padding:3px 7px;border-radius:6px;letter-spacing:-.1px;
   }
-  .today-line{margin-top:5px;font-size:11.5px;font-weight:600;color:var(--ink4);letter-spacing:-.15px}
+  .today-line{margin-top:4px;font-size:11px;font-weight:600;color:var(--ink4);letter-spacing:-.15px}
   .btn-add{
     flex:none;display:inline-flex;align-items:center;gap:5px;border:0;
     background:#241F19;color:#fff;padding:9px 14px 9px 11px;border-radius:999px;
@@ -101,145 +101,134 @@
      ========================================================= */
   .view{
     flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
-    padding:4px 16px calc(98px + env(safe-area-inset-bottom));
+    padding:4px 15px calc(74px + env(safe-area-inset-bottom));
   }
   .view::-webkit-scrollbar{width:0}
 
   /* =========================================================
-     가족 릴레이 카드
+     초슬림 가족 릴레이 필
      ========================================================= */
-  .relay{
-    position:relative;margin-top:2px;padding:15px 14px 13px;border-radius:20px;
-    background:linear-gradient(152deg,#FFFDF8 0%,#FDF7EC 54%,#FAF0E1 100%);
-    border:1px solid rgba(160,118,64,.16);
-    box-shadow:0 1px 2px rgba(90,62,30,.05), 0 16px 30px -24px rgba(140,92,40,.75);
-    overflow:hidden;
+  .relaybar{
+    flex:none;display:flex;align-items:center;gap:7px;
+    padding:4px 5px 4px 12px;border-radius:999px;min-height:34px;
+    background:linear-gradient(120deg,rgba(255,255,255,.94),rgba(253,246,235,.92));
+    border:1px solid rgba(160,118,64,.15);
+    box-shadow:0 1px 2px rgba(90,62,30,.05);
   }
-  .relay::after{
-    content:"";position:absolute;right:-46px;top:-70px;width:170px;height:170px;border-radius:50%;
-    background:radial-gradient(circle,rgba(232,176,106,.34),rgba(232,176,106,0) 70%);pointer-events:none;
+  .relaybar .rb-lbl{
+    flex:none;font-size:10px;font-weight:800;color:#B08A63;letter-spacing:-.1px;
   }
-  .relay-head{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:1}
-  .relay-eyebrow{font-size:11px;font-weight:800;color:#A9805A;letter-spacing:-.1px}
-  .relay-sum{font-size:11.5px;font-weight:700;color:#8A7358;font-variant-numeric:tabular-nums}
-  .relay-sum b{font-size:14px;font-weight:800;color:#3B2E20;margin:0 1px}
-  .relay-members{display:flex;align-items:center;gap:5px;margin-top:9px;position:relative;z-index:1;flex-wrap:wrap}
-  .mbadge{
-    display:inline-flex;align-items:center;gap:6px;padding:3px 9px 3px 3px;border-radius:999px;
-    background:rgba(255,255,255,.9);border:1px solid rgba(150,112,62,.16);
-    transition:box-shadow .2s ease;
+  .relaybar .rb-txt{
+    flex:1;min-width:0;display:flex;align-items:center;gap:4px;
+    font-size:12px;font-weight:700;color:#6E6250;letter-spacing:-.25px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums;
   }
-  .mbadge.me{box-shadow:0 0 0 2px rgba(200,122,69,.22)}
-  .mbadge .av{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:800;color:#fff;flex:none}
-  .mbadge b{font-size:12px;font-weight:800;letter-spacing:-.3px}
-  .mbadge i{font-style:normal;font-size:11px;font-weight:800;color:#A9805A;font-variant-numeric:tabular-nums}
-  .relay-bar{
-    display:flex;height:6px;border-radius:999px;overflow:hidden;margin-top:10px;
-    background:rgba(150,112,62,.14);position:relative;z-index:1;
+  .relaybar .rb-txt b{font-weight:800;color:#3B2E20}
+  .relaybar .rb-txt .n{color:#A9703F;font-weight:800}
+  .relaybar .rb-txt .dot{color:#CFC5B2;margin:0 1px}
+  .me-pill{
+    flex:none;display:inline-flex;align-items:center;gap:5px;border:0;cursor:pointer;
+    background:#241F19;color:#fff;border-radius:999px;padding:3px 8px 3px 3px;
+    font-size:11px;font-weight:800;letter-spacing:-.2px;
+    box-shadow:0 6px 14px -10px rgba(36,31,25,.9);
+    transition:transform .12s ease;
   }
-  .relay-bar i{display:block;height:100%;transition:width .55s cubic-bezier(.32,.72,0,1)}
-  .relay-bar .a{background:linear-gradient(90deg,#6C88C4,#4B65A3)}
-  .relay-bar .b{background:linear-gradient(90deg,#E5A6B7,#CE7E97)}
-  .relay-feed{
-    display:flex;align-items:center;gap:7px;margin-top:10px;padding:8px 9px;border-radius:10px;
-    background:rgba(255,255,255,.78);border:1px solid rgba(150,112,62,.12);position:relative;z-index:1;
+  .me-pill:active{transform:scale(.96)}
+  .me-pill .av{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:800;color:#fff;flex:none}
+  .me-pill .swap{opacity:.62;margin-left:1px}
+  .me-pill .swap svg{width:10px;height:10px;stroke-width:3}
+
+  /* =========================================================
+     2×2 일러스트 방 카드
+     ========================================================= */
+  .rooms{
+    flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+    gap:17px 10px;margin-top:13px;
   }
-  .relay-feed .pulse{
-    flex:none;width:6px;height:6px;border-radius:50%;background:#4C9A72;
-    box-shadow:0 0 0 3px rgba(76,154,114,.16);
+  .roomwrap{position:relative;min-height:0;display:flex}
+  .roomcard{
+    flex:1;min-height:0;display:flex;flex-direction:column;width:100%;
+    border:0;padding:0;border-radius:17px;overflow:hidden;cursor:pointer;
+    background:#fff;text-align:left;
+    box-shadow:0 1px 2px rgba(90,62,30,.06), 0 16px 26px -24px rgba(90,62,30,.8), 0 0 0 1px rgba(120,95,60,.07);
+    transition:transform .13s ease, box-shadow .2s ease;
   }
-  .feed-text{
-    flex:1;min-width:0;font-size:11.5px;font-weight:700;color:#6A5C4B;letter-spacing:-.2px;
+  .roomcard:active{transform:scale(.982)}
+  .roomcard .art{
+    position:relative;display:block;flex:1;min-height:0;overflow:hidden;background:var(--soft);
+  }
+  .roomcard .art img{
+    width:100%;height:100%;display:block;object-fit:cover;object-position:center 52%;
+    transform:scale(1.01);
+  }
+  .roomcard .art::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 26%);
+  }
+  .roomcard .foot{
+    flex:none;display:flex;align-items:center;gap:6px;
+    padding:8px 10px 9px;background:#fff;
+  }
+  .roomcard .rname{
+    flex:1;min-width:0;font-size:13px;font-weight:800;letter-spacing:-.45px;color:#26211B;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   }
-  .me-switch{
-    display:flex;align-items:center;gap:9px;margin-top:10px;padding-top:9px;
-    border-top:1px dashed rgba(160,118,64,.24);position:relative;z-index:1;
+  .roomcard .rn{
+    flex:none;font-size:10.5px;font-weight:800;color:var(--deep);
+    background:var(--soft);border-radius:999px;padding:1px 7px;
+    font-variant-numeric:tabular-nums;letter-spacing:-.1px;
   }
-  .me-lbl{flex:none;font-size:11px;font-weight:800;color:#A9805A;letter-spacing:-.1px}
-  .me-track{flex:1;display:flex;gap:2px;padding:2px;border-radius:999px;background:rgba(150,112,62,.13)}
-  .me-btn{
-    flex:1;display:inline-flex;align-items:center;justify-content:center;gap:5px;
-    border:0;background:transparent;border-radius:999px;padding:4px 6px;cursor:pointer;
-    font-size:11.5px;font-weight:800;color:#8A7358;letter-spacing:-.2px;
-    transition:background .18s ease,color .18s ease,box-shadow .18s ease;
+
+  /* 말풍선 배지 */
+  .badge{
+    position:absolute;top:-9px;left:7px;z-index:3;
+    display:inline-flex;align-items:center;gap:4px;max-width:calc(100% - 12px);
+    padding:4px 9px 4px 7px;border-radius:11px;
+    font-size:10.5px;font-weight:800;letter-spacing:-.25px;line-height:1.15;
+    color:var(--fc);background:var(--bc);
+    box-shadow:0 6px 14px -7px rgba(60,32,12,.65);
+    --bc:#D2533A;--fc:#fff;
   }
-  .me-btn .av{width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-size:8.5px;font-weight:800;color:#fff}
-  .me-btn.on{background:#fff;color:#2B241C;box-shadow:0 1px 3px rgba(90,62,30,.22)}
-  .me-btn:active{transform:scale(.98)}
+  .badge::after{
+    content:"";position:absolute;left:11px;bottom:-4px;width:9px;height:9px;
+    background:var(--bc);border-radius:2px;transform:rotate(45deg);
+  }
+  .badge .bq{font-size:9.5px;line-height:1;filter:saturate(0) brightness(2.2);opacity:.95}
+  .badge .bt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .badge .bx{
+    flex:none;font-style:normal;font-size:9.5px;font-weight:800;
+    background:rgba(255,255,255,.3);border-radius:999px;padding:0 4px;letter-spacing:0;
+  }
+  .badge.over{--bc:#D2533A;--fc:#fff}
+  .badge.today{--bc:#DE8A2E;--fc:#fff}
+  .badge.soon{--bc:#F0C33C;--fc:#5A4708}
+  .badge.soon .bq{filter:none;opacity:.75}
+  .badge.ok{
+    --bc:#DBEFE2;--fc:#2C6C4C;left:9px;padding:4px 9px 4px 7px;
+    box-shadow:0 4px 10px -8px rgba(44,108,76,.6);
+  }
+  .badge.ok svg{width:10px;height:10px;stroke-width:3.2;flex:none}
 
   /* =========================================================
-     공간 보드
+     하단 진입 버튼
      ========================================================= */
-  .board{margin-top:17px}
-  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 2px 9px}
-  .sec-head h2{margin:0;font-size:14px;font-weight:800;letter-spacing:-.45px}
-  .sec-head span{font-size:11px;font-weight:700;color:var(--ink4);letter-spacing:-.15px}
-  .rooms{display:grid;grid-template-columns:1fr 1fr;gap:10px 8px}
-  .room{
-    position:relative;text-align:left;border:1px solid rgba(120,95,60,.13);border-radius:16px;
-    padding:11px 10px 11px;cursor:pointer;overflow:hidden;
-    background:linear-gradient(158deg,#FFFFFF 0%,#FFFFFF 26%,var(--soft) 100%);
-    box-shadow:0 1px 2px rgba(90,62,30,.04);
-    transition:transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+  .entryrow{flex:none;display:flex;gap:8px;margin-top:13px}
+  .ebtn{
+    display:inline-flex;align-items:center;justify-content:center;gap:5px;
+    border-radius:14px;padding:12px 8px;cursor:pointer;border:1px solid transparent;
+    font-size:12px;font-weight:800;letter-spacing:-.35px;
+    transition:transform .12s ease;
   }
-  .room:active{transform:scale(.985)}
-  .room.on{
-    border-color:var(--accent);
-    box-shadow:0 0 0 1.5px var(--accent) inset, 0 12px 24px -18px rgba(60,45,25,.7);
-  }
-  .room-top{display:flex;align-items:center;gap:6px;min-width:0}
-  .room-ic{font-size:15px;line-height:1;flex:none}
-  .room-name{font-size:12.5px;font-weight:800;letter-spacing:-.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .room-arw{flex:none;font-size:13px;font-weight:800;color:#C3BBAB;line-height:1;margin-left:1px;transform:translateY(-1px)}
-  .room-n{
-    margin-left:auto;flex:none;font-size:10px;font-weight:800;color:var(--deep);
-    background:rgba(255,255,255,.85);border:1px solid rgba(120,95,60,.13);border-radius:999px;padding:1px 6px;
-    font-variant-numeric:tabular-nums;
-  }
-  .rpills{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px}
-  .rpill{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:800;padding:2px 6px 2px 5px;border-radius:6px;letter-spacing:-.1px;font-variant-numeric:tabular-nums}
-  .rpill i{width:4px;height:4px;border-radius:50%;flex:none}
-  .rprev{margin-top:7px;display:flex;flex-direction:column;gap:2px;border-top:1px dashed rgba(120,95,60,.13);padding-top:6px}
-  .rp-row{display:flex;align-items:center;gap:4px;min-width:0;font-size:9.5px;font-weight:600;color:var(--ink3)}
-  .rp-row .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .rp-row .d{margin-left:auto;flex:none;font-weight:800;font-size:9.5px;font-variant-numeric:tabular-nums}
-  .rp-empty{font-size:10px;font-weight:600;color:var(--ink4)}
+  .ebtn:active{transform:scale(.985)}
+  .ebtn .em{font-size:13px;line-height:1}
+  .ebtn .n{font-weight:800;opacity:.62;font-variant-numeric:tabular-nums;letter-spacing:0}
+  .ebtn.all{flex:1.22;background:#241F19;color:#fff;box-shadow:0 10px 20px -15px rgba(36,31,25,.95)}
+  .ebtn.urgent{flex:1;background:rgba(255,255,255,.94);color:#A4402A;border-color:#F0D9D1}
+  .ebtn.urgent .n{color:#C0765F;opacity:1}
 
-  /* =========================================================
-     생필품 진입 카드 (홈 하단)
-     ========================================================= */
-  .entry{margin-top:16px;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
-  .entry-main{
-    position:relative;display:flex;align-items:center;gap:11px;width:100%;text-align:left;
-    border:1px solid rgba(150,112,62,.18);border-radius:18px;padding:14px 13px;cursor:pointer;
-    background:linear-gradient(148deg,#FFFFFF 0%,#FFFCF6 56%,#FAF0E1 100%);
-    box-shadow:0 1px 2px rgba(90,62,30,.05), 0 14px 26px -22px rgba(140,92,40,.9);
-    transition:transform .12s ease, box-shadow .2s ease;
-  }
-  .entry-main:active{transform:scale(.99);box-shadow:0 0 0 1px rgba(150,112,62,.2) inset}
-  .entry-ic{
-    flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
-    font-size:20px;line-height:1;background:#F7E9D7;border:1px solid rgba(160,118,64,.16);
-  }
-  .entry-txt{display:flex;flex-direction:column;min-width:0;gap:2px}
-  .entry-t{font-size:14.5px;font-weight:800;letter-spacing:-.5px}
-  .entry-s{font-size:11.5px;font-weight:700;color:var(--ink3);letter-spacing:-.2px;font-variant-numeric:tabular-nums}
-  .entry-go{
-    margin-left:auto;flex:none;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;
-    background:rgba(150,112,62,.1);color:#8A7358;
-  }
-  .entry-go svg{width:14px;height:14px;stroke-width:2.6}
-  .entry-chip{
-    display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(180,70,47,.2);
-    background:#FDF1EC;color:#A4402A;padding:6px 11px;border-radius:999px;cursor:pointer;
-    font-size:11.5px;font-weight:800;letter-spacing:-.25px;
-  }
-  .entry-chip .ec-n{font-variant-numeric:tabular-nums;background:#fff;border:1px solid rgba(180,70,47,.22);border-radius:999px;padding:1px 5px;font-size:10px}
-  .entry-chip:active{transform:scale(.98)}
-
-  #view-home{display:flex;flex-direction:column;padding-bottom:calc(74px + env(safe-area-inset-bottom))}
-  #view-home>*{flex:none}
+  #view-home{overflow:hidden;display:flex;flex-direction:column;padding-bottom:calc(73px + env(safe-area-inset-bottom))}
+  #view-home>.relaybar,#view-home>.entryrow{flex:none}
+  #view-home>.rooms{flex:1;min-height:0}
 
   /* =========================================================
      리스트 서브뷰
@@ -257,9 +246,34 @@
   .subhead-title{font-size:16px;font-weight:800;letter-spacing:-.6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.15}
   .subhead-meta{font-size:10.5px;font-weight:700;color:var(--ink4);letter-spacing:-.15px;margin-top:2px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
+  /* 방 일러스트 미니 배너 */
+  .spbanner{
+    position:relative;display:flex;align-items:stretch;height:94px;margin:0 0 11px;
+    border:none;border-radius:17px;overflow:hidden;background:#FFFDF9;
+    box-shadow:0 1px 2px rgba(90,62,30,.06), 0 14px 24px -24px rgba(90,62,30,.95), 0 0 0 1px rgba(120,95,60,.08);
+    animation:bannerIn .32s cubic-bezier(.32,.72,0,1) both;
+  }
+  @keyframes bannerIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .spbanner .tb{
+    flex:none;width:94px;height:94px;display:block;object-fit:cover;
+    -webkit-mask-image:linear-gradient(90deg,#000 84%,rgba(0,0,0,0) 100%);
+    mask-image:linear-gradient(90deg,#000 84%,rgba(0,0,0,0) 100%);
+  }
+  .spbanner .tbx{
+    flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:4px;
+    padding:10px 12px 10px 13px;background:transparent;
+  }
+  .spbanner .tb-name{font-size:16px;font-weight:800;letter-spacing:-.55px;line-height:1.1;color:var(--deep)}
+  .spbanner .tb-sub{font-size:11px;font-weight:700;color:#8E8474;letter-spacing:-.2px;font-variant-numeric:tabular-nums}
+  .spbanner .tb-sub b{font-weight:800;color:#4B4234}
+  .spbanner .tb-alert{
+    display:inline-flex;align-items:center;gap:3px;align-self:flex-start;margin-top:2px;
+    font-size:10.5px;font-weight:800;letter-spacing:-.2px;padding:2px 7px;border-radius:999px;
+  }
+
   .filters{
     display:flex;flex-direction:column;gap:5px;
-    position:sticky;top:0;z-index:6;margin:0 -16px 9px;padding:5px 16px 8px;
+    position:sticky;top:0;z-index:6;margin:0 -15px 9px;padding:5px 15px 8px;
     background:rgba(250,247,241,.9);
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   }
@@ -457,9 +471,10 @@
   .close-btn svg{width:14px;height:14px;stroke-width:2.4}
   .head-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 0 4px}
   .space-tag{
-    display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;
-    padding:4px 9px;border-radius:999px;letter-spacing:-.2px;
+    display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;
+    padding:3px 10px 3px 3px;border-radius:999px;letter-spacing:-.2px;
   }
+  .space-tag img{width:19px;height:19px;border-radius:50%;object-fit:cover;display:block;flex:none}
   .sheet-title{margin:8px 0 0;font-size:21px;font-weight:800;letter-spacing:-.85px;line-height:1.25}
   .due-row{display:flex;align-items:baseline;gap:9px;margin-top:6px;flex-wrap:wrap}
   .due-big{font-size:27px;font-weight:800;letter-spacing:-1.2px;font-variant-numeric:tabular-nums}
@@ -527,6 +542,11 @@
   .tpl-name{font-size:12.5px;font-weight:800;letter-spacing:-.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .tpl-cycle{font-size:10.5px;color:var(--ink4);font-weight:700;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
+  @media (max-height:700px){
+    .rooms{gap:14px 9px;margin-top:11px}
+    .spbanner{height:86px}
+    .relaybar{min-height:32px}
+  }
   @media (prefers-reduced-motion:reduce){
     *{animation-duration:.001s !important;transition-duration:.001s !important}
   }
@@ -574,61 +594,41 @@
       <!-- ================= HOME ================= -->
       <main class="view" id="view-home">
 
-        <!-- 가족 릴레이 요약 -->
-        <section class="relay" aria-label="이번 달 가족 릴레이">
-          <div class="relay-head">
-            <span class="relay-eyebrow">이번 달 우리 집 릴레이</span>
-            <span class="relay-sum"><b id="relayTotal">0</b>번 함께했어요</span>
-          </div>
-          <div class="relay-members" id="relayMembers"></div>
-          <div class="relay-bar" aria-hidden="true">
-            <i class="a" id="barA" style="width:50%"></i>
-            <i class="b" id="barB" style="width:50%"></i>
-          </div>
-          <div class="relay-feed">
-            <span class="pulse" aria-hidden="true"></span>
-            <span class="feed-text" id="feedText">최근 활동을 불러오는 중…</span>
-          </div>
-          <div class="me-switch">
-            <span class="me-lbl">지금 나</span>
-            <div class="me-track" id="meTrack" role="group" aria-label="지금 사용자 선택">
-              <button class="me-btn" data-me="영민" type="button"><span class="av av-a">전</span>영민</button>
-              <button class="me-btn" data-me="혜원" type="button"><span class="av av-b">혜</span>혜원</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- 공간 보드 -->
-        <section class="board" aria-label="우리 집 공간별">
-          <div class="sec-head">
-            <h2>우리 집 공간별</h2>
-            <span id="boardMeta"></span>
-          </div>
-          <div class="rooms" id="rooms"></div>
-        </section>
-
-        <!-- 생필품 진입 카드 -->
-        <section class="entry" aria-label="생필품 목록 열기">
-          <button class="entry-main" id="goAll" type="button">
-            <span class="entry-ic" aria-hidden="true">📦</span>
-            <span class="entry-txt">
-              <span class="entry-t">전체 생필품 보기</span>
-              <span class="entry-s" id="entrySub">총 12개 · 지금 챙길 것 0개</span>
-            </span>
-            <span class="entry-go" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg>
+        <!-- 초슬림 가족 릴레이 필 -->
+        <section class="relaybar" aria-label="이번 달 가족 릴레이">
+          <span class="rb-lbl">이번 달</span>
+          <span class="rb-txt" id="relayText"></span>
+          <button class="me-pill" id="meToggle" type="button" aria-label="지금 나 바꾸기">
+            <span class="av av-a" id="meAv">전</span>
+            <span>지금 나</span>
+            <b id="meName">영민</b>
+            <span class="swap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10l-2.6-2.6M17 16H7l2.6 2.6"/></svg>
             </span>
           </button>
-          <button class="entry-chip" id="goUrgent" type="button">
-            <span aria-hidden="true">⚡</span>
-            <span>급한 것만 보기</span>
-            <span class="ec-n" id="urgentN">(0개)</span>
+        </section>
+
+        <!-- 2×2 일러스트 방 카드 -->
+        <section class="rooms" id="rooms" aria-label="우리 집 공간별"></section>
+
+        <!-- 하단 진입 버튼 -->
+        <section class="entryrow" aria-label="생필품 목록 열기">
+          <button class="ebtn all" id="goAll" type="button">
+            <span class="em" aria-hidden="true">📦</span>
+            <span>전체 생필품 보기</span>
+            <span class="n" id="allN">(0)</span>
+          </button>
+          <button class="ebtn urgent" id="goUrgent" type="button">
+            <span class="em" aria-hidden="true">⚡</span>
+            <span>급한 것만</span>
+            <span class="n" id="urgentN">(0)</span>
           </button>
         </section>
       </main>
 
       <!-- ================= LIST (생필품 서브뷰) ================= -->
       <main class="view" id="view-list" hidden>
+        <div class="spbanner" id="roomBanner" hidden></div>
         <div class="filters" id="listFilters" role="group" aria-label="생필품 필터">
           <div class="frow">
             <button class="fchip" data-scope="all" type="button">전체</button>
@@ -768,7 +768,7 @@
         <div class="card">
           <div class="row"><span class="row-label">개인정보처리방침</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
           <div class="row"><span class="row-label">오픈소스 라이선스</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="row"><span class="row-label">버전</span><span class="row-value">0.2.0 (프로토타입)</span></div>
+          <div class="row"><span class="row-label">버전</span><span class="row-value">0.4.0 (일러스트 방 카드형)</span></div>
         </div>
         <p class="settings-foot">프로토타입이라 새로 고치면 처음 상태로 돌아갑니다.</p>
       </main>
@@ -916,13 +916,13 @@
   const TODAY = startOfDay(new Date());
 
   /* =========================================================
-     공간 정의
+     공간 정의 (방 일러스트 포함)
      ========================================================= */
   const SPACES = {
-    bath:   { id:'bath',   name:'욕실',      emoji:'🚿', accent:'#4E8CA6', soft:'#EAF2F6', deep:'#2F6A83' },
-    kitchen:{ id:'kitchen',name:'주방',      emoji:'🍳', accent:'#C87A45', soft:'#FBEEDF', deep:'#9C5726' },
-    baby:   { id:'baby',   name:'아기방',    emoji:'🧸', accent:'#C57B93', soft:'#FAEBF0', deep:'#A05070' },
-    living: { id:'living', name:'거실/가전', emoji:'🛋️', accent:'#6D8F66', soft:'#ECF2E9', deep:'#4C6B47' }
+    bath:   { id:'bath',   name:'욕실',      emoji:'🚿', accent:'#4E8CA6', soft:'#EAF2F6', deep:'#2F6A83', art:'assets/room_bath.png' },
+    kitchen:{ id:'kitchen',name:'주방',      emoji:'🍳', accent:'#C87A45', soft:'#FBEEDF', deep:'#9C5726', art:'assets/room_kitchen.png' },
+    baby:   { id:'baby',   name:'아기방',    emoji:'🧸', accent:'#C57B93', soft:'#FAEBF0', deep:'#A05070', art:'assets/room_baby.png' },
+    living: { id:'living', name:'거실/가전', emoji:'🛋️', accent:'#6D8F66', soft:'#ECF2E9', deep:'#4C6B47', art:'assets/room_living.png' }
   };
   const SPACE_ORDER = ['bath','kitchen','baby','living'];
 
@@ -1048,17 +1048,29 @@
     if(d <= 7) return { level:'soon',  label:'D-' + d };
     return { level:'ok', label:'D-' + d };
   }
-  function roomCounts(spaceId){
-    const c = { over:0, today:0, soon:0, ok:0 };
-    items.forEach(it => {
-      if(it.space !== spaceId) return;
-      const d = daysLeft(it);
-      if(d < 0) c.over++;
-      else if(d === 0) c.today++;
-      else if(d <= 7) c.soon++;
-      else c.ok++;
-    });
-    return c;
+  function roomItems(spaceId){
+    return items.filter(i => i.space === spaceId);
+  }
+  /* 방 카드 말풍선: 가장 급한 물건 하나 + 남은 개수 */
+  function roomBadge(spaceId){
+    const list = roomItems(spaceId);
+    if(!list.length) return { level:'ok', text:'모두 여유', extra:0 };
+    const withD = list.map(it => ({ it:it, d:daysLeft(it) }));
+    const over  = withD.filter(x => x.d < 0).sort((a,b) => a.d - b.d);
+    const today = withD.filter(x => x.d === 0);
+    const soon  = withD.filter(x => x.d > 0 && x.d <= 7).sort((a,b) => a.d - b.d);
+    const action = over.length + today.length;
+
+    if(over.length){
+      return { level:'over', text: over[0].it.name + ' ' + Math.abs(over[0].d) + '일 지남!', extra: action - 1 };
+    }
+    if(today.length){
+      return { level:'today', text: today[0].it.name + ' 오늘!', extra: action - 1 };
+    }
+    if(soon.length){
+      return { level:'soon', text: soon[0].it.name + ' D-' + soon[0].d, extra: soon.length - 1 };
+    }
+    return { level:'ok', text:'모두 여유', extra: 0 };
   }
   function monthLog(){
     const y = TODAY.getFullYear(), m = TODAY.getMonth();
@@ -1095,7 +1107,7 @@
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   /* =========================================================
-     렌더: 오늘 / 릴레이
+     렌더: 오늘 / 초슬림 릴레이
      ========================================================= */
   function renderToday(){
     $('#todayLine').textContent =
@@ -1105,39 +1117,28 @@
 
   function renderRelay(){
     const rc = relayCounts();
-    const total = rc.total;
-    $('#relayTotal').textContent = total;
 
-    $('#relayMembers').innerHTML = ['영민','혜원'].map(name => {
-      const av = AV[name];
-      const n = name === '영민' ? rc.a : rc.b;
-      return '<span class="mbadge' + (state.me === name ? ' me' : '') + '">' +
-        '<span class="av ' + av.cls + '">' + av.ini + '</span>' +
-        '<b>' + name + '</b><i>' + n + '건</i>' +
-      '</span>';
-    }).join('');
+    $('#relayText').innerHTML =
+      '<b>영민</b><span class="n">' + rc.a + '</span>' +
+      '<span class="dot">·</span>' +
+      '<b>혜원</b><span class="n">' + rc.b + '</span>';
 
-    const pa = total ? Math.round(rc.a / total * 100) : 50;
-    $('#barA').style.width = pa + '%';
-    $('#barB').style.width = (100 - pa) + '%';
+    const av = AV[state.me];
+    $('#meAv').className = 'av ' + av.cls;
+    $('#meAv').textContent = av.ini;
+    $('#meName').textContent = state.me;
+    $('#meToggle').setAttribute('aria-label', '지금 나 ' + state.me + ' · 눌러서 바꾸기');
 
-    $('#feedText').textContent = feedText();
-
-    $$('#meTrack .me-btn').forEach(b => {
-      const on = b.dataset.me === state.me;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-
-    $('#famTotal').textContent = total;
+    // 가족 탭
+    $('#famTotal').textContent = rc.total;
     $('#famA').textContent = rc.a + '건';
     $('#famB').textContent = rc.b + '건';
     $('#famTotalTxt').textContent = (TODAY.getMonth()+1) + '월 ' + TODAY.getDate() + '일 기준';
     const maxN = Math.max(rc.a, rc.b, 1);
     $('#famBars').innerHTML = ['영민','혜원'].map(name => {
-      const av = AV[name];
+      const a = AV[name];
       const n = name === '영민' ? rc.a : rc.b;
-      return '<div class="fam-mem-row"><span class="av ' + av.cls + '">' + av.ini + '</span>' +
+      return '<div class="fam-mem-row"><span class="av ' + a.cls + '">' + a.ini + '</span>' +
         '<span style="width:34px">' + name + '</span>' +
         '<span class="bar"><i style="width:' + Math.round(n/maxN*100) + '%;background:' + (name==='영민'?'#5876B4':'#CE7E97') + '"></i></span>' +
         '<span class="n">' + n + '건</span></div>';
@@ -1145,62 +1146,48 @@
   }
 
   /* =========================================================
-     렌더: 공간 보드
+     렌더: 2×2 일러스트 방 카드
      ========================================================= */
-  function roomPreview(spaceId){
-    const list = items.filter(i => i.space === spaceId).sort(byDue);
-    if(!list.length) return '<div class="rp-empty">아직 등록된 생필품이 없어요</div>';
-    return list.slice(0,2).map(it => {
-      const sig = signalOf(it), s = SIG[sig.level];
-      return '<div class="rp-row"><span class="nm">' + esc(it.name) + '</span>' +
-        '<span class="d" style="color:' + s.fg + '">' + sig.label + '</span></div>';
-    }).join('');
-  }
-
-  function roomPills(spaceId){
-    const c = roomCounts(spaceId);
-    const defs = [
-      { k:'over',  n:c.over,  label:'긴급', s:SIG.over },
-      { k:'today', n:c.today, label:'오늘', s:SIG.today },
-      { k:'soon',  n:c.soon,  label:'임박', s:SIG.soon },
-      { k:'ok',    n:c.ok,    label:'여유', s:SIG.ok }
-    ];
-    return defs.filter(d => d.n > 0).map(d =>
-      '<span class="rpill" style="background:' + d.s.bg + ';color:' + d.s.fg + '">' +
-        '<i style="background:' + d.s.bar + '"></i>' + d.label + ' ' + d.n +
-      '</span>'
-    ).join('');
-  }
-
   function renderRooms(){
-    $('#boardMeta').textContent = items.length + '개 관리 중';
     $('#rooms').innerHTML = SPACE_ORDER.map(id => {
       const sp = SPACES[id];
-      const n = items.filter(i => i.space === id).length;
-      return '<button class="room" data-room="' + id + '" type="button" ' +
-        'style="--accent:' + sp.accent + ';--soft:' + sp.soft + ';--deep:' + sp.deep + '" ' +
-        'aria-label="' + sp.name + ' ' + n + '개 목록 열기">' +
-        '<div class="room-top">' +
-          '<span class="room-ic">' + sp.emoji + '</span>' +
-          '<span class="room-name">' + sp.name + '</span>' +
-          '<span class="room-n">' + n + '</span>' +
-          '<span class="room-arw" aria-hidden="true">›</span>' +
-        '</div>' +
-        '<div class="rpills">' + roomPills(id) + '</div>' +
-        '<div class="rprev">' + roomPreview(id) + '</div>' +
-      '</button>';
+      const n = roomItems(id).length;
+      const b = roomBadge(id);
+
+      let badge;
+      if(b.level === 'ok'){
+        badge = '<span class="badge ok" aria-label="' + sp.name + ' 모두 여유">' + IC_CHECK + '<span class="bt">모두 여유</span></span>';
+      } else {
+        badge = '<span class="badge ' + b.level + '" aria-label="' + sp.name + ' ' + esc(b.text) + '">' +
+          '<span class="bq" aria-hidden="true">💬</span>' +
+          '<span class="bt">' + esc(b.text) + '</span>' +
+          (b.extra > 0 ? '<i class="bx">+' + b.extra + '</i>' : '') +
+        '</span>';
+      }
+
+      return '<div class="roomwrap" style="--accent:' + sp.accent + ';--soft:' + sp.soft + ';--deep:' + sp.deep + '">' +
+        badge +
+        '<button class="roomcard" data-room="' + id + '" type="button" aria-label="' + sp.name + ' ' + n + '개 목록 열기">' +
+          '<span class="art">' +
+            '<img src="' + sp.art + '" alt="' + sp.name + ' 일러스트" width="512" height="512" decoding="async">' +
+          '</span>' +
+          '<span class="foot">' +
+            '<span class="rname">' + sp.name + '</span>' +
+            '<span class="rn">' + n + '</span>' +
+          '</span>' +
+        '</button>' +
+      '</div>';
     }).join('');
   }
 
   /* =========================================================
-     렌더: 홈 생필품 진입 카드
+     렌더: 하단 진입 버튼
      ========================================================= */
   const urgentList = () => items.filter(it => daysLeft(it) <= 7);
 
   function renderEntry(){
-    const n = urgentList().length;
-    $('#entrySub').textContent = '총 ' + items.length + '개 · 지금 챙길 것 ' + n + '개';
-    $('#urgentN').textContent = '(' + n + '개)';
+    $('#allN').textContent = '(' + items.length + ')';
+    $('#urgentN').textContent = '(' + urgentList().length + ')';
   }
 
   /* =========================================================
@@ -1238,19 +1225,50 @@
     '</article>';
   }
 
+  function renderBanner(){
+    const box = $('#roomBanner');
+    if(state.scope.indexOf('space:') === 0){
+      const sp = SPACES[state.scope.slice(6)];
+      const n = roomItems(sp.id).length;
+      const b = roomBadge(sp.id);
+      let alert;
+      if(b.level === 'ok'){
+        alert = '<span class="tb-alert" style="background:' + SIG.ok.bg + ';color:' + SIG.ok.fg + '">✓ 모두 여유</span>';
+      } else {
+        const s = SIG[b.level];
+        alert = '<span class="tb-alert" style="background:' + s.bg + ';color:' + s.fg + '">' + esc(b.text) + (b.extra > 0 ? ' +' + b.extra : '') + '</span>';
+      }
+      box.hidden = false;
+      box.style.setProperty('--soft', sp.soft);
+      box.style.setProperty('--deep', sp.deep);
+      box.innerHTML =
+        '<img class="tb" src="' + sp.art + '" alt="' + sp.name + ' 일러스트">' +
+        '<div class="tbx">' +
+          '<div class="tb-name">' + sp.name + '</div>' +
+          '<div class="tb-sub"><b>' + n + '개</b> 관리 중</div>' +
+          alert +
+        '</div>';
+    } else {
+      box.hidden = true;
+      box.innerHTML = '';
+    }
+  }
+
   function renderList(){
     const list = visibleItems();
 
-    let title = '전체 생필품', em = '';
+    let title = '전체 생필품', em = '', meta = list.length + '개 · 교체일 가까운 순';
     if(state.scope === 'urgent'){ title = '급한 것만'; em = '⚡'; }
     else if(state.scope.indexOf('space:') === 0){
-      const sp = SPACES[state.scope.slice(6)];
-      title = sp.name; em = sp.emoji;
+      title = '생필품';
+      meta = '교체일 가까운 순';
     }
     $('#subTitle').textContent = (em ? em + ' ' : '') + title;
-    $('#subMeta').textContent = list.length + '개 · 교체일 가까운 순';
+    $('#subMeta').textContent = meta;
 
     $$('#listFilters .fchip').forEach(b => b.classList.toggle('on', b.dataset.scope === state.scope));
+
+    renderBanner();
 
     if(!list.length){
       const msg = state.scope === 'urgent'
@@ -1284,12 +1302,12 @@
     if(!it){ closeSheets(); return; }
     const sig = signalOf(it), s = SIG[sig.level], sp = SPACES[it.space];
     const due = nextDue(it);
-    const avMe = AV[state.me];
 
     $('#detailHead').innerHTML =
       '<div class="head-row">' +
         '<span class="space-tag" style="background:' + sp.soft + ';color:' + sp.deep + '">' +
-          sp.emoji + ' ' + sp.name + '</span>' +
+          '<img src="' + sp.art + '" alt="">' + sp.name +
+        '</span>' +
         '<button class="close-btn" data-act="close" type="button" aria-label="닫기">' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
         '</button>' +
@@ -1474,7 +1492,10 @@
     state.deleteArmed = false;
     renderAll();
 
-    showToast('‘' + it.name + '’ 교체 완료 · ' + state.me, {
+    const myN = state.me === '영민' ? relayCounts().a : relayCounts().b;
+    const msg = '‘' + it.name + '’ 교체 완료 · 이번 달 ' + state.me + ' ' + myN + '번째';
+
+    showToast(msg, {
       undo: function(){
         items = snapshot.items;
         log = snapshot.log;
@@ -1640,15 +1661,17 @@
     if(t.closest('#closeAdd')){ closeSheets(); return; }
     if(t.closest('#scrim')){ closeSheets(); return; }
 
-    // 지금 사용자 전환
-    const meBtn = t.closest('#meTrack .me-btn');
-    if(meBtn){ setMe(meBtn.dataset.me); return; }
+    // 지금 나 전환
+    if(t.closest('#meToggle')){
+      setMe(state.me === '영민' ? '혜원' : '영민');
+      return;
+    }
 
-    // 공간 카드 → 해당 공간 리스트
-    const room = t.closest('.room');
+    // 방 카드 → 해당 방 리스트
+    const room = t.closest('.roomcard');
     if(room){ goList('space:' + room.dataset.room); return; }
 
-    // 홈 진입 카드
+    // 홈 진입 버튼
     if(t.closest('#goAll')){ goList('all'); return; }
     if(t.closest('#goUrgent')){ goList('urgent'); return; }
     if(t.closest('#btnBack')){ goHome(); return; }
@@ -1658,6 +1681,7 @@
     if(chip){
       state.scope = chip.dataset.scope;
       renderAll();
+      $('#view-list').scrollTop = 0;
       return;
     }
 
@@ -1837,6 +1861,7 @@
     get view(){ return state.view; },
     relay: relayCounts,
     urgent: urgentList,
+    badge: roomBadge,
     today: TODAY
   };
 })();

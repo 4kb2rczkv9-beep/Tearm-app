@@ -139,75 +139,96 @@
   .me-pill .swap svg{width:10px;height:10px;stroke-width:3}
 
   /* =========================================================
-     2×2 일러스트 방 카드
+     3D 아이소메트릭 아파트 평면도 (v5)
      ========================================================= */
-  .rooms{
-    flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
-    gap:17px 10px;margin-top:13px;
+  .planstage{flex:1;min-height:0;display:flex;flex-direction:column;margin:9px -15px 0}
+  .planfit{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center}
+  .planbox{
+    position:relative;flex:none;border-radius:26px;overflow:hidden;isolation:isolate;
+    background:#F7F3EC;width:100%;height:100%;
+    box-shadow:0 2px 3px rgba(90,62,30,.05), 0 30px 46px -34px rgba(80,55,25,.78), 0 0 0 1px rgba(120,95,60,.09);
+    animation:planIn .5s cubic-bezier(.22,.7,0,1) both;
   }
-  .roomwrap{position:relative;min-height:0;display:flex}
-  .roomcard{
-    flex:1;min-height:0;display:flex;flex-direction:column;width:100%;
-    border:0;padding:0;border-radius:17px;overflow:hidden;cursor:pointer;
-    background:#fff;text-align:left;
-    box-shadow:0 1px 2px rgba(90,62,30,.06), 0 16px 26px -24px rgba(90,62,30,.8), 0 0 0 1px rgba(120,95,60,.07);
-    transition:transform .13s ease, box-shadow .2s ease;
+  @keyframes planIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  .planbox img.plan{
+    position:absolute;inset:0;width:100%;height:100%;display:block;
+    object-fit:cover;object-position:center;
+    user-select:none;-webkit-user-drag:none;pointer-events:none;
   }
-  .roomcard:active{transform:scale(.982)}
-  .roomcard .art{
-    position:relative;display:block;flex:1;min-height:0;overflow:hidden;background:var(--soft);
-  }
-  .roomcard .art img{
-    width:100%;height:100%;display:block;object-fit:cover;object-position:center 52%;
-    transform:scale(1.01);
-  }
-  .roomcard .art::after{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 26%);
-  }
-  .roomcard .foot{
-    flex:none;display:flex;align-items:center;gap:6px;
-    padding:8px 10px 9px;background:#fff;
-  }
-  .roomcard .rname{
-    flex:1;min-width:0;font-size:13px;font-weight:800;letter-spacing:-.45px;color:#26211B;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  }
-  .roomcard .rn{
-    flex:none;font-size:10.5px;font-weight:800;color:var(--deep);
-    background:var(--soft);border-radius:999px;padding:1px 7px;
-    font-variant-numeric:tabular-nums;letter-spacing:-.1px;
+  .planhint{
+    flex:none;margin:9px 0 0;text-align:center;
+    font-size:10.5px;font-weight:700;color:#B0A897;letter-spacing:-.15px;
   }
 
-  /* 말풍선 배지 */
-  .badge{
-    position:absolute;top:-9px;left:7px;z-index:3;
-    display:inline-flex;align-items:center;gap:4px;max-width:calc(100% - 12px);
-    padding:4px 9px 4px 7px;border-radius:11px;
-    font-size:10.5px;font-weight:800;letter-spacing:-.25px;line-height:1.15;
-    color:var(--fc);background:var(--bc);
-    box-shadow:0 6px 14px -7px rgba(60,32,12,.65);
-    --bc:#D2533A;--fc:#fff;
+  /* 방 클릭 구역 */
+  .hot{
+    position:absolute;z-index:2;left:calc(var(--x)*1%);top:calc(var(--y)*1%);
+    width:calc(var(--w)*1%);height:calc(var(--h)*1%);
+    border:0;margin:0;padding:0;background:transparent;cursor:pointer;
+    border-radius:18px;outline:none;
+    transition:background .2s ease;
   }
-  .badge::after{
-    content:"";position:absolute;left:11px;bottom:-4px;width:9px;height:9px;
-    background:var(--bc);border-radius:2px;transform:rotate(45deg);
+  .hot::after{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    box-shadow:inset 0 0 0 0 rgba(255,255,255,0);
+    transition:box-shadow .2s ease;
   }
-  .badge .bq{font-size:9.5px;line-height:1;filter:saturate(0) brightness(2.2);opacity:.95}
-  .badge .bt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-variant-numeric:tabular-nums}
-  .badge .bx{
-    flex:none;font-style:normal;font-size:9.5px;font-weight:800;
-    background:rgba(255,255,255,.3);border-radius:999px;padding:0 4px;letter-spacing:0;
+  .hot:hover,.hot:focus-visible{
+    background:radial-gradient(118% 96% at 50% 56%, rgba(255,255,255,.34) 0%, rgba(255,255,255,0) 74%);
   }
-  .badge.over{--bc:#D2533A;--fc:#fff}
-  .badge.today{--bc:#DE8A2E;--fc:#fff}
-  .badge.soon{--bc:#F0C33C;--fc:#5A4708}
-  .badge.soon .bq{filter:none;opacity:.75}
-  .badge.ok{
-    --bc:#DBEFE2;--fc:#2C6C4C;left:9px;padding:4px 9px 4px 7px;
-    box-shadow:0 4px 10px -8px rgba(44,108,76,.6);
+  .hot:hover::after,.hot:focus-visible::after{
+    box-shadow:inset 0 0 0 2.5px var(--ring), 0 0 22px 3px rgba(255,255,255,.5);
   }
-  .badge.ok svg{width:10px;height:10px;stroke-width:3.2;flex:none}
+  .hot:active{background:rgba(255,255,255,.4)}
+  .hot:active::after{box-shadow:inset 0 0 0 2.5px var(--ring)}
+  .hot.tapped{
+    background:radial-gradient(118% 96% at 50% 56%, rgba(255,255,255,.4) 0%, rgba(255,255,255,0) 74%);
+  }
+  .hot.tapped::after{box-shadow:inset 0 0 0 2.5px var(--ring), 0 0 22px 3px rgba(255,255,255,.55)}
+
+  /* 방 이름 라벨 */
+  .rtag{
+    position:absolute;z-index:5;pointer-events:none;
+    left:calc(var(--x)*1%);top:calc(var(--y)*1%);transform:translateY(-50%);
+    display:inline-flex;align-items:center;gap:4px;
+    padding:3px 6px 3px 6px;border-radius:9px;
+    background:rgba(255,255,255,.93);
+    box-shadow:0 3px 9px -5px rgba(50,32,14,.7), 0 0 0 1px rgba(255,255,255,.7);
+    -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+    font-size:10px;font-weight:800;color:#2B241C;letter-spacing:-.3px;
+    white-space:nowrap;line-height:1;
+  }
+  .rtag i{width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none}
+  .rtag b{
+    font-weight:800;font-size:9.5px;color:var(--deep);background:var(--soft);
+    border-radius:999px;padding:1px 4px;margin-left:1px;font-variant-numeric:tabular-nums;letter-spacing:0;
+  }
+
+  /* 떠 있는 말풍선 핀 */
+  .pbub{
+    position:absolute;z-index:4;pointer-events:none;
+    left:calc(var(--x)*1%);top:calc(var(--y)*1%);transform:translate(-50%,-50%);
+    display:inline-flex;align-items:center;gap:3px;
+    padding:4px 7px 4px 5px;border-radius:10px;
+    font-size:9.5px;font-weight:800;letter-spacing:-.3px;line-height:1.12;
+    color:var(--fc);background:var(--bc);white-space:nowrap;
+    box-shadow:0 5px 12px -5px rgba(50,25,8,.8), 0 0 0 1.5px rgba(255,255,255,.62);
+    animation:bubIn .34s cubic-bezier(.32,.72,0,1) both;
+  }
+  @keyframes bubIn{from{opacity:0;transform:translate(-50%,-44%) scale(.94)}to{opacity:1;transform:translate(-50%,-50%)}}
+  .pbub::after{
+    content:"";position:absolute;left:50%;bottom:-3px;width:7px;height:7px;
+    background:var(--bc);border-radius:1.5px;transform:translateX(-50%) rotate(45deg);
+  }
+  .pbub .bq{font-size:9px;line-height:1;filter:saturate(0) brightness(2.15);opacity:.95;position:relative;z-index:1}
+  .pbub .bt{position:relative;z-index:1}
+  .pbub .bx{
+    position:relative;z-index:1;flex:none;font-style:normal;font-size:9px;font-weight:800;
+    background:rgba(255,255,255,.32);border-radius:999px;padding:0 4px;letter-spacing:0;
+  }
+  .pbub.ok{--bc:#DBEFE2;--fc:#2C6C4C;padding:4px 8px 4px 6px}
+  .pbub.ok .bq{filter:none;color:#2C6C4C;opacity:1;font-size:10px}
+  .pbub.ok::after{box-shadow:none}
 
   /* =========================================================
      하단 진입 버튼
@@ -228,7 +249,6 @@
 
   #view-home{overflow:hidden;display:flex;flex-direction:column;padding-bottom:calc(73px + env(safe-area-inset-bottom))}
   #view-home>.relaybar,#view-home>.entryrow{flex:none}
-  #view-home>.rooms{flex:1;min-height:0}
 
   /* =========================================================
      리스트 서브뷰
@@ -543,9 +563,10 @@
   .tpl-cycle{font-size:10.5px;color:var(--ink4);font-weight:700;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
   @media (max-height:700px){
-    .rooms{gap:14px 9px;margin-top:11px}
+    .planstage{margin-top:8px}
     .spbanner{height:86px}
     .relaybar{min-height:32px}
+    .planhint{margin-top:7px;font-size:10px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation-duration:.001s !important;transition-duration:.001s !important}
@@ -608,8 +629,13 @@
           </button>
         </section>
 
-        <!-- 2×2 일러스트 방 카드 -->
-        <section class="rooms" id="rooms" aria-label="우리 집 공간별"></section>
+        <!-- 3D 아이소메트릭 아파트 평면도 -->
+        <section class="planstage" aria-label="우리 집 3D 평면도 · 공간별 생필품">
+          <div class="planfit" id="planFit">
+            <div class="planbox" id="planBox"></div>
+          </div>
+          <p class="planhint">방을 누르면 그 공간의 생필품이 열려요</p>
+        </section>
 
         <!-- 하단 진입 버튼 -->
         <section class="entryrow" aria-label="생필품 목록 열기">
@@ -768,7 +794,7 @@
         <div class="card">
           <div class="row"><span class="row-label">개인정보처리방침</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
           <div class="row"><span class="row-label">오픈소스 라이선스</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="row"><span class="row-label">버전</span><span class="row-value">0.4.0 (일러스트 방 카드형)</span></div>
+          <div class="row"><span class="row-label">버전</span><span class="row-value">0.5.0 (3D 평면도형)</span></div>
         </div>
         <p class="settings-foot">프로토타입이라 새로 고치면 처음 상태로 돌아갑니다.</p>
       </main>
@@ -1146,38 +1172,78 @@
   }
 
   /* =========================================================
-     렌더: 2×2 일러스트 방 카드
+     렌더: 3D 아이소메트릭 아파트 평면도
      ========================================================= */
-  function renderRooms(){
-    $('#rooms').innerHTML = SPACE_ORDER.map(id => {
+  /* 이미지(1086×1448) 위에 올리는 좌표를 %로 적어 둔다.
+     hot: [left, top, width, height] 클릭 영역 / tag: [x, y] 방 이름 라벨 / bub: [x, y] 말풍선 */
+  const PLAN_AR = 1086 / 1448;
+  const PLAN_UI = {
+    bath:    { hot:[9.0, 7.0, 40.0, 37.6],  tag:[13.6, 12.2], bub:[28.0, 38.8] },
+    baby:    { hot:[51.0, 7.0, 37.2, 37.6], tag:[53.6, 11.6], bub:[66.0, 40.6] },
+    kitchen: { hot:[6.2, 45.2, 42.6, 43.0], tag:[12.2, 48.2], bub:[31.0, 83.6] },
+    living:  { hot:[51.0, 45.2, 43.6, 43.0],tag:[54.2, 48.6], bub:[68.0, 83.2] }
+  };
+  const BUB = {
+    over:  { bc:'#D2533A', fc:'#FFFFFF' },
+    today: { bc:'#DE8A2E', fc:'#FFFFFF' },
+    soon:  { bc:'#F0C33C', fc:'#5A4708' },
+    ok:    { bc:'#DBEFE2', fc:'#2C6C4C' }
+  };
+
+  function buildPlan(){
+    const box = $('#planBox');
+    if(!box) return;
+    box.innerHTML =
+      '<img class="plan" src="assets/apt_floorplan_3d.png" alt="우리 집 3D 아이소메트릭 평면도" width="1086" height="1448" decoding="async">' +
+      SPACE_ORDER.map(id => {
+        const sp = SPACES[id], u = PLAN_UI[id];
+        const pos = (a) => '--x:' + a[0] + ';--y:' + a[1] + ';';
+        return '<button class="hot" type="button" data-room="' + id + '" ' +
+            'style="' + pos(u.hot) + '--w:' + u.hot[2] + ';--h:' + u.hot[3] + ';--ring:' + sp.accent + '"></button>' +
+          '<span class="rtag" data-tag="' + id + '" style="' + pos(u.tag) + '--acc:' + sp.accent + ';--soft:' + sp.soft + ';--deep:' + sp.deep + '">' +
+            '<i aria-hidden="true"></i>' + sp.name + '<b></b></span>' +
+          '<span class="pbub" data-bub="' + id + '" style="' + pos(u.bub) + '--bc:' + BUB.soon.bc + ';--fc:' + BUB.soon.fc + '">' +
+            '<span class="bq" aria-hidden="true">💬</span><span class="bt"></span><i class="bx" hidden></i></span>';
+      }).join('');
+  }
+
+  function renderPlan(){
+    SPACE_ORDER.forEach(id => {
       const sp = SPACES[id];
       const n = roomItems(id).length;
       const b = roomBadge(id);
 
-      let badge;
-      if(b.level === 'ok'){
-        badge = '<span class="badge ok" aria-label="' + sp.name + ' 모두 여유">' + IC_CHECK + '<span class="bt">모두 여유</span></span>';
-      } else {
-        badge = '<span class="badge ' + b.level + '" aria-label="' + sp.name + ' ' + esc(b.text) + '">' +
-          '<span class="bq" aria-hidden="true">💬</span>' +
-          '<span class="bt">' + esc(b.text) + '</span>' +
-          (b.extra > 0 ? '<i class="bx">+' + b.extra + '</i>' : '') +
-        '</span>';
-      }
+      const hot = document.querySelector('.hot[data-room="' + id + '"]');
+      if(hot) hot.setAttribute('aria-label', sp.name + ' 생필품 ' + n + '개 목록 열기');
 
-      return '<div class="roomwrap" style="--accent:' + sp.accent + ';--soft:' + sp.soft + ';--deep:' + sp.deep + '">' +
-        badge +
-        '<button class="roomcard" data-room="' + id + '" type="button" aria-label="' + sp.name + ' ' + n + '개 목록 열기">' +
-          '<span class="art">' +
-            '<img src="' + sp.art + '" alt="' + sp.name + ' 일러스트" width="512" height="512" decoding="async">' +
-          '</span>' +
-          '<span class="foot">' +
-            '<span class="rname">' + sp.name + '</span>' +
-            '<span class="rn">' + n + '</span>' +
-          '</span>' +
-        '</button>' +
-      '</div>';
-    }).join('');
+      const tag = document.querySelector('[data-tag="' + id + '"]');
+      if(tag) tag.querySelector('b').textContent = n;
+
+      const el = document.querySelector('[data-bub="' + id + '"]');
+      if(!el) return;
+      const c = BUB[b.level] || BUB.ok;
+      el.className = 'pbub' + (b.level === 'ok' ? ' ok' : '');
+      el.style.setProperty('--bc', c.bc);
+      el.style.setProperty('--fc', c.fc);
+      el.querySelector('.bq').textContent = b.level === 'ok' ? '✓' : '💬';
+      el.querySelector('.bt').textContent = b.text;
+      const bx = el.querySelector('.bx');
+      if(b.extra > 0){ bx.hidden = false; bx.textContent = '+' + b.extra; }
+      else { bx.hidden = true; bx.textContent = ''; }
+      el.setAttribute('aria-label', sp.name + ' ' + b.text + (b.extra > 0 ? ' 외 ' + b.extra + '개' : ''));
+    });
+  }
+
+  /* 평면도 카드는 이미지 비율(3:4)을 유지한 채 영역에 맞춰 줄인다 */
+  function fitPlan(){
+    const fit = $('#planFit'), box = $('#planBox');
+    if(!fit || !box) return;
+    const availW = fit.clientWidth, availH = fit.clientHeight;
+    if(!availW || !availH) return;
+    let W = availW, H = W / PLAN_AR;
+    if(H > availH){ H = availH; W = H * PLAN_AR; }
+    box.style.width = Math.round(W) + 'px';
+    box.style.height = Math.round(H) + 'px';
   }
 
   /* =========================================================
@@ -1287,7 +1353,7 @@
 
   function renderAll(){
     renderRelay();
-    renderRooms();
+    renderPlan();
     renderEntry();
     renderList();
     if(state.detailId) renderDetail();
@@ -1667,9 +1733,20 @@
       return;
     }
 
-    // 방 카드 → 해당 방 리스트
-    const room = t.closest('.roomcard');
-    if(room){ goList('space:' + room.dataset.room); return; }
+    // 방 → 하이라이트 후 해당 방 리스트
+    const room = t.closest('.hot');
+    if(room){
+      if(room.dataset.go) return;
+      const rid = room.dataset.room;
+      room.dataset.go = '1';
+      room.classList.add('tapped');
+      setTimeout(function(){
+        room.classList.remove('tapped');
+        delete room.dataset.go;
+        goList('space:' + rid);
+      }, 120);
+      return;
+    }
 
     // 홈 진입 버튼
     if(t.closest('#goAll')){ goList('all'); return; }
@@ -1849,8 +1926,15 @@
   renderFormSpaces();
   $('#fLast').value = fmtISO(TODAY);
   $('#meSelect').value = state.me;
+  buildPlan();
   renderAll();
   updatePreview();
+  fitPlan();
+  window.addEventListener('resize', fitPlan);
+  window.addEventListener('orientationchange', function(){ setTimeout(fitPlan, 150); });
+  if(window.ResizeObserver){
+    new ResizeObserver(function(){ fitPlan(); }).observe($('#planFit'));
+  }
 
   // 테스트/데모용 훅 (읽기 전용)
   window.__tearm = {

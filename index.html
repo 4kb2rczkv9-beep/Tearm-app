@@ -51,7 +51,7 @@
   }
   .phone{
     position:relative;margin:auto;width:390px;height:844px;background:var(--bg);
-    border-radius:44px;overflow:hidden;display:flex;flex-direction:column;
+    border-radius:44px;overflow:hidden;overflow:clip;display:flex;flex-direction:column;
     box-shadow:0 46px 90px -30px rgba(60,45,25,.45), 0 0 0 1px rgba(70,54,32,.1), inset 0 0 0 1px rgba(255,255,255,.6);
   }
   @media (max-width:430px), (max-height:700px){
@@ -250,6 +250,75 @@
   .pbub.ok{--bc:#DBEFE2;--fc:#2C6C4C;padding:4px 8px 4px 6px}
   .pbub.ok .bq{filter:none;color:#2C6C4C;opacity:1;font-size:10px}
   .pbub.ok::after{box-shadow:none}
+
+  /* 집 타입 캡션 칩 (평면도 위 우측 상단) */
+  .plancap{
+    position:absolute;z-index:7;top:9px;right:9px;display:inline-flex;align-items:center;gap:4px;
+    border:0;cursor:pointer;padding:5px 8px 5px 7px;border-radius:999px;
+    background:rgba(255,255,255,.94);color:#3B2E20;
+    font-size:10.5px;font-weight:800;letter-spacing:-.3px;line-height:1;white-space:nowrap;
+    box-shadow:0 4px 12px -6px rgba(50,32,14,.7), 0 0 0 1px rgba(120,95,60,.14);
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+    transition:transform .12s ease;
+  }
+  .plancap:active{transform:scale(.95)}
+  .plancap .pc-ic{font-size:11px;line-height:1}
+  .plancap svg{width:10px;height:10px;stroke-width:3.2;color:#A9998A;flex:none}
+
+  /* 집 타입 고르기 (설정 썸네일) */
+  .house-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:11px 11px 9px}
+  .hopt{
+    position:relative;display:flex;flex-direction:column;gap:5px;align-items:stretch;
+    border:1.5px solid #E7E1D4;background:#fff;border-radius:13px;padding:5px 5px 7px;
+    cursor:pointer;transition:border-color .16s, box-shadow .16s, transform .1s;
+  }
+  .hopt:active{transform:scale(.98)}
+  .hopt .hthumb{
+    display:block;width:100%;aspect-ratio:850/1275;border-radius:9px;overflow:hidden;
+    background:#F4EFE4;position:relative;
+  }
+  .hopt .hthumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .hopt .hlabel{
+    font-size:10px;font-weight:800;color:#6E6250;letter-spacing:-.35px;
+    text-align:center;line-height:1.25;
+  }
+  .hopt.on{border-color:#241F19;box-shadow:0 0 0 2.5px rgba(36,31,25,.08)}
+  .hopt.on .hlabel{color:#201C16}
+  .hopt .hcheck{
+    position:absolute;top:9px;right:9px;width:18px;height:18px;border-radius:50%;
+    background:#241F19;color:#fff;display:none;place-items:center;
+    box-shadow:0 2px 7px rgba(0,0,0,.32);
+  }
+  .hopt.on .hcheck{display:grid}
+  .hopt .hcheck svg{width:10px;height:10px;stroke-width:3.6}
+  .house-foot{
+    padding:0 12px 12px;font-size:10.5px;font-weight:700;color:#A9998A;letter-spacing:-.15px;line-height:1.5;
+  }
+
+  /* 집 타입 고르기 (시트) */
+  .hrow{
+    display:flex;align-items:center;gap:10px;width:100%;text-align:left;cursor:pointer;
+    border:1.5px solid #E7E1D4;background:#fff;border-radius:14px;padding:7px;margin-bottom:7px;
+    transition:border-color .16s, box-shadow .16s, transform .1s;
+  }
+  .hrow:active{transform:scale(.99)}
+  .hrow.on{border-color:#241F19;box-shadow:0 0 0 2.5px rgba(36,31,25,.07)}
+  .hrow img{flex:none;width:46px;height:69px;border-radius:8px;object-fit:cover;display:block;background:#F4EFE4}
+  .hrow .hx{flex:1;min-width:0;display:block}
+  .hrow .hn{font-size:13.5px;font-weight:800;letter-spacing:-.4px;display:flex;align-items:center;gap:5px}
+  .hrow .hd{display:block;font-size:10px;font-weight:700;color:var(--ink3);margin-top:3px;line-height:1.4;letter-spacing:-.1px}
+  .hrow .hnow{
+    flex:none;font-size:9.5px;font-weight:800;color:#2C7A58;background:var(--green-bg);
+    padding:2px 6px;border-radius:999px;letter-spacing:-.1px;
+  }
+
+  /* 방 이름 바꾸기 */
+  .name-row{width:100%;border:0;background:none;text-align:left;cursor:pointer;font-family:inherit;color:inherit}
+  .name-row:active{background:#FAF7F0}
+  .name-row .row-label{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .name-row .row-label i{font-style:normal;font-size:13px;line-height:1}
+  .name-row .row-label em{font-style:normal;font-size:9.5px;font-weight:800;color:#B4AC9E}
+  .name-row .row-value{color:#A9805A;font-weight:800}
 
 
   #view-home{overflow:hidden;display:flex;flex-direction:column;padding-bottom:calc(73px + env(safe-area-inset-bottom))}
@@ -676,12 +745,7 @@
             <button class="fchip yellow" data-scope="sig:yellow" type="button">🟡 곧 교체</button>
             <button class="fchip green" data-scope="sig:green" type="button">🟢 여유</button>
           </div>
-          <div class="frow">
-            <button class="fchip" data-scope="space:bath" type="button">🚿 욕실</button>
-            <button class="fchip" data-scope="space:kitchen" type="button">🍳 주방</button>
-            <button class="fchip" data-scope="space:baby" type="button">🧸 아기방</button>
-            <button class="fchip" data-scope="space:living" type="button">🛋️ 거실/가전</button>
-          </div>
+          <div class="frow" id="spaceChips"></div>
         </div>
         <div id="list"></div>
         <p class="foot-note">
@@ -753,6 +817,17 @@
       <main class="view" id="view-settings" hidden>
         <h1 class="page-title">설정</h1>
 
+        <div class="sec-title">우리 집 평면도</div>
+        <div class="card">
+          <div class="house-grid" id="houseGrid"></div>
+          <div class="house-foot" id="houseFoot"></div>
+        </div>
+
+        <div class="sec-title">방 이름 바꾸기</div>
+        <div class="card" id="nameCard"></div>
+        <p class="hint">방 이름을 누르면 바로 바꿀 수 있어요. 홈 평면도 라벨과 리스트·상세의 공간 이름에 함께 반영됩니다.</p>
+        <button class="btn-soft" id="resetPlan" type="button">평면도·방 이름 처음으로</button>
+
         <div class="sec-title">지금 사용자</div>
         <div class="card">
           <div class="row">
@@ -810,9 +885,9 @@
         <div class="card">
           <div class="row"><span class="row-label">개인정보처리방침</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
           <div class="row"><span class="row-label">오픈소스 라이선스</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="row"><span class="row-label">버전</span><span class="row-value">0.6.0 (실제 평면도·신호등)</span></div>
+          <div class="row"><span class="row-label">버전</span><span class="row-value">0.7.0 (집 타입별 평면도)</span></div>
         </div>
-        <p class="settings-foot">프로토타입이라 새로 고치면 처음 상태로 돌아갑니다.</p>
+        <p class="settings-foot">평면도 타입과 방 이름은 이 기기에 저장돼 새로 고쳐도 그대로 남습니다.<br>생필품·이력은 프로토타입 메모리에만 있어 새로 고치면 처음으로 돌아갑니다.</p>
       </main>
 
       <!-- ================= TAB BAR ================= -->
@@ -896,6 +971,51 @@
       </div>
     </div>
 
+    <!-- house type sheet -->
+    <div class="sheet" id="houseSheet" role="dialog" aria-modal="true" aria-label="우리 집 평면도 타입">
+      <div class="grab"></div>
+      <div class="sheet-fixed">
+        <div class="sheet-top">
+          <h2>우리 집 평면도</h2>
+          <button class="close-btn" id="closeHouse" type="button" aria-label="닫기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="sheet-inner">
+        <p class="hint" style="margin:0 2px 10px">우리 집과 가까운 타입을 고르면 홈 평면도가 바로 바뀌어요.</p>
+        <div id="houseList"></div>
+        <button class="link-btn" id="goRoomNames" type="button">방 이름도 바꾸려면 설정 → 방 이름 바꾸기</button>
+      </div>
+    </div>
+
+    <!-- room rename sheet -->
+    <div class="sheet" id="renameSheet" role="dialog" aria-modal="true" aria-label="방 이름 바꾸기">
+      <div class="grab"></div>
+      <div class="sheet-fixed">
+        <div class="sheet-top">
+          <h2>방 이름 바꾸기</h2>
+          <button class="close-btn" id="closeRename" type="button" aria-label="닫기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="sheet-inner">
+        <p class="hint" id="renameHint" style="margin:0 2px 10px"></p>
+        <div class="field">
+          <label class="label" for="renameInput">방 이름</label>
+          <input class="input" id="renameInput" maxlength="8" placeholder="예: 서재" autocomplete="off">
+        </div>
+        <div class="field">
+          <span class="label">이런 이름은 어때요?</span>
+          <div class="chip-row" id="renameChips"></div>
+        </div>
+        <div class="form-err" id="renameErr" role="alert"></div>
+        <button class="btn-primary" id="renameSave" type="button">이 이름으로 바꾸기</button>
+        <button class="link-btn" id="renameReset" type="button">원래 이름으로 되돌리기</button>
+      </div>
+    </div>
+
     <!-- toast -->
     <div class="toast" id="toast" role="status" aria-live="polite">
       <span class="toast-msg" id="toastMsg"></span>
@@ -954,19 +1074,108 @@
     return (c - 0xAC00) % 28 !== 0;
   }
   const josa = (s, withB, withoutB) => hasBatchim(s) ? withB : withoutB;
+  function roJosa(s){
+    const t = String(s || '').trim();
+    if(!t) return '로';
+    const c = t.charCodeAt(t.length-1);
+    if(c < 0xAC00 || c > 0xD7A3) return '로';
+    const jong = (c - 0xAC00) % 28;
+    return (jong === 0 || jong === 8) ? '로' : '으로';
+  }
 
   const TODAY = startOfDay(new Date());
 
   /* =========================================================
-     공간 정의 (방 일러스트 포함)
+     집 타입 · 공간 정의 (v7)
+     같은 집에서도 방 이름은 사용자가 바꿀 수 있고,
+     생필품은 기준 공간(bath/kitchen/room2/living)에 묶여 있어
+     집 타입을 바꿔도 그 공간에 맞는 구역으로 따라간다.
      ========================================================= */
-  const SPACES = {
-    bath:   { id:'bath',   name:'욕실',      emoji:'🚿', accent:'#4E8CA6', soft:'#EAF2F6', deep:'#2F6A83', art:'assets/room_bath.png' },
-    kitchen:{ id:'kitchen',name:'주방',      emoji:'🍳', accent:'#C87A45', soft:'#FBEEDF', deep:'#9C5726', art:'assets/room_kitchen.png' },
-    baby:   { id:'baby',   name:'아기방',    emoji:'🧸', accent:'#C57B93', soft:'#FAEBF0', deep:'#A05070', art:'assets/room_baby.png' },
-    living: { id:'living', name:'거실/가전', emoji:'🛋️', accent:'#6D8F66', soft:'#ECF2E9', deep:'#4C6B47', art:'assets/room_living.png' }
+  const ZBASE = {
+    bath:    { emoji:'🚿', accent:'#4E8CA6', soft:'#EAF2F6', deep:'#2F6A83', art:'assets/room_bath.png' },
+    kitchen: { emoji:'🍳', accent:'#C87A45', soft:'#FBEEDF', deep:'#9C5726', art:'assets/room_kitchen.png' },
+    room2:   { emoji:'🧸', accent:'#C57B93', soft:'#FAEBF0', deep:'#A05070', art:'assets/room_baby.png' },
+    living:  { emoji:'🛋️', accent:'#6D8F66', soft:'#ECF2E9', deep:'#4C6B47', art:'assets/room_living.png' }
   };
-  const SPACE_ORDER = ['bath','kitchen','baby','living'];
+  function zone(id, name, ui, over){
+    return Object.assign({ id:id, name:name, ui:ui }, ZBASE[id], over || {});
+  }
+
+  const HOUSES = {
+    oneroom: {
+      id:'oneroom', label:'원룸/오피스텔', short:'원룸',
+      img:'assets/apt_floorplan_1room.png', ar:850/1275,
+      desc:'현관 · 욕실 · 미니 주방 · 거실/침실',
+      zones:[
+        zone('bath',   '욕실',      { hot:[11,32,22,30],    tag:[13,35],     bub:[21,45]   }),
+        zone('kitchen','주방',      { hot:[55,50,35,25],    tag:[58,53.5],   bub:[74,62]   }),
+        zone('living', '거실/침실', { hot:[24,16,44,36],    tag:[27,20],     bub:[40,31]   })
+      ]
+    },
+    tworoom: {
+      id:'tworoom', label:'투룸/신혼집', short:'투룸',
+      img:'assets/apt_floorplan_2room.png', ar:850/1275,
+      desc:'현관 · 욕실 · 주방 · 침실 · 거실',
+      zones:[
+        zone('bath',   '욕실', { hot:[10.5,32,25,29], tag:[13,35.5],   bub:[20.5,46.5] }),
+        zone('kitchen','주방', { hot:[45,36,45,22],   tag:[50,41],     bub:[55,47.5]   }),
+        zone('room2',  '침실', { hot:[25,13,55,27],   tag:[27,17],     bub:[45,26.5]   },
+             { emoji:'🛏️', accent:'#7E8FB8', soft:'#EEF1F8', deep:'#4C5C86', art:'assets/room_room2.png' }),
+        zone('living', '거실', { hot:[33,55,57,30],   tag:[36.5,58.5], bub:[55,72]     })
+      ]
+    },
+    apt34: {
+      id:'apt34', label:'34평 아파트', short:'34평',
+      img:'assets/apt_floorplan_3d_v6.png', ar:854/1281,
+      desc:'욕실 · 주방 · 아기방 · 거실/가전',
+      zones:[
+        zone('bath',   '욕실',      { hot:[14.2,32.6,21.4,17.6], tag:[16.6,35.4], bub:[26.0,44.5] }),
+        zone('kitchen','주방',      { hot:[54.6,31.6,31.8,19.6], tag:[58.6,33.6], bub:[63.0,48.5] }),
+        zone('room2',  '아기방',    { hot:[54.6,9.2,30.6,22.2],  tag:[57.4,12.4], bub:[66.0,23.5] }),
+        zone('living', '거실/가전', { hot:[37.0,51.4,42.0,31.6], tag:[39.0,54.0], bub:[52.0,78.0] })
+      ]
+    }
+  };
+  const HOUSE_ORDER = ['oneroom','tworoom','apt34'];
+
+  /* 이 기기에 남기는 설정 (집 타입 · 방 이름) */
+  const STORE_KEY = 'tearm.v7';
+  const store = { house:'apt34', names:{ oneroom:{}, tworoom:{}, apt34:{} } };
+
+  const house   = () => HOUSES[store.house] || HOUSES.apt34;
+  const zoneList= () => house().zones;
+  const zoneById= id => zoneList().find(z => z.id === id) || null;
+  const dispName= z => (store.names[house().id] && store.names[house().id][z.id]) || z.name;
+  const zoneView= z => Object.assign({}, z, { name: dispName(z) });
+  /* 아이템의 기준 공간을 지금 집 타입의 구역으로 옮긴다 (원룸엔 room2가 없어 거실로) */
+  const zoneIdOf = spaceId => (zoneById(spaceId) ? spaceId : 'living');
+  /* 아이템 한 건의 공간 정보(이름·색·일러스트) */
+  function spaceOf(spaceId){
+    const z = zoneById(zoneIdOf(spaceId));
+    return zoneView(z);
+  }
+
+  function loadStore(){
+    try{
+      const raw = localStorage.getItem(STORE_KEY);
+      if(!raw) return;
+      const o = JSON.parse(raw);
+      if(o && HOUSES[o.house]) store.house = o.house;
+      if(o && o.names && typeof o.names === 'object'){
+        Object.keys(store.names).forEach(h => {
+          const m = o.names[h];
+          if(!m || typeof m !== 'object') return;
+          Object.keys(m).forEach(k => {
+            const v = m[k];
+            if(typeof v === 'string' && v.trim()) store.names[h][k] = v.trim().slice(0,8);
+          });
+        });
+      }
+    }catch(e){}
+  }
+  function saveStore(){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(store)); }catch(e){}
+  }
 
   const SIG = {
     over:  { bar:'#D2533A', bg:'#FCEBE7', fg:'#A63A25' },
@@ -997,9 +1206,9 @@
     { name:'수세미',            space:'kitchen', n:3, unit:'week',  dueIn:-4,  by:'혜원', assignee:'혜원', memo:'냄새 나면 바로 교체' },
     { name:'주방 행주',         space:'kitchen', n:1, unit:'week',  dueIn:0,   by:'혜원', assignee:'혜원', memo:'' },
     { name:'기름때 걸레',       space:'kitchen', n:4, unit:'week',  dueIn:19,  by:'영민', assignee:'영민', memo:'삶아 쓰고 4주에 교체' },
-    { name:'젖병 젖꼭지',       space:'baby',    n:2, unit:'month', dueIn:0,   by:'영민', assignee:'함께', memo:'분유 240ml용 · 2단계' },
-    { name:'아기 칫솔',         space:'baby',    n:3, unit:'month', dueIn:7,   by:'영민', assignee:'영민', memo:'' },
-    { name:'아기 손수건',       space:'baby',    n:1, unit:'week',  dueIn:4,   by:'혜원', assignee:'혜원', memo:'세탁해도 1주에 교체' },
+    { name:'젖병 젖꼭지',       space:'room2',   n:2, unit:'month', dueIn:0,   by:'영민', assignee:'함께', memo:'분유 240ml용 · 2단계' },
+    { name:'아기 칫솔',         space:'room2',   n:3, unit:'month', dueIn:7,   by:'영민', assignee:'영민', memo:'' },
+    { name:'아기 손수건',       space:'room2',   n:1, unit:'week',  dueIn:4,   by:'혜원', assignee:'혜원', memo:'세탁해도 1주에 교체' },
     { name:'가습기 필터',       space:'living',  n:3, unit:'month', dueIn:1,   by:'혜원', assignee:'함께', memo:'겨울철엔 2개월' },
     { name:'공기청정기 필터',   space:'living',  n:6, unit:'month', dueIn:14,  by:'영민', assignee:'영민', memo:'' },
     { name:'정수기 필터',       space:'living',  n:6, unit:'month', dueIn:27,  by:'영민', assignee:'함께', memo:'제품 설명서 기준' }
@@ -1054,8 +1263,8 @@
     { name:'칫솔',          space:'bath',    n:3,  unit:'month' },
     { name:'수세미',        space:'kitchen', n:3,  unit:'week'  },
     { name:'행주',          space:'kitchen', n:1,  unit:'week'  },
-    { name:'젖병 젖꼭지',   space:'baby',    n:2,  unit:'month' },
-    { name:'아기 손수건',   space:'baby',    n:1,  unit:'week'  },
+    { name:'젖병 젖꼭지',   space:'room2',   n:2,  unit:'month' },
+    { name:'아기 손수건',   space:'room2',   n:1,  unit:'week'  },
     { name:'정수기 필터',   space:'living',  n:6,  unit:'month' },
     { name:'가습기 필터',   space:'living',  n:3,  unit:'month' },
     { name:'공기청정기 필터', space:'living', n:6, unit:'month' },
@@ -1090,8 +1299,8 @@
     if(d <= 7) return { level:'soon',  label:'D-' + d };
     return { level:'ok', label:'D-' + d };
   }
-  function roomItems(spaceId){
-    return items.filter(i => i.space === spaceId);
+  function roomItems(zoneId){
+    return items.filter(i => zoneIdOf(i.space) === zoneId);
   }
   /* 방 카드 말풍선: 가장 급한 물건 하나 + 남은 개수 */
   function roomBadge(spaceId){
@@ -1185,15 +1394,8 @@
   /* =========================================================
      렌더: 3D 아이소메트릭 아파트 평면도
      ========================================================= */
-  /* 이미지(1086×1448) 위에 올리는 좌표를 %로 적어 둔다.
+  /* 이미지 위에 올리는 좌표는 집 타입별로 HOUSE.zones[].ui 에 %로 적어 둔다.
      hot: [left, top, width, height] 클릭 영역 / tag: [x, y] 방 이름 라벨 / bub: [x, y] 말풍선 */
-  const PLAN_AR = 854 / 1281;
-  const PLAN_UI = {
-    bath:    { hot:[14.2, 32.6, 21.4, 17.6], tag:[16.6, 35.4], bub:[26.0, 44.5] },
-    kitchen: { hot:[54.6, 31.6, 31.8, 19.6], tag:[58.6, 33.6], bub:[63.0, 48.5] },
-    baby:    { hot:[54.6,  9.2, 30.6, 22.2], tag:[57.4, 12.4], bub:[66.0, 23.5] },
-    living:  { hot:[37.0, 51.4, 42.0, 31.6], tag:[39.0, 54.0], bub:[52.0, 78.0] }
-  };
   const BUB = {
     over:  { bc:'#D2533A', fc:'#FFFFFF' },
     today: { bc:'#DE8A2E', fc:'#FFFFFF' },
@@ -1204,33 +1406,42 @@
   function buildPlan(){
     const box = $('#planBox');
     if(!box) return;
+    const h = house();
     box.innerHTML =
-      '<img class="plan" src="assets/apt_floorplan_3d_v6.png" alt="우리 집 3D 평면도" width="854" height="1281" decoding="async">' +
-      SPACE_ORDER.map(id => {
-        const sp = SPACES[id], u = PLAN_UI[id];
+      '<img class="plan" src="' + h.img + '" alt="우리 집 3D 평면도 · ' + h.label + '" decoding="async">' +
+      '<button class="plancap" id="homeHouseCap" type="button" aria-label="우리 집 평면도 타입 바꾸기 · 지금 ' + h.label + '">' +
+        '<span class="pc-ic" aria-hidden="true">🏠</span><span id="capName">' + esc(h.short) + '</span>' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10l4 4 4-4"/></svg>' +
+      '</button>' +
+      zoneList().map(z => {
+        const u = z.ui;
         const pos = (a) => '--x:' + a[0] + ';--y:' + a[1] + ';';
-        return '<button class="hot" type="button" data-room="' + id + '" ' +
-            'style="' + pos(u.hot) + '--w:' + u.hot[2] + ';--h:' + u.hot[3] + ';--ring:' + sp.accent + '"></button>' +
-          '<span class="rtag" data-tag="' + id + '" style="' + pos(u.tag) + '--acc:' + sp.accent + ';--soft:' + sp.soft + ';--deep:' + sp.deep + '">' +
-            '<i aria-hidden="true"></i>' + sp.name + '<b></b></span>' +
-          '<span class="pbub" data-bub="' + id + '" style="' + pos(u.bub) + '--bc:' + BUB.soon.bc + ';--fc:' + BUB.soon.fc + '">' +
+        return '<button class="hot" type="button" data-room="' + z.id + '" ' +
+            'style="' + pos(u.hot) + '--w:' + u.hot[2] + ';--h:' + u.hot[3] + ';--ring:' + z.accent + '"></button>' +
+          '<span class="rtag" data-tag="' + z.id + '" style="' + pos(u.tag) + '--acc:' + z.accent + ';--soft:' + z.soft + ';--deep:' + z.deep + '">' +
+            '<i aria-hidden="true"></i><span class="rt-name"></span><b></b></span>' +
+          '<span class="pbub" data-bub="' + z.id + '" style="' + pos(u.bub) + '--bc:' + BUB.soon.bc + ';--fc:' + BUB.soon.fc + '">' +
             '<span class="bq" aria-hidden="true">💬</span><span class="bt"></span><i class="bx" hidden></i></span>';
       }).join('');
   }
 
   function renderPlan(){
-    SPACE_ORDER.forEach(id => {
-      const sp = SPACES[id];
-      const n = roomItems(id).length;
-      const b = roomBadge(id);
+    zoneList().forEach(z => {
+      const n = roomItems(z.id).length;
+      const b = roomBadge(z.id);
+      const name = dispName(z);
 
-      const hot = document.querySelector('.hot[data-room="' + id + '"]');
-      if(hot) hot.setAttribute('aria-label', sp.name + ' 생필품 ' + n + '개 목록 열기');
+      const hot = document.querySelector('.hot[data-room="' + z.id + '"]');
+      if(hot) hot.setAttribute('aria-label', name + ' 생필품 ' + n + '개 목록 열기');
 
-      const tag = document.querySelector('[data-tag="' + id + '"]');
-      if(tag) tag.querySelector('b').textContent = n;
+      const tag = document.querySelector('[data-tag="' + z.id + '"]');
+      if(tag){
+        tag.querySelector('.rt-name').textContent = name;
+        tag.querySelector('b').textContent = n;
+        tag.setAttribute('aria-label', name + ' ' + n + '개');
+      }
 
-      const el = document.querySelector('[data-bub="' + id + '"]');
+      const el = document.querySelector('[data-bub="' + z.id + '"]');
       if(!el) return;
       const c = BUB[b.level] || BUB.ok;
       el.className = 'pbub' + (b.level === 'ok' ? ' ok' : '');
@@ -1241,18 +1452,19 @@
       const bx = el.querySelector('.bx');
       if(b.extra > 0){ bx.hidden = false; bx.textContent = '+' + b.extra; }
       else { bx.hidden = true; bx.textContent = ''; }
-      el.setAttribute('aria-label', sp.name + ' ' + b.text + (b.extra > 0 ? ' 외 ' + b.extra + '개' : ''));
+      el.setAttribute('aria-label', name + ' ' + b.text + (b.extra > 0 ? ' 외 ' + b.extra + '개' : ''));
     });
   }
 
-  /* 평면도 카드는 이미지 비율(3:4)을 유지한 채 영역에 맞춰 줄인다 */
+  /* 평면도 카드는 그 집 이미지의 비율을 유지한 채 영역에 맞춰 줄인다 */
   function fitPlan(){
     const fit = $('#planFit'), box = $('#planBox');
     if(!fit || !box) return;
     const availW = fit.clientWidth, availH = fit.clientHeight;
     if(!availW || !availH) return;
-    let W = availW, H = W / PLAN_AR;
-    if(H > availH){ H = availH; W = H * PLAN_AR; }
+    const ar = house().ar;
+    let W = availW, H = W / ar;
+    if(H > availH){ H = availH; W = H * ar; }
     box.style.width = Math.round(W) + 'px';
     box.style.height = Math.round(H) + 'px';
   }
@@ -1303,13 +1515,13 @@
       list = list.filter(it => sigCat(it) === cat);
     } else if(state.scope.indexOf('space:') === 0){
       const id = state.scope.slice(6);
-      list = list.filter(it => it.space === id);
+      list = list.filter(it => zoneIdOf(it.space) === id);
     }
     return list.sort(byDue);
   }
 
   function itemHTML(it){
-    const sig = signalOf(it), s = SIG[sig.level], sp = SPACES[it.space];
+    const sig = signalOf(it), s = SIG[sig.level], sp = spaceOf(it.space);
     return '<article class="item' + (state.flashId === it.id ? ' flash' : '') + '" data-id="' + it.id + '" ' +
       'tabindex="0" role="button" aria-label="' + esc(it.name) + ' 상세 보기">' +
       '<span class="rail" style="background:' + s.bar + '"></span>' +
@@ -1332,7 +1544,7 @@
   function renderBanner(){
     const box = $('#roomBanner');
     if(state.scope.indexOf('space:') === 0){
-      const sp = SPACES[state.scope.slice(6)];
+      const sp = spaceOf(state.scope.slice(6));
       const n = roomItems(sp.id).length;
       const b = roomBadge(sp.id);
       let alert;
@@ -1370,13 +1582,16 @@
       meta = list.length + '개 · 교체일 가까운 순';
     }
     else if(state.scope.indexOf('space:') === 0){
-      title = '생필품';
-      meta = '교체일 가까운 순';
+      const z = spaceOf(state.scope.slice(6));
+      title = z.emoji + ' ' + z.name;
+      em = '';
+      meta = list.length + '개 · 교체일 가까운 순';
     }
     $('#subTitle').textContent = (em ? em + ' ' : '') + title;
     $('#subMeta').textContent = meta;
 
     $$('#listFilters .fchip').forEach(b => b.classList.toggle('on', b.dataset.scope === state.scope));
+    renderSpaceChips();
 
     renderBanner();
 
@@ -1410,13 +1625,24 @@
     state.flashId = null;
   }
 
+  /* 리스트 상단의 공간 칩은 지금 집 타입의 구역으로 그린다 */
+  function renderSpaceChips(){
+    const box = $('#spaceChips');
+    if(!box) return;
+    box.innerHTML = zoneList().map(z => {
+      const sp = zoneView(z);
+      return '<button class="fchip" data-scope="space:' + z.id + '" type="button">' + sp.emoji + ' ' + esc(sp.name) + '</button>';
+    }).join('');
+    $$('#spaceChips .fchip').forEach(b => b.classList.toggle('on', b.dataset.scope === state.scope));
+  }
+
   /* =========================================================
      렌더: 상세 시트
      ========================================================= */
   function renderDetail(){
     const it = items.find(i => i.id === state.detailId);
     if(!it){ closeSheets(); return; }
-    const sig = signalOf(it), s = SIG[sig.level], sp = SPACES[it.space];
+    const sig = signalOf(it), s = SIG[sig.level], sp = spaceOf(it.space);
     const due = nextDue(it);
 
     $('#detailHead').innerHTML =
@@ -1445,10 +1671,10 @@
       body += '<div class="field">' +
                 '<span class="label">공간</span>' +
                 '<div class="chip-row" id="eSpace">' +
-                  SPACE_ORDER.map(id => {
-                    const sp2 = SPACES[id];
-                    return '<button type="button" class="fchip2' + (it.space===id?' active':'') + '" data-espace="' + id + '">' +
-                      '<i>' + sp2.emoji + '</i>' + sp2.name + '</button>';
+                  zoneList().map(z => {
+                    const sp2 = zoneView(z);
+                    return '<button type="button" class="fchip2' + (zoneIdOf(it.space)===z.id?' active':'') + '" data-espace="' + z.id + '">' +
+                      '<i>' + sp2.emoji + '</i>' + esc(sp2.name) + '</button>';
                   }).join('') +
                 '</div>' +
               '</div>' +
@@ -1548,15 +1774,20 @@
      시트 열고 닫기
      ========================================================= */
   function openDetail(id){
+    hideToast();
+    closeSheets();
     state.detailId = id;
     state.editMode = false;
     state.deleteArmed = false;
     renderDetail();
     $('#scrim').classList.add('show');
     $('#detailSheet').classList.add('show');
+    setTimeout(resetPhoneScroll, 30);
   }
   function openAdd(){
-    state.addSpace = 'bath';
+    hideToast();
+    closeSheets();
+    state.addSpace = zoneById(state.addSpace) ? state.addSpace : zoneList()[0].id;
     $('#addForm').reset();
     $('#fCycle').value = 1;
     $('#fUnit').value = 'month';
@@ -1567,15 +1798,25 @@
     $('#addSheet').querySelector('.sheet-inner').scrollTop = 0;
     $('#scrim').classList.add('show');
     $('#addSheet').classList.add('show');
+    setTimeout(resetPhoneScroll, 30);
   }
   function closeSheets(){
     $('#scrim').classList.remove('show');
     $('#detailSheet').classList.remove('show');
     $('#addSheet').classList.remove('show');
+    $('#houseSheet').classList.remove('show');
+    $('#renameSheet').classList.remove('show');
     state.detailId = null;
     state.editMode = false;
     state.deleteArmed = false;
+    renameZoneId = null;
     try{ document.activeElement.blur(); }catch(e){}
+    resetPhoneScroll();
+  }
+  /* overflow:hidden 폰 프레임이 포커스 때문에 안으로 스크롤되는 것을 되돌린다 */
+  function resetPhoneScroll(){
+    const ph = $('#phone');
+    if(ph && ph.scrollTop) ph.scrollTop = 0;
   }
 
   /* =========================================================
@@ -1642,7 +1883,7 @@
     log.unshift(entry);
     log.sort((a,b) => b.at - a.at);
 
-    state.scope = 'space:' + it.space;
+    state.scope = 'space:' + zoneIdOf(it.space);
     state.tab = 'home';
     state.view = 'list';
     state.flashId = it.id;
@@ -1650,7 +1891,7 @@
     applyView();
     renderAll();
     if(closeSheet) closeSheets();
-    showToast('‘' + it.name + '’ ' + SPACES[it.space].name + '에 추가 · ' + cycleLabel(it.cycle), {
+    showToast('‘' + it.name + '’ ' + spaceOf(it.space).name + '에 추가 · ' + cycleLabel(it.cycle), {
       undo: function(){
         items = items.filter(x => x.id !== it.id);
         log = log.filter(x => x !== entry);
@@ -1671,7 +1912,7 @@
 
   function renderTemplates(){
     $('#tplGrid').innerHTML = TEMPLATES.map((t, i) => {
-      const sp = SPACES[t.space];
+      const sp = spaceOf(t.space);
       return '<button type="button" class="tpl" data-tpl="' + i + '">' +
         '<span class="t-ic" style="background:' + sp.soft + '">' + sp.emoji + '</span>' +
         '<span class="tpl-text"><span class="tpl-name">' + esc(t.name) + '</span>' +
@@ -1681,10 +1922,10 @@
   }
 
   function renderFormSpaces(){
-    $('#fSpace').innerHTML = SPACE_ORDER.map(id => {
-      const sp = SPACES[id];
-      return '<button type="button" class="fchip2' + (state.addSpace === id ? ' active' : '') + '" data-fspace="' + id + '">' +
-        '<i>' + sp.emoji + '</i>' + sp.name + '</button>';
+    $('#fSpace').innerHTML = zoneList().map(z => {
+      const sp = zoneView(z);
+      return '<button type="button" class="fchip2' + (state.addSpace === z.id ? ' active' : '') + '" data-fspace="' + z.id + '">' +
+        '<i>' + sp.emoji + '</i>' + esc(sp.name) + '</button>';
     }).join('');
   }
 
@@ -1703,8 +1944,163 @@
     const d = diffDays(TODAY, due);
     const dText = d < 0 ? Math.abs(d) + '일 지남' : d === 0 ? '오늘' : 'D-' + d;
     box.className = 'preview';
-    box.textContent = SPACES[state.addSpace].name + ' · 다음 교체일 ' + fmtLong(due) + ' · ' + dText;
+    box.textContent = spaceOf(state.addSpace).name + ' · 다음 교체일 ' + fmtLong(due) + ' · ' + dText;
     return { n:n, unit:unit, last:last };
+  }
+
+  /* =========================================================
+     집 타입 · 방 이름 (설정)
+     ========================================================= */
+  const IC_TICK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.6 9.7 16.9 4.4 11.6"/></svg>';
+  const NAME_SUGGEST = {
+    bath:    ['욕실','화장실','샤워실'],
+    kitchen: ['주방','부엌','키친'],
+    room2:   ['아기방','서재','드레스룸','작업실'],
+    living:  ['거실','거실/가전','리빙룸']
+  };
+  let renameZoneId = null;
+
+  function renderHouseOptions(){
+    const grid = $('#houseGrid');
+    if(!grid) return;
+    grid.innerHTML = HOUSE_ORDER.map(id => {
+      const h = HOUSES[id];
+      const on = store.house === id;
+      return '<button class="hopt' + (on ? ' on' : '') + '" data-house="' + id + '" type="button" ' +
+          'aria-pressed="' + on + '" aria-label="' + h.label + ' 평면도로 바꾸기">' +
+        '<span class="hthumb"><img src="' + h.img + '" alt="' + h.label + ' 평면도" loading="lazy"></span>' +
+        '<span class="hlabel">' + h.label + '</span>' +
+        '<span class="hcheck" aria-hidden="true">' + IC_TICK + '</span>' +
+      '</button>';
+    }).join('');
+    const h = house();
+    $('#houseFoot').textContent = '지금은 ' + h.label + ' · ' + h.desc;
+  }
+
+  function renderHouseList(){
+    const box = $('#houseList');
+    if(!box) return;
+    box.innerHTML = HOUSE_ORDER.map(id => {
+      const h = HOUSES[id];
+      const on = store.house === id;
+      return '<button class="hrow' + (on ? ' on' : '') + '" data-house="' + id + '" type="button" aria-pressed="' + on + '">' +
+        '<img src="' + h.img + '" alt="" loading="lazy">' +
+        '<span class="hx">' +
+          '<span class="hn">' + h.label + (on ? '<span class="hnow">지금</span>' : '') + '</span>' +
+          '<span class="hd">' + h.desc + '</span>' +
+        '</span>' +
+      '</button>';
+    }).join('');
+  }
+
+  function renderNameRows(){
+    const card = $('#nameCard');
+    if(!card) return;
+    card.innerHTML = zoneList().map(z => {
+      const name = dispName(z);
+      const changed = name !== z.name;
+      return '<button class="row name-row" data-zone="' + z.id + '" type="button" aria-label="' + esc(name) + ' 이름 바꾸기">' +
+        '<span class="row-label"><i aria-hidden="true">' + z.emoji + '</i>' + esc(name) +
+          (changed ? '<em>(기본 ' + esc(z.name) + ')</em>' : '') + '</span>' +
+        '<span class="row-value">바꾸기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span>' +
+      '</button>';
+    }).join('');
+  }
+
+  function renderSettings(){
+    renderHouseOptions();
+    renderHouseList();
+    renderNameRows();
+  }
+
+  function normalizeScope(){
+    if(state.scope.indexOf('space:') === 0 && !zoneById(state.scope.slice(6))) state.scope = 'all';
+    if(!zoneById(state.addSpace)) state.addSpace = zoneList()[0].id;
+  }
+
+  function applyHouse(id, silent){
+    if(!HOUSES[id]) return;
+    const changed = store.house !== id;
+    store.house = id;
+    saveStore();
+    normalizeScope();
+    buildPlan();
+    renderAll();
+    renderSettings();
+    renderFormSpaces();
+    fitPlan();
+    if(state.detailId) renderDetail();
+    if(changed && !silent) showToast('우리 집을 ‘' + HOUSES[id].label + '’ 평면도로 바꿨어요');
+  }
+
+  function openHouseSheet(){
+    hideToast();
+    closeSheets();
+    renderHouseList();
+    $('#scrim').classList.add('show');
+    $('#houseSheet').classList.add('show');
+    setTimeout(resetPhoneScroll, 30);
+  }
+
+  function openRename(zoneId){
+    const z = zoneById(zoneId);
+    if(!z) return;
+    hideToast();
+    closeSheets();
+    renameZoneId = zoneId;
+    const base = (z.id === 'room2' && house().id === 'tworoom')
+      ? ['침실','안방','서재','드레스룸','작업실']
+      : (NAME_SUGGEST[z.id] || ['방']);
+    $('#renameHint').textContent = house().label + ' · ' + z.emoji + ' ' + z.name + '의 이름을 바꾸면 홈 평면도와 리스트에 바로 반영돼요.';
+    $('#renameInput').value = dispName(z);
+    $('#renameErr').textContent = '';
+    $('#renameChips').innerHTML = base.map(n =>
+      '<button class="fchip2" data-name="' + n + '" type="button">' + n + '</button>').join('');
+    $('#renameReset').hidden = dispName(z) === z.name;
+    $('#scrim').classList.add('show');
+    $('#renameSheet').classList.add('show');
+    setTimeout(resetPhoneScroll, 30);
+  }
+
+  function saveRename(){
+    const z = zoneById(renameZoneId);
+    if(!z) return;
+    const v = $('#renameInput').value.trim().replace(/\s+/g, ' ');
+    const err = $('#renameErr');
+    if(!v){ err.textContent = '방 이름을 입력해 주세요.'; $('#renameInput').focus(); return; }
+    if(v.length > 8){ err.textContent = '방 이름은 8자까지 쓸 수 있어요.'; return; }
+    if(v === z.name) delete store.names[house().id][z.id];
+    else store.names[house().id][z.id] = v;
+    saveStore();
+    err.textContent = '';
+    renderAll();
+    renderSettings();
+    closeSheets();
+    showToast('방 이름을 ‘' + v + '’' + roJosa(v) + ' 바꿨어요');
+  }
+
+  function resetRename(){
+    const z = zoneById(renameZoneId);
+    if(!z) return;
+    delete store.names[house().id][z.id];
+    saveStore();
+    renderAll();
+    renderSettings();
+    closeSheets();
+    showToast('‘' + z.name + '’ 원래 이름으로 되돌렸어요');
+  }
+
+  function resetPlanSettings(){
+    store.house = 'apt34';
+    Object.keys(store.names).forEach(h => { store.names[h] = {}; });
+    saveStore();
+    normalizeScope();
+    buildPlan();
+    renderAll();
+    renderSettings();
+    renderFormSpaces();
+    fitPlan();
+    showToast('평면도와 방 이름을 처음으로 되돌렸어요');
   }
 
   /* =========================================================
@@ -1749,6 +2145,7 @@
     if(tab === 'home') state.view = 'home';
     applyView();
     $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    if(tab === 'settings') renderSettings();
     const v = document.querySelector('.view:not([hidden])');
     if(v) v.scrollTop = 0;
     closeSheets();
@@ -1804,6 +2201,26 @@
     if(t.closest('#trafficFoot')){ goList('all'); return; }
 
     if(t.closest('#btnBack')){ goHome(); return; }
+
+    // 집 타입 / 방 이름
+    if(t.closest('#homeHouseCap')){ openHouseSheet(); return; }
+    if(t.closest('#closeHouse') || t.closest('#closeRename')){ closeSheets(); return; }
+    const hopt = t.closest('[data-house]');
+    if(hopt){ applyHouse(hopt.dataset.house); closeSheets(); return; }
+    const nrow = t.closest('[data-zone].name-row');
+    if(nrow){ openRename(nrow.dataset.zone); return; }
+    const nchip = t.closest('#renameChips [data-name]');
+    if(nchip){ $('#renameInput').value = nchip.dataset.name; $('#renameErr').textContent = ''; return; }
+    if(t.closest('#renameSave')){ saveRename(); return; }
+    if(t.closest('#renameReset')){ resetRename(); return; }
+    if(t.closest('#resetPlan')){ resetPlanSettings(); return; }
+    if(t.closest('#goRoomNames')){
+      closeSheets();
+      switchTab('settings');
+      const card = $('#nameCard');
+      if(card) setTimeout(function(){ card.scrollIntoView({block:'center', behavior:'smooth'}); }, 80);
+      return;
+    }
 
     // 범위 칩
     const chip = t.closest('[data-scope]');
@@ -1863,7 +2280,7 @@
         const asg = document.querySelector('#eAssignee .fchip2.active');
         if(asg) it.assignee = asg.dataset.assignee;
         const esp = document.querySelector('#eSpace .fchip2.active');
-        if(esp) it.space = esp.dataset.espace;
+        if(esp && esp.dataset.espace !== zoneIdOf(it.space)) it.space = esp.dataset.espace;
         state.editMode = false;
         state.flashId = it.id;
         renderAll();
@@ -1972,6 +2389,7 @@
   /* =========================================================
      시작
      ========================================================= */
+  loadStore();
   renderToday();
   renderTemplates();
   buildTimeOptions();
@@ -1980,6 +2398,7 @@
   $('#meSelect').value = state.me;
   buildPlan();
   renderAll();
+  renderSettings();
   updatePreview();
   fitPlan();
   window.addEventListener('resize', fitPlan);
@@ -1995,6 +2414,13 @@
     get me(){ return state.me; },
     get scope(){ return state.scope; },
     get view(){ return state.view; },
+    get tab(){ return state.tab; },
+    get house(){ return store.house; },
+    get houses(){ return HOUSE_ORDER; },
+    get names(){ return store.names; },
+    get zones(){ return zoneList().map(z => ({ id:z.id, name:dispName(z), base:z.name })); },
+    zoneOf: spaceOf,
+    zoneIdOf: zoneIdOf,
     relay: relayCounts,
     urgent: urgentList,
     badge: roomBadge,

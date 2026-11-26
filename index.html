@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F8F5EF">
-<title>텀 · 우리 집 보드</title>
+<title>텀 · 오늘의 집</title>
 <style>
   /* =========================================================
      tokens
@@ -1187,7 +1187,7 @@
      ========================================================= */
   /* 이미지(1086×1448) 위에 올리는 좌표를 %로 적어 둔다.
      hot: [left, top, width, height] 클릭 영역 / tag: [x, y] 방 이름 라벨 / bub: [x, y] 말풍선 */
-  const PLAN_AR = 1024 / 1536;
+  const PLAN_AR = 854 / 1281;
   const PLAN_UI = {
     bath:    { hot:[14.2, 32.6, 21.4, 17.6], tag:[16.6, 35.4], bub:[26.0, 44.5] },
     kitchen: { hot:[54.6, 31.6, 31.8, 19.6], tag:[58.6, 33.6], bub:[63.0, 48.5] },
@@ -1205,7 +1205,7 @@
     const box = $('#planBox');
     if(!box) return;
     box.innerHTML =
-      '<img class="plan" src="assets/apt_floorplan_3d_v6.png" alt="우리 집 3D 평면도" width="1024" height="1536" decoding="async">' +
+      '<img class="plan" src="assets/apt_floorplan_3d_v6.png" alt="우리 집 3D 평면도" width="854" height="1281" decoding="async">' +
       SPACE_ORDER.map(id => {
         const sp = SPACES[id], u = PLAN_UI[id];
         const pos = (a) => '--x:' + a[0] + ';--y:' + a[1] + ';';

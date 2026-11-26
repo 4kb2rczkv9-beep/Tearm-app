@@ -106,46 +106,67 @@
   .view::-webkit-scrollbar{width:0}
 
   /* =========================================================
-     초슬림 가족 릴레이 필
+     신호등 요약 (v6)
      ========================================================= */
-  .relaybar{
-    flex:none;display:flex;align-items:center;gap:7px;
-    padding:4px 5px 4px 12px;border-radius:999px;min-height:34px;
-    background:linear-gradient(120deg,rgba(255,255,255,.94),rgba(253,246,235,.92));
-    border:1px solid rgba(160,118,64,.15);
-    box-shadow:0 1px 2px rgba(90,62,30,.05);
+  .traffic{
+    flex:none;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    box-shadow:0 1px 2px rgba(90,62,30,.05), 0 20px 32px -30px rgba(90,62,30,.7);
   }
-  .relaybar .rb-lbl{
-    flex:none;font-size:10px;font-weight:800;color:#B08A63;letter-spacing:-.1px;
+  .traffic-lamps{display:grid;grid-template-columns:1fr 1fr 1fr}
+  .tseg{
+    position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;
+    padding:13px 4px 11px;border:0;background:transparent;cursor:pointer;
+    transition:background .16s ease;
   }
-  .relaybar .rb-txt{
-    flex:1;min-width:0;display:flex;align-items:center;gap:4px;
-    font-size:12px;font-weight:700;color:#6E6250;letter-spacing:-.25px;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums;
+  .tseg+.tseg{box-shadow:inset 1px 0 0 rgba(70,54,32,.075)}
+  .tseg:active{background:#F7F3EA}
+  .tseg.on{background:var(--lsoft)}
+  .tseg .lamp{
+    width:12px;height:12px;border-radius:50%;margin-bottom:4px;flex:none;
+    background:var(--lc);box-shadow:0 0 0 4px var(--lsoft), 0 0 12px 1px var(--lglow);
   }
-  .relaybar .rb-txt b{font-weight:800;color:#3B2E20}
-  .relaybar .rb-txt .n{color:#A9703F;font-weight:800}
-  .relaybar .rb-txt .dot{color:#CFC5B2;margin:0 1px}
-  .me-pill{
-    flex:none;display:inline-flex;align-items:center;gap:5px;border:0;cursor:pointer;
-    background:#241F19;color:#fff;border-radius:999px;padding:3px 8px 3px 3px;
-    font-size:11px;font-weight:800;letter-spacing:-.2px;
-    box-shadow:0 6px 14px -10px rgba(36,31,25,.9);
+  .tseg .n{
+    font-size:23px;font-weight:800;line-height:1;letter-spacing:-1px;
+    font-variant-numeric:tabular-nums;color:var(--lc)
+  }
+  .tseg .t{font-size:10.5px;font-weight:800;color:#8D8679;letter-spacing:-.25px;white-space:nowrap}
+  .tseg.red{--lc:#CE4A31;--lsoft:#FCEBE7;--lglow:rgba(206,74,49,.45)}
+  .tseg.yellow{--lc:#C08A16;--lsoft:#FBF3D9;--lglow:rgba(192,138,22,.42)}
+  .tseg.green{--lc:#3F8C64;--lsoft:#E9F4ED;--lglow:rgba(63,140,100,.4)}
+  .traffic-foot{
+    display:flex;align-items:center;gap:6px;width:100%;border:0;border-top:1px solid var(--line);
+    background:#FBF8F1;padding:8px 13px 9px;cursor:pointer;text-align:left;
+  }
+  .traffic-foot .tf-txt{
+    flex:1;min-width:0;font-size:11px;font-weight:700;color:#6E6250;letter-spacing:-.2px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .traffic-foot .tf-txt b{font-weight:800;color:#3B2E20}
+  .traffic-foot .tf-txt i{font-style:normal;font-weight:800;color:#A9998A}
+  .traffic-foot svg{width:13px;height:13px;stroke-width:2.6;color:#B7AC98;flex:none}
+  .traffic-foot:active{background:#F4EFE4}
+
+  /* 헤더의 지금 나 (아주 작게) */
+  .me-mini{
+    flex:none;display:inline-flex;align-items:center;gap:4px;border:0;cursor:pointer;
+    background:#fff;border-radius:999px;padding:3px 7px 3px 3px;
+    box-shadow:0 1px 2px rgba(90,62,30,.07), 0 0 0 1px rgba(70,54,32,.08);
     transition:transform .12s ease;
   }
-  .me-pill:active{transform:scale(.96)}
-  .me-pill .av{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:800;color:#fff;flex:none}
-  .me-pill .swap{opacity:.62;margin-left:1px}
-  .me-pill .swap svg{width:10px;height:10px;stroke-width:3}
+  .me-mini:active{transform:scale(.95)}
+  .me-mini .av{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:800;color:#fff;flex:none}
+  .me-mini .nm{font-size:10.5px;font-weight:800;color:#5C5145;letter-spacing:-.25px}
+  .me-mini .swap{opacity:.5}
+  .me-mini .swap svg{width:9px;height:9px;stroke-width:3}
 
   /* =========================================================
      3D 아이소메트릭 아파트 평면도 (v5)
      ========================================================= */
-  .planstage{flex:1;min-height:0;display:flex;flex-direction:column;margin:9px -15px 0}
+  .planstage{flex:1;min-height:0;display:flex;flex-direction:column;margin:10px -15px 0}
   .planfit{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center}
   .planbox{
     position:relative;flex:none;border-radius:26px;overflow:hidden;isolation:isolate;
-    background:#F7F3EC;width:100%;height:100%;
+    background:#FBF6EC;width:100%;height:100%;
     box-shadow:0 2px 3px rgba(90,62,30,.05), 0 30px 46px -34px rgba(80,55,25,.78), 0 0 0 1px rgba(120,95,60,.09);
     animation:planIn .5s cubic-bezier(.22,.7,0,1) both;
   }
@@ -230,25 +251,9 @@
   .pbub.ok .bq{filter:none;color:#2C6C4C;opacity:1;font-size:10px}
   .pbub.ok::after{box-shadow:none}
 
-  /* =========================================================
-     하단 진입 버튼
-     ========================================================= */
-  .entryrow{flex:none;display:flex;gap:8px;margin-top:13px}
-  .ebtn{
-    display:inline-flex;align-items:center;justify-content:center;gap:5px;
-    border-radius:14px;padding:12px 8px;cursor:pointer;border:1px solid transparent;
-    font-size:12px;font-weight:800;letter-spacing:-.35px;
-    transition:transform .12s ease;
-  }
-  .ebtn:active{transform:scale(.985)}
-  .ebtn .em{font-size:13px;line-height:1}
-  .ebtn .n{font-weight:800;opacity:.62;font-variant-numeric:tabular-nums;letter-spacing:0}
-  .ebtn.all{flex:1.22;background:#241F19;color:#fff;box-shadow:0 10px 20px -15px rgba(36,31,25,.95)}
-  .ebtn.urgent{flex:1;background:rgba(255,255,255,.94);color:#A4402A;border-color:#F0D9D1}
-  .ebtn.urgent .n{color:#C0765F;opacity:1}
 
   #view-home{overflow:hidden;display:flex;flex-direction:column;padding-bottom:calc(73px + env(safe-area-inset-bottom))}
-  #view-home>.relaybar,#view-home>.entryrow{flex:none}
+  #view-home>.traffic,#view-home>.planhint{flex:none}
 
   /* =========================================================
      리스트 서브뷰
@@ -308,6 +313,9 @@
     letter-spacing:-.2px;transition:background .16s,color .16s,border-color .16s;
   }
   .fchip.on{background:#241F19;border-color:#241F19;color:#fff}
+  .fchip.red.on{background:#C0452E;border-color:#C0452E;color:#fff}
+  .fchip.yellow.on{background:#A97813;border-color:#A97813;color:#fff}
+  .fchip.green.on{background:#3E7F5D;border-color:#3E7F5D;color:#fff}
   .fchip.urgent.on{background:#B4462F;border-color:#B4462F;color:#fff}
   .fchip.reset{color:#9A8F80;background:transparent;border-style:dashed}
   .fchip:active{transform:scale(.98)}
@@ -565,8 +573,9 @@
   @media (max-height:700px){
     .planstage{margin-top:8px}
     .spbanner{height:86px}
-    .relaybar{min-height:32px}
     .planhint{margin-top:7px;font-size:10px}
+    .tseg{padding:10px 4px 9px}
+    .tseg .n{font-size:21px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation-duration:.001s !important;transition-duration:.001s !important}
@@ -592,7 +601,6 @@
         <div class="brand" id="homeBrand">
           <div class="brand-row">
             <span class="wordmark">텀</span>
-            <span class="brand-sub">우리 집 보드</span>
           </div>
           <div class="today-line" id="todayLine"></div>
         </div>
@@ -606,49 +614,55 @@
             <div class="subhead-meta" id="subMeta"></div>
           </div>
         </div>
-        <button class="btn-add" id="openAdd">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"/></svg>
-          <span>추가</span>
-        </button>
+        <div class="appbar-right" style="display:flex;align-items:center;gap:7px;flex:none">
+          <button class="me-mini" id="meToggle" type="button" aria-label="지금 나 바꾸기">
+            <span class="av av-a" id="meAv">전</span>
+            <span class="nm" id="meName">영민</span>
+            <span class="swap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10l-2.6-2.6M17 16H7l2.6 2.6"/></svg>
+            </span>
+          </button>
+          <button class="btn-add" id="openAdd">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"/></svg>
+            <span>추가</span>
+          </button>
+        </div>
       </header>
 
       <!-- ================= HOME ================= -->
       <main class="view" id="view-home">
 
-        <!-- 초슬림 가족 릴레이 필 -->
-        <section class="relaybar" aria-label="이번 달 가족 릴레이">
-          <span class="rb-lbl">이번 달</span>
-          <span class="rb-txt" id="relayText"></span>
-          <button class="me-pill" id="meToggle" type="button" aria-label="지금 나 바꾸기">
-            <span class="av av-a" id="meAv">전</span>
-            <span>지금 나</span>
-            <b id="meName">영민</b>
-            <span class="swap" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10l-2.6-2.6M17 16H7l2.6 2.6"/></svg>
-            </span>
+        <!-- 신호등 요약 -->
+        <section class="traffic" role="group" aria-label="생필품 상태 요약">
+          <div class="traffic-lamps">
+            <button class="tseg red" data-sig="red" type="button">
+              <span class="lamp" aria-hidden="true"></span>
+              <b class="n" id="nRed">0</b>
+              <span class="t">급함·지남</span>
+            </button>
+            <button class="tseg yellow" data-sig="yellow" type="button">
+              <span class="lamp" aria-hidden="true"></span>
+              <b class="n" id="nYellow">0</b>
+              <span class="t">곧 교체</span>
+            </button>
+            <button class="tseg green" data-sig="green" type="button">
+              <span class="lamp" aria-hidden="true"></span>
+              <b class="n" id="nGreen">0</b>
+              <span class="t">여유</span>
+            </button>
+          </div>
+          <button class="traffic-foot" id="trafficFoot" type="button">
+            <span class="tf-txt" id="trafficFootTxt"></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg>
           </button>
         </section>
 
-        <!-- 3D 아이소메트릭 아파트 평면도 -->
+        <!-- 3D 실제 아파트 평면도 -->
         <section class="planstage" aria-label="우리 집 3D 평면도 · 공간별 생필품">
           <div class="planfit" id="planFit">
             <div class="planbox" id="planBox"></div>
           </div>
           <p class="planhint">방을 누르면 그 공간의 생필품이 열려요</p>
-        </section>
-
-        <!-- 하단 진입 버튼 -->
-        <section class="entryrow" aria-label="생필품 목록 열기">
-          <button class="ebtn all" id="goAll" type="button">
-            <span class="em" aria-hidden="true">📦</span>
-            <span>전체 생필품 보기</span>
-            <span class="n" id="allN">(0)</span>
-          </button>
-          <button class="ebtn urgent" id="goUrgent" type="button">
-            <span class="em" aria-hidden="true">⚡</span>
-            <span>급한 것만</span>
-            <span class="n" id="urgentN">(0)</span>
-          </button>
         </section>
       </main>
 
@@ -658,7 +672,9 @@
         <div class="filters" id="listFilters" role="group" aria-label="생필품 필터">
           <div class="frow">
             <button class="fchip" data-scope="all" type="button">전체</button>
-            <button class="fchip urgent" data-scope="urgent" type="button">⚡ 급한 것</button>
+            <button class="fchip red" data-scope="sig:red" type="button">🔴 급함·지남</button>
+            <button class="fchip yellow" data-scope="sig:yellow" type="button">🟡 곧 교체</button>
+            <button class="fchip green" data-scope="sig:green" type="button">🟢 여유</button>
           </div>
           <div class="frow">
             <button class="fchip" data-scope="space:bath" type="button">🚿 욕실</button>
@@ -794,7 +810,7 @@
         <div class="card">
           <div class="row"><span class="row-label">개인정보처리방침</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
           <div class="row"><span class="row-label">오픈소스 라이선스</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="row"><span class="row-label">버전</span><span class="row-value">0.5.0 (3D 평면도형)</span></div>
+          <div class="row"><span class="row-label">버전</span><span class="row-value">0.6.0 (실제 평면도·신호등)</span></div>
         </div>
         <p class="settings-foot">프로토타입이라 새로 고치면 처음 상태로 돌아갑니다.</p>
       </main>
@@ -1144,11 +1160,6 @@
   function renderRelay(){
     const rc = relayCounts();
 
-    $('#relayText').innerHTML =
-      '<b>영민</b><span class="n">' + rc.a + '</span>' +
-      '<span class="dot">·</span>' +
-      '<b>혜원</b><span class="n">' + rc.b + '</span>';
-
     const av = AV[state.me];
     $('#meAv').className = 'av ' + av.cls;
     $('#meAv').textContent = av.ini;
@@ -1176,12 +1187,12 @@
      ========================================================= */
   /* 이미지(1086×1448) 위에 올리는 좌표를 %로 적어 둔다.
      hot: [left, top, width, height] 클릭 영역 / tag: [x, y] 방 이름 라벨 / bub: [x, y] 말풍선 */
-  const PLAN_AR = 1086 / 1448;
+  const PLAN_AR = 1024 / 1536;
   const PLAN_UI = {
-    bath:    { hot:[9.0, 7.0, 40.0, 37.6],  tag:[13.6, 12.2], bub:[28.0, 38.8] },
-    baby:    { hot:[51.0, 7.0, 37.2, 37.6], tag:[53.6, 11.6], bub:[66.0, 40.6] },
-    kitchen: { hot:[6.2, 45.2, 42.6, 43.0], tag:[12.2, 48.2], bub:[31.0, 83.6] },
-    living:  { hot:[51.0, 45.2, 43.6, 43.0],tag:[54.2, 48.6], bub:[68.0, 83.2] }
+    bath:    { hot:[14.2, 32.6, 21.4, 17.6], tag:[16.6, 35.4], bub:[26.0, 44.5] },
+    kitchen: { hot:[54.6, 31.6, 31.8, 19.6], tag:[58.6, 33.6], bub:[63.0, 48.5] },
+    baby:    { hot:[54.6,  9.2, 30.6, 22.2], tag:[57.4, 12.4], bub:[66.0, 23.5] },
+    living:  { hot:[37.0, 51.4, 42.0, 31.6], tag:[39.0, 54.0], bub:[52.0, 78.0] }
   };
   const BUB = {
     over:  { bc:'#D2533A', fc:'#FFFFFF' },
@@ -1194,7 +1205,7 @@
     const box = $('#planBox');
     if(!box) return;
     box.innerHTML =
-      '<img class="plan" src="assets/apt_floorplan_3d.png" alt="우리 집 3D 아이소메트릭 평면도" width="1086" height="1448" decoding="async">' +
+      '<img class="plan" src="assets/apt_floorplan_3d_v6.png" alt="우리 집 3D 평면도" width="1024" height="1536" decoding="async">' +
       SPACE_ORDER.map(id => {
         const sp = SPACES[id], u = PLAN_UI[id];
         const pos = (a) => '--x:' + a[0] + ';--y:' + a[1] + ';';
@@ -1247,13 +1258,37 @@
   }
 
   /* =========================================================
-     렌더: 하단 진입 버튼
+     렌더: 하단 진입 버튼 → 신호등 요약
      ========================================================= */
   const urgentList = () => items.filter(it => daysLeft(it) <= 7);
 
+  function sigCat(it){
+    const d = daysLeft(it);
+    if(d <= 0) return 'red';
+    if(d <= 7) return 'yellow';
+    return 'green';
+  }
+  function sigCounts(){
+    const c = { red:0, yellow:0, green:0 };
+    items.forEach(it => { c[sigCat(it)]++; });
+    return c;
+  }
+
   function renderEntry(){
-    $('#allN').textContent = '(' + items.length + ')';
-    $('#urgentN').textContent = '(' + urgentList().length + ')';
+    const c = sigCounts();
+    $('#nRed').textContent = c.red;
+    $('#nYellow').textContent = c.yellow;
+    $('#nGreen').textContent = c.green;
+
+    const most = items.slice().sort(byDue)[0];
+    let foot = '전체 생필품 <b>' + items.length + '개</b> 보기';
+    if(most && daysLeft(most) <= 0){
+      const d = daysLeft(most);
+      foot = '<b>' + esc(most.name) + '</b> <i>' +
+        (d < 0 ? Math.abs(d) + '일 지남' : '오늘') + '</i> · 전체 ' + items.length + '개 보기';
+    }
+    $('#trafficFootTxt').innerHTML = foot;
+    $$('.tseg').forEach(b => b.classList.toggle('on', state.scope === 'sig:' + b.dataset.sig));
   }
 
   /* =========================================================
@@ -1263,6 +1298,9 @@
     let list = items.slice();
     if(state.scope === 'urgent'){
       list = list.filter(it => daysLeft(it) <= 7);
+    } else if(state.scope.indexOf('sig:') === 0){
+      const cat = state.scope.slice(4);
+      list = list.filter(it => sigCat(it) === cat);
     } else if(state.scope.indexOf('space:') === 0){
       const id = state.scope.slice(6);
       list = list.filter(it => it.space === id);
@@ -1325,6 +1363,12 @@
 
     let title = '전체 생필품', em = '', meta = list.length + '개 · 교체일 가까운 순';
     if(state.scope === 'urgent'){ title = '급한 것만'; em = '⚡'; }
+    else if(state.scope.indexOf('sig:') === 0){
+      const cat = state.scope.slice(4);
+      const M = { red:['급함·지남','🔴'], yellow:['곧 교체','🟡'], green:['여유','🟢'] }[cat] || ['생필품',''];
+      title = M[0]; em = M[1];
+      meta = list.length + '개 · 교체일 가까운 순';
+    }
     else if(state.scope.indexOf('space:') === 0){
       title = '생필품';
       meta = '교체일 가까운 순';
@@ -1339,9 +1383,15 @@
     if(!list.length){
       const msg = state.scope === 'urgent'
         ? '지금 급한 생필품이 없어요. 여유롭네요!'
-        : state.scope.indexOf('space:') === 0
-          ? '이 공간에 등록된 생필품이 없어요.'
-          : '아직 등록된 생필품이 없어요.';
+        : state.scope === 'sig:red'
+          ? '지금 바로 챙길 게 없어요. 깔끔해요!'
+          : state.scope === 'sig:yellow'
+            ? '일주일 안에 교체할 게 없어요.'
+            : state.scope === 'sig:green'
+              ? '여유로운 생필품이 아직 없어요.'
+              : state.scope.indexOf('space:') === 0
+                ? '이 공간에 등록된 생필품이 없어요.'
+                : '아직 등록된 생필품이 없어요.';
       const cta = state.scope === 'all'
         ? '<button class="btn-soft" style="flex:none;padding:8px 14px" data-act="add" type="button">＋ 생필품 추가</button>'
         : '<button class="btn-soft" style="flex:none;padding:8px 14px" data-scope="all" type="button">전체 보기</button>';
@@ -1748,9 +1798,11 @@
       return;
     }
 
-    // 홈 진입 버튼
-    if(t.closest('#goAll')){ goList('all'); return; }
-    if(t.closest('#goUrgent')){ goList('urgent'); return; }
+    // 신호등 → 해당 상태 리스트
+    const seg = t.closest('.tseg');
+    if(seg){ goList('sig:' + seg.dataset.sig); return; }
+    if(t.closest('#trafficFoot')){ goList('all'); return; }
+
     if(t.closest('#btnBack')){ goHome(); return; }
 
     // 범위 칩

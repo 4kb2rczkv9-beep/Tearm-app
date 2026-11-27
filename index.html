@@ -207,49 +207,47 @@
   }
   .hot.tapped::after{box-shadow:inset 0 0 0 2.5px var(--ring), 0 0 22px 3px rgba(255,255,255,.55)}
 
-  /* 방 이름 라벨 */
-  .rtag{
-    position:absolute;z-index:5;pointer-events:none;
-    left:calc(var(--x)*1%);top:calc(var(--y)*1%);transform:translateY(-50%);
-    display:inline-flex;align-items:center;gap:4px;
-    padding:3px 6px 3px 6px;border-radius:9px;
-    background:rgba(255,255,255,.93);
-    box-shadow:0 3px 9px -5px rgba(50,32,14,.7), 0 0 0 1px rgba(255,255,255,.7);
-    -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
-    font-size:10px;font-weight:800;color:#2B241C;letter-spacing:-.3px;
-    white-space:nowrap;line-height:1;
-  }
-  .rtag i{width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none}
-  .rtag b{
-    font-weight:800;font-size:9.5px;color:var(--deep);background:var(--soft);
-    border-radius:999px;padding:1px 4px;margin-left:1px;font-variant-numeric:tabular-nums;letter-spacing:0;
-  }
-
-  /* 떠 있는 말풍선 핀 */
-  .pbub{
-    position:absolute;z-index:4;pointer-events:none;
+  /* 방별 신호등 뱃지 (v8)
+     방 이름 + 총 개수(1줄) 아래에 상태별 동그라미와 개수(2줄)만 남긴다. */
+  .rb{
+    position:absolute;z-index:6;
     left:calc(var(--x)*1%);top:calc(var(--y)*1%);transform:translate(-50%,-50%);
-    display:inline-flex;align-items:center;gap:3px;
-    padding:4px 7px 4px 5px;border-radius:10px;
-    font-size:9.5px;font-weight:800;letter-spacing:-.3px;line-height:1.12;
-    color:var(--fc);background:var(--bc);white-space:nowrap;
-    box-shadow:0 5px 12px -5px rgba(50,25,8,.8), 0 0 0 1.5px rgba(255,255,255,.62);
+    display:flex;flex-direction:column;align-items:flex-start;gap:3px;
+    border:0;margin:0;padding:4px 7px 5px;border-radius:10px;cursor:pointer;
+    font-family:inherit;text-align:left;-webkit-appearance:none;appearance:none;
+    background:rgba(255,255,255,.95);
+    box-shadow:0 4px 11px -5px rgba(50,32,14,.62), 0 0 0 1px rgba(120,95,60,.09);
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+    line-height:1;white-space:nowrap;
     animation:bubIn .34s cubic-bezier(.32,.72,0,1) both;
+    transition:transform .12s ease;
   }
-  @keyframes bubIn{from{opacity:0;transform:translate(-50%,-44%) scale(.94)}to{opacity:1;transform:translate(-50%,-50%)}}
-  .pbub::after{
-    content:"";position:absolute;left:50%;bottom:-3px;width:7px;height:7px;
-    background:var(--bc);border-radius:1.5px;transform:translateX(-50%) rotate(45deg);
+  .rb:active{transform:translate(-50%,-50%) scale(.96)}
+  @keyframes bubIn{from{opacity:0;transform:translate(-50%,-46%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%)}}
+  .rb-top{display:inline-flex;align-items:center;gap:4px}
+  .rb-top i{width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none}
+  .rb-name{font-size:10.5px;font-weight:800;color:#2B241C;letter-spacing:-.35px}
+  .rb-top b{
+    font-size:9.5px;font-weight:800;color:var(--deep);background:var(--soft);
+    border-radius:999px;padding:1px 4px;font-variant-numeric:tabular-nums;letter-spacing:0;
   }
-  .pbub .bq{font-size:9px;line-height:1;filter:saturate(0) brightness(2.15);opacity:.95;position:relative;z-index:1}
-  .pbub .bt{position:relative;z-index:1}
-  .pbub .bx{
-    position:relative;z-index:1;flex:none;font-style:normal;font-size:9px;font-weight:800;
-    background:rgba(255,255,255,.32);border-radius:999px;padding:0 4px;letter-spacing:0;
+  .rb-dots{display:inline-flex;align-items:center;gap:5px}
+  .rb-dots span{
+    display:inline-flex;align-items:center;gap:2px;
+    font-size:9px;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums;
   }
-  .pbub.ok{--bc:#DBEFE2;--fc:#2C6C4C;padding:4px 8px 4px 6px}
-  .pbub.ok .bq{filter:none;color:#2C6C4C;opacity:1;font-size:10px}
-  .pbub.ok::after{box-shadow:none}
+  .rb-dots span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--dc);flex:none}
+  .rb-dots .dr{--dc:#EF4444;color:#B93A22}
+  .rb-dots .dy{--dc:#F59E0B;color:#96650B}
+  .rb-dots .dg{--dc:#22C55E;color:#2C7A58}
+  @media (max-width:360px){
+    .rb{padding:3px 5px 4px;gap:2px;border-radius:9px}
+    .rb-name{font-size:9.5px}
+    .rb-top b{font-size:8.5px;padding:1px 3px}
+    .rb-dots{gap:4px}
+    .rb-dots span{font-size:8px}
+    .rb-dots span::before{width:5px;height:5px}
+  }
 
   /* 집 타입 캡션 칩 (평면도 위 우측 상단) */
   .plancap{
@@ -1109,7 +1107,7 @@
       zones:[
         zone('bath',   '욕실',      { hot:[11,32,22,30],    tag:[13,35],     bub:[21,45]   }),
         zone('kitchen','주방',      { hot:[55,50,35,25],    tag:[58,53.5],   bub:[74,62]   }),
-        zone('living', '거실/침실', { hot:[24,16,44,36],    tag:[27,20],     bub:[40,31]   })
+        zone('living', '거실/침실', { hot:[24,16,44,36],    tag:[27,20],     bub:[51,41]   })
       ]
     },
     tworoom: {
@@ -1302,6 +1300,12 @@
   function roomItems(zoneId){
     return items.filter(i => zoneIdOf(i.space) === zoneId);
   }
+  /* 방 뱃지용 신호등 개수 (상단 요약과 같은 기준: 지남·오늘=빨강, ~7일=노랑, 나머지=초록) */
+  function roomSigs(zoneId){
+    const c = { red:0, yellow:0, green:0 };
+    roomItems(zoneId).forEach(it => { c[sigCat(it)]++; });
+    return c;
+  }
   /* 방 카드 말풍선: 가장 급한 물건 하나 + 남은 개수 */
   function roomBadge(spaceId){
     const list = roomItems(spaceId);
@@ -1395,13 +1399,7 @@
      렌더: 3D 아이소메트릭 아파트 평면도
      ========================================================= */
   /* 이미지 위에 올리는 좌표는 집 타입별로 HOUSE.zones[].ui 에 %로 적어 둔다.
-     hot: [left, top, width, height] 클릭 영역 / tag: [x, y] 방 이름 라벨 / bub: [x, y] 말풍선 */
-  const BUB = {
-    over:  { bc:'#D2533A', fc:'#FFFFFF' },
-    today: { bc:'#DE8A2E', fc:'#FFFFFF' },
-    soon:  { bc:'#F0C33C', fc:'#5A4708' },
-    ok:    { bc:'#DBEFE2', fc:'#2C6C4C' }
-  };
+     hot: [left, top, width, height] 클릭 영역 / tag: [x, y] (v8에서는 숨김) / bub: [x, y] 방 뱃지 중심 */
 
   function buildPlan(){
     const box = $('#planBox');
@@ -1418,41 +1416,37 @@
         const pos = (a) => '--x:' + a[0] + ';--y:' + a[1] + ';';
         return '<button class="hot" type="button" data-room="' + z.id + '" ' +
             'style="' + pos(u.hot) + '--w:' + u.hot[2] + ';--h:' + u.hot[3] + ';--ring:' + z.accent + '"></button>' +
-          '<span class="rtag" data-tag="' + z.id + '" style="' + pos(u.tag) + '--acc:' + z.accent + ';--soft:' + z.soft + ';--deep:' + z.deep + '">' +
-            '<i aria-hidden="true"></i><span class="rt-name"></span><b></b></span>' +
-          '<span class="pbub" data-bub="' + z.id + '" style="' + pos(u.bub) + '--bc:' + BUB.soon.bc + ';--fc:' + BUB.soon.fc + '">' +
-            '<span class="bq" aria-hidden="true">💬</span><span class="bt"></span><i class="bx" hidden></i></span>';
+          '<button class="rb" type="button" data-room-badge="' + z.id + '" style="' + pos(u.bub) +
+            '--acc:' + z.accent + ';--soft:' + z.soft + ';--deep:' + z.deep + '">' +
+            '<span class="rb-top"><i aria-hidden="true"></i><span class="rb-name"></span><b></b></span>' +
+            '<span class="rb-dots"></span>' +
+          '</button>';
       }).join('');
   }
+
+  const SIG_DOT = [['red','dr','급함'], ['yellow','dy','곧 교체'], ['green','dg','여유']];
 
   function renderPlan(){
     zoneList().forEach(z => {
       const n = roomItems(z.id).length;
-      const b = roomBadge(z.id);
+      const c = roomSigs(z.id);
       const name = dispName(z);
 
       const hot = document.querySelector('.hot[data-room="' + z.id + '"]');
       if(hot) hot.setAttribute('aria-label', name + ' 생필품 ' + n + '개 목록 열기');
 
-      const tag = document.querySelector('[data-tag="' + z.id + '"]');
-      if(tag){
-        tag.querySelector('.rt-name').textContent = name;
-        tag.querySelector('b').textContent = n;
-        tag.setAttribute('aria-label', name + ' ' + n + '개');
-      }
-
-      const el = document.querySelector('[data-bub="' + z.id + '"]');
+      const el = document.querySelector('[data-room-badge="' + z.id + '"]');
       if(!el) return;
-      const c = BUB[b.level] || BUB.ok;
-      el.className = 'pbub' + (b.level === 'ok' ? ' ok' : '');
-      el.style.setProperty('--bc', c.bc);
-      el.style.setProperty('--fc', c.fc);
-      el.querySelector('.bq').textContent = b.level === 'ok' ? '✓' : '💬';
-      el.querySelector('.bt').textContent = b.text;
-      const bx = el.querySelector('.bx');
-      if(b.extra > 0){ bx.hidden = false; bx.textContent = '+' + b.extra; }
-      else { bx.hidden = true; bx.textContent = ''; }
-      el.setAttribute('aria-label', name + ' ' + b.text + (b.extra > 0 ? ' 외 ' + b.extra + '개' : ''));
+      el.querySelector('.rb-name').textContent = name;
+      el.querySelector('.rb-top b').textContent = n + '개';
+
+      const live = SIG_DOT.filter(d => c[d[0]] > 0);
+      const dots = el.querySelector('.rb-dots');
+      dots.innerHTML = live.map(d => '<span class="' + d[1] + '">' + c[d[0]] + '</span>').join('');
+      dots.hidden = !live.length;
+
+      const desc = live.map(d => d[2] + ' ' + c[d[0]] + '개').join(', ');
+      el.setAttribute('aria-label', name + ' ' + n + '개' + (desc ? ' · ' + desc : '') + ' · 목록 열기');
     });
   }
 
@@ -2195,6 +2189,22 @@
       return;
     }
 
+    // 방 뱃지(이름·개수·신호등) → 같은 방 리스트
+    const rb = t.closest('[data-room-badge]');
+    if(rb){
+      if(rb.dataset.go) return;
+      const rid = rb.dataset.roomBadge;
+      const hot = document.querySelector('.hot[data-room="' + rid + '"]');
+      rb.dataset.go = '1';
+      if(hot) hot.classList.add('tapped');
+      setTimeout(function(){
+        if(hot) hot.classList.remove('tapped');
+        delete rb.dataset.go;
+        goList('space:' + rid);
+      }, 120);
+      return;
+    }
+
     // 신호등 → 해당 상태 리스트
     const seg = t.closest('.tseg');
     if(seg){ goList('sig:' + seg.dataset.sig); return; }
@@ -2424,6 +2434,7 @@
     relay: relayCounts,
     urgent: urgentList,
     badge: roomBadge,
+    roomSigs: roomSigs,
     today: TODAY
   };
 })();

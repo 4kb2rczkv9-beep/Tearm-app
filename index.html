@@ -263,6 +263,77 @@
   .plancap .pc-ic{font-size:11px;line-height:1}
   .plancap svg{width:10px;height:10px;stroke-width:3.2;color:#A9998A;flex:none}
 
+  /* =========================================================
+     모드 전환 칩 (v9) — 🏠 우리 집 ↔ 🚗 내 차
+     ========================================================= */
+  .modebar{flex:none;display:flex;gap:6px;margin:2px 0 8px}
+  .mchip{
+    position:relative;flex:1;min-width:0;display:inline-flex;align-items:center;justify-content:center;gap:5px;
+    border:1px solid rgba(120,95,60,.18);background:#fff;color:#6E6250;
+    padding:8px 8px;border-radius:12px;cursor:pointer;font-family:inherit;
+    font-size:11.5px;font-weight:800;letter-spacing:-.3px;white-space:nowrap;overflow:hidden;
+    box-shadow:0 1px 2px rgba(90,62,30,.04);
+    transition:background .18s,color .18s,border-color .18s,box-shadow .18s;
+  }
+  .mchip .mi{font-size:12.5px;line-height:1;flex:none}
+  .mchip .mn{min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .mchip .mh{flex:none;font-size:10px;font-weight:700;color:#A9998A}
+  .mchip .mred{
+    flex:none;display:inline-flex;align-items:center;gap:2px;font-size:9px;font-weight:800;
+    color:#B93A22;background:#FCEBE7;border-radius:999px;padding:1px 4px;line-height:1.35;
+    font-variant-numeric:tabular-nums;
+  }
+  .mchip .mred::before{content:"";width:4.5px;height:4.5px;border-radius:50%;background:#EF4444;flex:none}
+  .mchip.on{background:#241F19;border-color:#241F19;color:#fff;box-shadow:0 8px 16px -12px rgba(36,31,25,.95)}
+  .mchip.on .mh{color:rgba(255,255,255,.6)}
+  .mchip:active{transform:scale(.985)}
+
+  /* 차량 도해는 넘치는 쪽을 조금 잘라 카드에 꽉 채운다 */
+  .planbox.car img.plan{object-position:center 50%}
+
+  /* =========================================================
+     + 추가 시트 (v9) — 추천 목록 / 직접 입력
+     ========================================================= */
+  .seg{display:flex;gap:0;background:#F0ECE2;border-radius:12px;padding:3px;margin:6px 0 10px}
+  .seg button{
+    flex:1;border:0;background:transparent;color:#6E6250;font-family:inherit;font-size:11.5px;font-weight:800;
+    padding:8px 4px;border-radius:9px;cursor:pointer;letter-spacing:-.25px;white-space:nowrap;
+  }
+  .seg button.on{background:#fff;color:#201C16;box-shadow:0 1px 3px rgba(90,62,30,.16)}
+  .rcats{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 4px}
+  .rcat{
+    flex:none;border:1px solid #E4DED1;background:#fff;color:#5C5145;font-family:inherit;
+    font-size:10.5px;font-weight:800;padding:5px 9px;border-radius:999px;cursor:pointer;letter-spacing:-.2px;
+  }
+  .rcat.on{background:#241F19;border-color:#241F19;color:#fff}
+  .rcat.wash{border-color:#EBD3B8;background:#FDF4E9;color:#96520C}
+  .rcat.wash.on{background:#B4703A;border-color:#B4703A;color:#fff}
+  .rgroup{
+    display:flex;align-items:center;gap:6px;margin:13px 2px 6px;
+    font-size:11px;font-weight:800;color:#8D8679;letter-spacing:-.2px;
+  }
+  .rgroup .cnt{font-size:9.5px;font-weight:800;color:#B4AC9E;font-variant-numeric:tabular-nums}
+  .ritem{
+    display:flex;align-items:center;gap:9px;width:100%;text-align:left;border:1px solid #E7E1D4;background:#fff;
+    border-radius:13px;padding:8px 9px;margin-bottom:6px;cursor:pointer;font-family:inherit;color:inherit;
+    transition:background .15s,border-color .15s;
+  }
+  .ritem:active{background:#F3F8F4;border-color:#C9E0D2}
+  .ritem .ric{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:14px;line-height:1}
+  .ritem .rtx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .ritem .rnm{display:flex;align-items:center;gap:4px;min-width:0;font-size:12.5px;font-weight:800;letter-spacing:-.3px}
+  .ritem .rnm em{font-style:normal;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ritem .rsub{font-size:10.5px;font-weight:700;color:#A9998A;letter-spacing:-.1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rtag{flex:none;font-size:9px;font-weight:800;color:#96520C;background:#FDF0DF;padding:1px 5px;border-radius:999px;letter-spacing:-.1px}
+  .ritem .rplus{flex:none;width:24px;height:24px;border-radius:50%;background:#EFF7F2;color:#2C7A58;display:grid;place-items:center}
+  .ritem .rplus svg{width:12px;height:12px;stroke-width:3}
+  .ritem.added{background:#F6F4EC;border-color:#E7E1D4;cursor:default}
+  .ritem.added .ric{filter:grayscale(.5);opacity:.75}
+  .ritem.added .rnm{color:#9A9081}
+  .ritem.added .rplus{background:#EFEBE1;color:#8D8679}
+  .car-name-row .input{width:124px;text-align:right;padding:7px 10px;font-size:13px;font-weight:800;border-radius:9px}
+  .car-name-chips{padding:0 15px 12px}
+
   /* 집 타입 고르기 (설정 썸네일) */
   .house-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:11px 11px 9px}
   .hopt{
@@ -472,7 +543,7 @@
   .row-value svg{width:13px;height:13px;color:#C6BFB0}
   .switch{position:relative;display:inline-flex;flex:none;width:44px;height:27px}
   .switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-  .switch .track{position:absolute;inset:0;border-radius:999px;background:#DED8CB;transition:background .2s}
+  .switch .track{position:absolute;inset:0;border-radius:999px;background:#DED8CB;transition:background .2s;pointer-events:none}
   .switch .track::after{content:"";position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.22);transition:transform .2s}
   .switch input:checked+.track{background:#34C759}
   .switch input:checked+.track::after{transform:translateX(17px)}
@@ -699,6 +770,9 @@
       <!-- ================= HOME ================= -->
       <main class="view" id="view-home">
 
+        <!-- 모드 전환 칩 (v9) : 🏠 우리 집 ↔ 🚗 내 차 -->
+        <div class="modebar" id="modeBar" role="group" aria-label="집과 차 전환"></div>
+
         <!-- 신호등 요약 -->
         <section class="traffic" role="group" aria-label="생필품 상태 요약">
           <div class="traffic-lamps">
@@ -826,6 +900,25 @@
         <p class="hint">방 이름을 누르면 바로 바꿀 수 있어요. 홈 평면도 라벨과 리스트·상세의 공간 이름에 함께 반영됩니다.</p>
         <button class="btn-soft" id="resetPlan" type="button">평면도·방 이름 처음으로</button>
 
+        <div class="sec-title">내 차</div>
+        <div class="card">
+          <div class="row">
+            <span class="row-label">🚗 차량 관리 사용</span>
+            <label class="switch"><input type="checkbox" id="carSwitch"><span class="track"></span></label>
+          </div>
+          <div class="row car-name-row" id="carNameRow">
+            <span class="row-label">차량 이름</span>
+            <input class="input" id="carNameInput" maxlength="8" autocomplete="off" aria-label="차량 별명 · 8자까지">
+          </div>
+          <div class="chip-row car-name-chips" id="carNameChips"></div>
+        </div>
+        <p class="hint" id="carHint"></p>
+        <div id="carZoneWrap" hidden>
+          <div class="sec-title">차량 구역 이름 바꾸기</div>
+          <div class="card" id="carNameCard"></div>
+          <p class="hint">전기차라면 엔진룸 대신 ‘모터룸’처럼 바꿔 쓸 수 있어요. 구역 이름은 차 모드와 리스트에 바로 반영됩니다.</p>
+        </div>
+
         <div class="sec-title">지금 사용자</div>
         <div class="card">
           <div class="row">
@@ -883,7 +976,7 @@
         <div class="card">
           <div class="row"><span class="row-label">개인정보처리방침</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
           <div class="row"><span class="row-label">오픈소스 라이선스</span><span class="row-value"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="row"><span class="row-label">버전</span><span class="row-value">0.7.0 (집 타입별 평면도)</span></div>
+          <div class="row"><span class="row-label">버전</span><span class="row-value">0.9.0 (내 차 모드 · 추천 37종)</span></div>
         </div>
         <p class="settings-foot">평면도 타입과 방 이름은 이 기기에 저장돼 새로 고쳐도 그대로 남습니다.<br>생필품·이력은 프로토타입 메모리에만 있어 새로 고치면 처음으로 돌아갑니다.</p>
       </main>
@@ -928,10 +1021,24 @@
         </div>
       </div>
       <div class="sheet-inner">
-        <p class="hint">추천 템플릿을 누르면 공간까지 맞춰서 바로 등록돼요.</p>
-        <div class="tpl-grid" id="tplGrid"></div>
+        <p class="hint" style="margin:0 2px 6px">추천 목록에서 누르면 구역·주기·알림 시점까지 자동으로 들어가요.</p>
+        <p class="hint" id="addWhereTxt" style="margin:0 2px 10px;color:#A9703F"></p>
+        <div class="seg" id="addTabs" role="tablist">
+          <button type="button" data-addtab="reco" class="on" role="tab">🧺 추천 목록에서 고르기</button>
+          <button type="button" data-addtab="manual" role="tab">✏️ 직접 입력</button>
+        </div>
 
-        <div class="divider">직접 입력</div>
+        <div id="recoPane">
+          <div class="rcats" id="recoCats" role="group" aria-label="추천 목록 분류"></div>
+          <div id="recoList"></div>
+          <p class="foot-note" style="margin-top:10px">주기는 설명서·제품 표시가 항상 우선이에요.<br>등록 뒤 상세에서 언제든 바꿀 수 있어요.</p>
+        </div>
+
+        <div id="manualPane" hidden>
+        <div class="field" style="margin-top:4px">
+          <span class="label">어디에 추가할까요?</span>
+          <div class="chip-row" id="fArea"></div>
+        </div>
 
         <form id="addForm" novalidate>
           <div class="field">
@@ -966,6 +1073,7 @@
 
           <button class="btn-primary" type="submit">저장하고 보드에 추가</button>
         </form>
+        </div>
       </div>
     </div>
 
@@ -1105,9 +1213,9 @@
       img:'assets/apt_floorplan_1room.png', ar:850/1275,
       desc:'현관 · 욕실 · 미니 주방 · 거실/침실',
       zones:[
-        zone('bath',   '욕실',      { hot:[11,32,22,30],    tag:[13,35],     bub:[21,45]   }),
+        zone('bath',   '욕실',      { hot:[11,32,22,30],    tag:[13,35],     bub:[18,45]   }),
         zone('kitchen','주방',      { hot:[55,50,35,25],    tag:[58,53.5],   bub:[74,62]   }),
-        zone('living', '거실/침실', { hot:[24,16,44,36],    tag:[27,20],     bub:[51,41]   })
+        zone('living', '거실/침실', { hot:[24,16,44,36],    tag:[27,20],     bub:[56,40]   })
       ]
     },
     tworoom: {
@@ -1136,26 +1244,60 @@
   };
   const HOUSE_ORDER = ['oneroom','tworoom','apt34'];
 
-  /* 이 기기에 남기는 설정 (집 타입 · 방 이름) */
-  const STORE_KEY = 'tearm.v7';
-  const store = { house:'apt34', names:{ oneroom:{}, tworoom:{}, apt34:{} } };
+  /* =========================================================
+     🚗 차량 구역 (v9) — 집 타입과 무관하게 고정 3개
+     이미지 위 좌표는 assets/car_3d_v9.png 기준 %로 적는다.
+     ========================================================= */
+  const CAR_AR = 1086/1448;
+  const CAR_IMG = 'assets/car_3d_v9.png';
+  const CAR_ZONES = [
+    { id:'car_engine', area:'car', name:'엔진룸', emoji:'🔧', accent:'#B2794F', soft:'#F6EDE3', deep:'#7E4F2B',
+      art:CAR_IMG, ui:{ hot:[25,8.5,52,20], bub:[50,19] } },
+    { id:'car_cabin',  area:'car', name:'실내',   emoji:'🪟', accent:'#6E86B8', soft:'#EDF1F8', deep:'#47598A',
+      art:CAR_IMG, ui:{ hot:[13,31,74,35], bub:[50,47] } },
+    { id:'car_body',   area:'car', name:'외부',   emoji:'🛞', accent:'#7E9C6A', soft:'#EFF4EA', deep:'#52713F',
+      art:CAR_IMG, ui:{ hot:[7,68,86,25], bub:[50,83] } }
+  ];
+
+  /* 이 기기에 남기는 설정 (집 타입 · 방 이름 · 차량) */
+  const STORE_KEY = 'tearm.v9';
+  const LEGACY_KEY = 'tearm.v7';
+  const store = {
+    house:'apt34',
+    names:{ oneroom:{}, tworoom:{}, apt34:{} },
+    car:{ enabled:true, name:'내 차', names:{ car_cabin:'', car_body:'', car_engine:'' } }
+  };
 
   const house   = () => HOUSES[store.house] || HOUSES.apt34;
   const zoneList= () => house().zones;
   const zoneById= id => zoneList().find(z => z.id === id) || null;
-  const dispName= z => (store.names[house().id] && store.names[house().id][z.id]) || z.name;
+  const carZoneById = id => CAR_ZONES.find(z => z.id === id) || null;
+  const anyZone = id => carZoneById(id) || zoneById(id);
+  const isCarSpace = id => !!carZoneById(id);
+  /* 지금 모드의 구역 목록 (집: 고른 집 타입의 방 / 차: 3구역) */
+  const zonesOf = mode => mode === 'car' ? CAR_ZONES : zoneList();
+  const modeZones = () => zonesOf(state.mode);
+  const areaOf = spaceId => isCarSpace(spaceId) ? 'car' : 'home';
+
+  function dispName(z){
+    if(!z) return '';
+    if(z.area === 'car') return (store.car.names && store.car.names[z.id]) || z.name;
+    const m = store.names[house().id];
+    return (m && m[z.id]) || z.name;
+  }
   const zoneView= z => Object.assign({}, z, { name: dispName(z) });
   /* 아이템의 기준 공간을 지금 집 타입의 구역으로 옮긴다 (원룸엔 room2가 없어 거실로) */
-  const zoneIdOf = spaceId => (zoneById(spaceId) ? spaceId : 'living');
+  const zoneIdOf = spaceId => isCarSpace(spaceId) ? spaceId : (zoneById(spaceId) ? spaceId : 'living');
   /* 아이템 한 건의 공간 정보(이름·색·일러스트) */
   function spaceOf(spaceId){
-    const z = zoneById(zoneIdOf(spaceId));
-    return zoneView(z);
+    const cz = carZoneById(spaceId);
+    if(cz) return zoneView(cz);
+    return zoneView(zoneById(zoneIdOf(spaceId)));
   }
 
   function loadStore(){
     try{
-      const raw = localStorage.getItem(STORE_KEY);
+      const raw = localStorage.getItem(STORE_KEY) || localStorage.getItem(LEGACY_KEY);
       if(!raw) return;
       const o = JSON.parse(raw);
       if(o && HOUSES[o.house]) store.house = o.house;
@@ -1168,6 +1310,17 @@
             if(typeof v === 'string' && v.trim()) store.names[h][k] = v.trim().slice(0,8);
           });
         });
+      }
+      const c = o && o.car;
+      if(c && typeof c === 'object'){
+        if(typeof c.enabled === 'boolean') store.car.enabled = c.enabled;
+        if(typeof c.name === 'string' && c.name.trim()) store.car.name = c.name.trim().slice(0,8);
+        if(c.names && typeof c.names === 'object'){
+          Object.keys(store.car.names).forEach(k => {
+            const v = c.names[k];
+            if(typeof v === 'string' && v.trim()) store.car.names[k] = v.trim().slice(0,8);
+          });
+        }
       }
     }catch(e){}
   }
@@ -1207,9 +1360,20 @@
     { name:'젖병 젖꼭지',       space:'room2',   n:2, unit:'month', dueIn:0,   by:'영민', assignee:'함께', memo:'분유 240ml용 · 2단계' },
     { name:'아기 칫솔',         space:'room2',   n:3, unit:'month', dueIn:7,   by:'영민', assignee:'영민', memo:'' },
     { name:'아기 손수건',       space:'room2',   n:1, unit:'week',  dueIn:4,   by:'혜원', assignee:'혜원', memo:'세탁해도 1주에 교체' },
+    { name:'침구(시트) 세탁',  space:'room2',   n:1, unit:'week',  dueIn:2,   by:'혜원', assignee:'혜원', memo:'주 1회 · 아기와 같이 자면 더 자주' },
+    { name:'이불 세탁',         space:'room2',   n:3, unit:'month', dueIn:20,  by:'혜원', assignee:'함께', memo:'계절 이불 갈아 넣을 때' },
     { name:'가습기 필터',       space:'living',  n:3, unit:'month', dueIn:1,   by:'혜원', assignee:'함께', memo:'겨울철엔 2개월' },
     { name:'공기청정기 필터',   space:'living',  n:6, unit:'month', dueIn:14,  by:'영민', assignee:'영민', memo:'' },
-    { name:'정수기 필터',       space:'living',  n:6, unit:'month', dueIn:27,  by:'영민', assignee:'함께', memo:'제품 설명서 기준' }
+    { name:'정수기 필터',       space:'living',  n:6, unit:'month', dueIn:27,  by:'영민', assignee:'함께', memo:'제품 설명서 기준' },
+    { name:'세탁조 청소',       space:'living',  n:1, unit:'month', dueIn:5,   by:'혜원', assignee:'함께', memo:'통세척 코스 + 세탁조 클리너' },
+
+    /* 🚗 내 차 (차량 관리가 꺼져 있으면 화면에서만 숨진다) */
+    { name:'캐빈 에어컨 필터', space:'car_cabin',  n:6,  unit:'month', dueIn:4,   by:'영민', assignee:'영민', memo:'냄새·바람이 약해지면 앞당기기', km:10000 },
+    { name:'스마트키 배터리',   space:'car_cabin',  n:24, unit:'month', dueIn:210, by:'영민', assignee:'영민', memo:'CR2032' },
+    { name:'와이퍼 블레이드',   space:'car_body',   n:6,  unit:'month', dueIn:-3,  by:'영민', assignee:'함께', memo:'장마 전에 한 번 갈면 안전' },
+    { name:'타이어 공기압 점검', space:'car_body',   n:1,  unit:'month', dueIn:9,   by:'영민', assignee:'영민', memo:'월 1회 · 운전석 문 옆 표가 기준' },
+    { name:'엔진오일',          space:'car_engine', n:12, unit:'month', dueIn:21,  by:'영민', assignee:'함께', memo:'오일필터와 함께 교체', km:10000 },
+    { name:'워셔액 보충',       space:'car_engine', n:2,  unit:'month', dueIn:2,   by:'영민', assignee:'영민', memo:'경고등이 켜지면 바로' }
   ];
 
   function buildSeed(s){
@@ -1235,6 +1399,7 @@
       lastBy: s.by,
       assignee: s.assignee,
       memo: s.memo,
+      km: s.km || null,
       alertDays: [7,3,0],
       history: hist
     };
@@ -1256,22 +1421,80 @@
   }
   seedData();
 
-  const TEMPLATES = [
-    { name:'샤워기 필터',   space:'bath',    n:2,  unit:'month' },
-    { name:'칫솔',          space:'bath',    n:3,  unit:'month' },
-    { name:'수세미',        space:'kitchen', n:3,  unit:'week'  },
-    { name:'행주',          space:'kitchen', n:1,  unit:'week'  },
-    { name:'젖병 젖꼭지',   space:'room2',   n:2,  unit:'month' },
-    { name:'아기 손수건',   space:'room2',   n:1,  unit:'week'  },
-    { name:'정수기 필터',   space:'living',  n:6,  unit:'month' },
-    { name:'가습기 필터',   space:'living',  n:3,  unit:'month' },
-    { name:'공기청정기 필터', space:'living', n:6, unit:'month' },
-    { name:'화장품 개봉',   space:'bath',    n:12, unit:'month' }
+  /* =========================================================
+     추천 목록 37종 (default_items.md) — 추천 목록에서 고르기
+     category: bath 욕실 · kitchen 주방 · living 거실/가전 ·
+               bedroom 침실/세탁 · baby 아기방 · car 내 차
+     ========================================================= */
+  const RECO_CATS = [
+    { key:'all',     label:'전체',       emoji:'🧺' },
+    { key:'wash',    label:'청소·빨래',  emoji:'🧼' },
+    { key:'bath',    label:'욕실',       emoji:'🚿' },
+    { key:'kitchen', label:'주방',       emoji:'🍳' },
+    { key:'living',  label:'거실/가전',  emoji:'🛋️' },
+    { key:'bedroom', label:'침실/세탁',  emoji:'🛏️' },
+    { key:'baby',    label:'아기방',     emoji:'🧸' },
+    { key:'car',     label:'내 차',      emoji:'🚗' }
+  ];
+  const RECO_GROUPS = [
+    { key:'bath',    label:'욕실' },
+    { key:'kitchen', label:'주방' },
+    { key:'living',  label:'거실 / 가전' },
+    { key:'bedroom', label:'침실 / 세탁' },
+    { key:'baby',    label:'아기방 / 유아용품' },
+    { key:'car',     label:'내 차 / 차량 소모품' }
+  ];
+
+  const DEFAULTS = [
+    /* 욕실 7 */
+    { name:'칫솔',             cat:'bath', space:'bath',    n:3,  unit:'month', alerts:[7,3,0],  tag:'' },
+    { name:'샤워기 필터',      cat:'bath', space:'bath',    n:2,  unit:'month', alerts:[7,3,0],  tag:'' },
+    { name:'세면대 필터',      cat:'bath', space:'bath',    n:2,  unit:'month', alerts:[3,1,0],  tag:'' },
+    { name:'욕실 배수구 거름망', cat:'bath', space:'bath',    n:1,  unit:'month', alerts:[3,1,0],  tag:'청소·빨래' },
+    { name:'변기 브러시',      cat:'bath', space:'bath',    n:3,  unit:'month', alerts:[7,3,0],  tag:'' },
+    { name:'수건',             cat:'bath', space:'bath',    n:12, unit:'month', alerts:[14,7,0], tag:'' },
+    { name:'화장품·선크림',    cat:'bath', space:'bath',    n:12, unit:'month', alerts:[14,7,0], tag:'' },
+    /* 주방 6 */
+    { name:'수세미',           cat:'kitchen', space:'kitchen', n:3, unit:'week',  alerts:[3,1,0],  tag:'청소·빨래' },
+    { name:'주방 행주',        cat:'kitchen', space:'kitchen', n:1, unit:'week',  alerts:[3,1,0],  tag:'청소·빨래' },
+    { name:'고무장갑',         cat:'kitchen', space:'kitchen', n:2, unit:'month', alerts:[7,3,0],  tag:'' },
+    { name:'정수기 필터',      cat:'kitchen', space:'kitchen', n:6, unit:'month', alerts:[14,7,0], tag:'' },
+    { name:'싱크대 거름망',    cat:'kitchen', space:'kitchen', n:1, unit:'month', alerts:[3,1,0],  tag:'청소·빨래' },
+    { name:'식기세척기 필터',  cat:'kitchen', space:'kitchen', n:1, unit:'month', alerts:[3,1,0],  tag:'' },
+    /* 거실 / 가전 6 */
+    { name:'공기청정기 필터',  cat:'living', space:'living', n:12, unit:'month', alerts:[14,7,0], tag:'' },
+    { name:'청소기 필터',      cat:'living', space:'living', n:3,  unit:'month', alerts:[7,3,0],  tag:'' },
+    { name:'에어컨 필터',      cat:'living', space:'living', n:1,  unit:'month', alerts:[7,3,0],  tag:'' },
+    { name:'가습기 필터',      cat:'living', space:'living', n:3,  unit:'month', alerts:[7,3,0],  tag:'' },
+    { name:'제습기 필터',      cat:'living', space:'living', n:3,  unit:'month', alerts:[7,3,0],  tag:'' },
+    { name:'세탁조 청소',      cat:'living', space:'living', n:1,  unit:'month', alerts:[3,1,0],  tag:'청소·빨래' },
+    /* 침실 / 세탁 5 */
+    { name:'침구(시트) 세탁', cat:'bedroom', space:'room2', n:1,  unit:'week',  alerts:[3,1,0],  tag:'청소·빨래' },
+    { name:'이불 세탁',        cat:'bedroom', space:'room2', n:3,  unit:'month', alerts:[14,7,0], tag:'청소·빨래' },
+    { name:'베개 커버',        cat:'bedroom', space:'room2', n:1,  unit:'week',  alerts:[3,1,0],  tag:'청소·빨래' },
+    { name:'베개솜',           cat:'bedroom', space:'room2', n:12, unit:'month', alerts:[14,7,0], tag:'' },
+    { name:'옷장 제습제',      cat:'bedroom', space:'room2', n:2,  unit:'month', alerts:[7,3,0],  tag:'' },
+    /* 아기방 6 */
+    { name:'젖병 젖꼭지',      cat:'baby', space:'room2', n:2,  unit:'month', alerts:[7,3,0], tag:'' },
+    { name:'빨대컵 빨대·패킹', cat:'baby', space:'room2', n:2,  unit:'month', alerts:[3,1,0], tag:'' },
+    { name:'아기 칫솔',        cat:'baby', space:'room2', n:3,  unit:'month', alerts:[7,3,0], tag:'' },
+    { name:'아기 손수건',      cat:'baby', space:'room2', n:1,  unit:'week',  alerts:[3,1,0], tag:'청소·빨래' },
+    { name:'아기 장난감 소독', cat:'baby', space:'room2', n:1,  unit:'week',  alerts:[3,1,0], tag:'' },
+    { name:'기저귀·물티슈 재고', cat:'baby', space:'room2', n:1, unit:'week', alerts:[1,0],   tag:'' },
+    /* 🚗 내 차 7 */
+    { name:'캐빈 에어컨 필터', cat:'car', space:'car_cabin',  n:6,  unit:'month', alerts:[14,7,0], tag:'', km:10000 },
+    { name:'와이퍼 블레이드',  cat:'car', space:'car_body',   n:6,  unit:'month', alerts:[14,7,0], tag:'', km:null },
+    { name:'엔진오일',         cat:'car', space:'car_engine', n:12, unit:'month', alerts:[14,7,0], tag:'', km:10000 },
+    { name:'워셔액 보충',      cat:'car', space:'car_engine', n:2,  unit:'month', alerts:[3,1,0],  tag:'', km:null },
+    { name:'타이어 공기압 점검', cat:'car', space:'car_body',   n:1,  unit:'month', alerts:[3,1,0],  tag:'', km:null },
+    { name:'타이어 위치교환',  cat:'car', space:'car_body',   n:12, unit:'month', alerts:[14,7,0], tag:'', km:10000 },
+    { name:'스마트키 배터리',  cat:'car', space:'car_cabin',  n:24, unit:'month', alerts:[14,7,0], tag:'', km:null }
   ];
 
   const state = {
     tab: 'home',
     view: 'home',          // home | list
+    mode: 'home',          // home | car
     me: '영민',
     scope: 'all',          // all | urgent | space:<id>
     detailId: null,
@@ -1280,7 +1503,10 @@
     flashId: null,
     toastTimer: null,
     undo: null,
-    addSpace: 'bath'
+    addSpace: 'bath',
+    addArea: 'home',       // home | car
+    addTab: 'reco',        // reco | manual
+    recoCat: 'all'
   };
 
   /* =========================================================
@@ -1289,6 +1515,11 @@
   const nextDue = it => addCycle(it.lastReplaced, it.cycle);
   const daysLeft = it => diffDays(TODAY, nextDue(it));
   const byDue = (a,b) => (nextDue(a) - nextDue(b)) || a.name.localeCompare(b.name, 'ko');
+
+  /* 집 모드 / 차 모드 구분 (v9) */
+  const itemsIn = mode => items.filter(it => areaOf(it.space) === mode);
+  const modeItems = () => itemsIn(state.mode);
+  const redCount = mode => itemsIn(mode).filter(it => daysLeft(it) <= 0).length;
 
   function signalOf(it){
     const d = daysLeft(it);
@@ -1404,14 +1635,21 @@
   function buildPlan(){
     const box = $('#planBox');
     if(!box) return;
+    const car = state.mode === 'car';
     const h = house();
+    const zones = modeZones();
+    box.classList.toggle('car', car);
+    const img = car ? CAR_IMG : h.img;
+    const alt = car ? (store.car.name + ' 3D 도해 · 구역별 소모품')
+                    : ('우리 집 3D 평면도 · ' + h.label);
     box.innerHTML =
-      '<img class="plan" src="' + h.img + '" alt="우리 집 3D 평면도 · ' + h.label + '" decoding="async">' +
+      '<img class="plan" src="' + img + '" alt="' + esc(alt) + '" decoding="async">' +
+      (car ? '' :
       '<button class="plancap" id="homeHouseCap" type="button" aria-label="우리 집 평면도 타입 바꾸기 · 지금 ' + h.label + '">' +
         '<span class="pc-ic" aria-hidden="true">🏠</span><span id="capName">' + esc(h.short) + '</span>' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10l4 4 4-4"/></svg>' +
-      '</button>' +
-      zoneList().map(z => {
+      '</button>') +
+      zones.map(z => {
         const u = z.ui;
         const pos = (a) => '--x:' + a[0] + ';--y:' + a[1] + ';';
         return '<button class="hot" type="button" data-room="' + z.id + '" ' +
@@ -1422,12 +1660,16 @@
             '<span class="rb-dots"></span>' +
           '</button>';
       }).join('');
+    const hint = document.querySelector('#view-home .planhint');
+    if(hint) hint.textContent = car
+      ? '구역을 누르면 그 부위의 소모품이 열려요'
+      : '방을 누르면 그 공간의 생필품이 열려요';
   }
 
   const SIG_DOT = [['red','dr','급함'], ['yellow','dy','곧 교체'], ['green','dg','여유']];
 
   function renderPlan(){
-    zoneList().forEach(z => {
+    modeZones().forEach(z => {
       const n = roomItems(z.id).length;
       const c = roomSigs(z.id);
       const name = dispName(z);
@@ -1456,7 +1698,7 @@
     if(!fit || !box) return;
     const availW = fit.clientWidth, availH = fit.clientHeight;
     if(!availW || !availH) return;
-    const ar = house().ar;
+    const ar = state.mode === 'car' ? CAR_AR : house().ar;
     let W = availW, H = W / ar;
     if(H > availH){ H = availH; W = H * ar; }
     box.style.width = Math.round(W) + 'px';
@@ -1464,9 +1706,50 @@
   }
 
   /* =========================================================
+     렌더: 🏠 우리 집 ↔ 🚗 내 차 전환 칩 (v9)
+     ========================================================= */
+  function renderModeBar(){
+    const bar = $('#modeBar');
+    if(!bar) return;
+    if(!store.car.enabled){ bar.hidden = true; bar.innerHTML = ''; return; }
+    bar.hidden = false;
+    const h = house();
+    const hRed = redCount('home'), cRed = redCount('car');
+    const cname = store.car.name || '내 차';
+    bar.innerHTML =
+      '<button class="mchip' + (state.mode === 'home' ? ' on' : '') + '" data-mode="home" type="button" ' +
+        'aria-pressed="' + (state.mode === 'home') + '" aria-label="우리 집 보기 · ' + h.label + '">' +
+        '<span class="mi" aria-hidden="true">🏠</span><span class="mn">우리 집</span>' +
+        '<span class="mh">' + esc(h.short) + '</span>' +
+        (state.mode !== 'home' && hRed ? '<span class="mred">' + hRed + '</span>' : '') +
+      '</button>' +
+      '<button class="mchip' + (state.mode === 'car' ? ' on' : '') + '" data-mode="car" type="button" ' +
+        'aria-pressed="' + (state.mode === 'car') + '" aria-label="' + esc(cname) + ' 보기">' +
+        '<span class="mi" aria-hidden="true">🚗</span><span class="mn">' + esc(cname) + '</span>' +
+        (state.mode !== 'car' && cRed ? '<span class="mred">' + cRed + '</span>' : '') +
+      '</button>';
+  }
+
+  function setMode(mode){
+    if(mode === 'car' && !store.car.enabled) return;
+    mode = mode === 'car' ? 'car' : 'home';
+    if(state.mode === mode) return;
+    state.mode = mode;
+    state.scope = 'all';
+    state.tab = 'home';
+    state.view = 'home';
+    $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === 'home'));
+    buildPlan();
+    applyView();
+    renderAll();
+    fitPlan();
+    $('#view-home').scrollTop = 0;
+  }
+
+  /* =========================================================
      렌더: 하단 진입 버튼 → 신호등 요약
      ========================================================= */
-  const urgentList = () => items.filter(it => daysLeft(it) <= 7);
+  const urgentList = () => itemsIn(state.mode).filter(it => daysLeft(it) <= 7);
 
   function sigCat(it){
     const d = daysLeft(it);
@@ -1474,24 +1757,26 @@
     if(d <= 7) return 'yellow';
     return 'green';
   }
-  function sigCounts(){
+  function sigCounts(list){
     const c = { red:0, yellow:0, green:0 };
-    items.forEach(it => { c[sigCat(it)]++; });
+    (list || modeItems()).forEach(it => { c[sigCat(it)]++; });
     return c;
   }
 
   function renderEntry(){
-    const c = sigCounts();
+    const pool = modeItems();
+    const c = sigCounts(pool);
     $('#nRed').textContent = c.red;
     $('#nYellow').textContent = c.yellow;
     $('#nGreen').textContent = c.green;
 
-    const most = items.slice().sort(byDue)[0];
-    let foot = '전체 생필품 <b>' + items.length + '개</b> 보기';
+    const noun = state.mode === 'car' ? '차 소모품' : '생필품';
+    const most = pool.slice().sort(byDue)[0];
+    let foot = '전체 ' + noun + ' <b>' + pool.length + '개</b> 보기';
     if(most && daysLeft(most) <= 0){
       const d = daysLeft(most);
       foot = '<b>' + esc(most.name) + '</b> <i>' +
-        (d < 0 ? Math.abs(d) + '일 지남' : '오늘') + '</i> · 전체 ' + items.length + '개 보기';
+        (d < 0 ? Math.abs(d) + '일 지남' : '오늘') + '</i> · 전체 ' + pool.length + '개 보기';
     }
     $('#trafficFootTxt').innerHTML = foot;
     $$('.tseg').forEach(b => b.classList.toggle('on', state.scope === 'sig:' + b.dataset.sig));
@@ -1501,7 +1786,7 @@
      렌더: 생필품 리스트
      ========================================================= */
   function visibleItems(){
-    let list = items.slice();
+    let list = modeItems().slice();
     if(state.scope === 'urgent'){
       list = list.filter(it => daysLeft(it) <= 7);
     } else if(state.scope.indexOf('sig:') === 0){
@@ -1552,7 +1837,10 @@
       box.style.setProperty('--soft', sp.soft);
       box.style.setProperty('--deep', sp.deep);
       box.innerHTML =
-        '<img class="tb" src="' + sp.art + '" alt="' + sp.name + ' 일러스트">' +
+        '<img class="tb" src="' + sp.art + '" alt="' + sp.name + ' 일러스트"' +
+          (sp.area === 'car'
+            ? ' style="object-position:' + (sp.id === 'car_engine' ? '50% 14%' : sp.id === 'car_cabin' ? '50% 46%' : '50% 86%') + '"'
+            : '') + '>' +
         '<div class="tbx">' +
           '<div class="tb-name">' + sp.name + '</div>' +
           '<div class="tb-sub"><b>' + n + '개</b> 관리 중</div>' +
@@ -1567,7 +1855,7 @@
   function renderList(){
     const list = visibleItems();
 
-    let title = '전체 생필품', em = '', meta = list.length + '개 · 교체일 가까운 순';
+    let title = state.mode === 'car' ? '전체 차 소모품' : '전체 생필품', em = '', meta = list.length + '개 · 교체일 가까운 순';
     if(state.scope === 'urgent'){ title = '급한 것만'; em = '⚡'; }
     else if(state.scope.indexOf('sig:') === 0){
       const cat = state.scope.slice(4);
@@ -1611,6 +1899,7 @@
   }
 
   function renderAll(){
+    renderModeBar();
     renderRelay();
     renderPlan();
     renderEntry();
@@ -1623,7 +1912,7 @@
   function renderSpaceChips(){
     const box = $('#spaceChips');
     if(!box) return;
-    box.innerHTML = zoneList().map(z => {
+    box.innerHTML = modeZones().map(z => {
       const sp = zoneView(z);
       return '<button class="fchip" data-scope="space:' + z.id + '" type="button">' + sp.emoji + ' ' + esc(sp.name) + '</button>';
     }).join('');
@@ -1665,7 +1954,7 @@
       body += '<div class="field">' +
                 '<span class="label">공간</span>' +
                 '<div class="chip-row" id="eSpace">' +
-                  zoneList().map(z => {
+                  zonesOf(areaOf(it.space)).map(z => {
                     const sp2 = zoneView(z);
                     return '<button type="button" class="fchip2' + (zoneIdOf(it.space)===z.id?' active':'') + '" data-espace="' + z.id + '">' +
                       '<i>' + sp2.emoji + '</i>' + esc(sp2.name) + '</button>';
@@ -1703,7 +1992,9 @@
     } else {
       body += '<div class="kv">' +
                 '<div class="kv-row"><span class="kv-k">공간</span><span class="kv-v">' + sp.emoji + ' ' + sp.name + '</span></div>' +
-                '<div class="kv-row"><span class="kv-k">교체 주기</span><span class="kv-v">' + cycleLabel(it.cycle) + '마다</span></div>' +
+                '<div class="kv-row"><span class="kv-k">교체 주기</span><span class="kv-v">' + cycleLabel(it.cycle) + '마다' +
+                  (it.km ? '<br><span style="font-size:10.5px;color:#B4AC9E;font-weight:700">' + it.km.toLocaleString('ko-KR') + 'km 기준 · 주행거리 연동은 준비 중</span>' : '') +
+                '</span></div>' +
                 '<div class="kv-row"><span class="kv-k">마지막 교체</span><span class="kv-v">' + fmtLong(it.lastReplaced) + ' · ' + esc(it.lastBy) + '</span></div>' +
                 '<div class="kv-row"><span class="kv-k">담당자</span><span class="kv-v">' + esc(it.assignee) + '</span></div>' +
                 '<div class="kv-row"><span class="kv-k">알림</span><span class="kv-v">' + it.alertDays.map(x => x === 0 ? '당일' : 'D-' + x).join(' · ') + '</span></div>' +
@@ -1781,18 +2072,39 @@
   function openAdd(){
     hideToast();
     closeSheets();
-    state.addSpace = zoneById(state.addSpace) ? state.addSpace : zoneList()[0].id;
+    state.addTab = 'reco';
+    state.recoCat = 'all';
+    state.addArea = (state.mode === 'car' && store.car.enabled) ? 'car' : 'home';
+    state.addSpace = state.addArea === 'car'
+      ? CAR_ZONES[0].id
+      : (zoneById(state.addSpace) ? state.addSpace : zoneList()[0].id);
     $('#addForm').reset();
     $('#fCycle').value = 1;
     $('#fUnit').value = 'month';
     $('#fLast').value = fmtISO(TODAY);
     $('#formErr').textContent = '';
-    renderFormSpaces();
-    updatePreview();
+    renderAddSheet();
     $('#addSheet').querySelector('.sheet-inner').scrollTop = 0;
     $('#scrim').classList.add('show');
     $('#addSheet').classList.add('show');
     setTimeout(resetPhoneScroll, 30);
+  }
+
+  function renderAddSheet(){
+    $$('#addTabs button').forEach(b => b.classList.toggle('on', b.dataset.addtab === state.addTab));
+    $('#recoPane').hidden = state.addTab !== 'reco';
+    $('#manualPane').hidden = state.addTab !== 'manual';
+    renderAddWhere();
+    if(state.addTab === 'reco'){
+      renderReco();
+    } else {
+      if(state.addArea === 'car' && !store.car.enabled) state.addArea = 'home';
+      if(!zonesOf(state.addArea).some(z => z.id === state.addSpace)) state.addSpace = zonesOf(state.addArea)[0].id;
+      $('#fName').placeholder = state.addArea === 'car' ? '예: 캐빈 에어컨 필터' : '예: 욕실 배수구 거름망';
+      renderFormAreas();
+      renderFormSpaces();
+      updatePreview();
+    }
   }
   function closeSheets(){
     $('#scrim').classList.remove('show');
@@ -1859,7 +2171,8 @@
   /* =========================================================
      동작: 추가
      ========================================================= */
-  function addNew(o, closeSheet){
+  function addNew(o, opts){
+    opts = opts || {};
     const it = {
       id: 'i' + (seq++),
       name: o.name,
@@ -1868,8 +2181,9 @@
       lastReplaced: o.last,
       lastBy: state.me,
       assignee: '함께',
-      memo: '',
-      alertDays: [7,3,0],
+      memo: o.memo || '',
+      km: o.km || null,
+      alertDays: (o.alerts && o.alerts.length) ? o.alerts.slice() : [7,3,0],
       history: [{ at: o.last, by: state.me, cycle: cycleLabel(o.cycle) }]
     };
     items.push(it);
@@ -1877,46 +2191,104 @@
     log.unshift(entry);
     log.sort((a,b) => b.at - a.at);
 
-    state.scope = 'space:' + zoneIdOf(it.space);
-    state.tab = 'home';
-    state.view = 'list';
+    state.mode = areaOf(it.space);
     state.flashId = it.id;
-    $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === 'home'));
-    applyView();
+    if(!opts.keepSheet){
+      state.scope = 'space:' + zoneIdOf(it.space);
+      state.tab = 'home';
+      state.view = 'list';
+      $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === 'home'));
+      applyView();
+    }
+    buildPlan();
     renderAll();
-    if(closeSheet) closeSheets();
+    if(opts.keepSheet) renderReco();
+    if(opts.closeSheet) closeSheets();
     showToast('‘' + it.name + '’ ' + spaceOf(it.space).name + '에 추가 · ' + cycleLabel(it.cycle), {
       undo: function(){
         items = items.filter(x => x.id !== it.id);
         log = log.filter(x => x !== entry);
         state.flashId = null;
         renderAll();
+        if(opts.keepSheet || $('#recoPane') && !$('#recoPane').hidden) renderReco();
       }
     });
   }
 
-  function addFromTemplate(t){
-    addNew({
-      name: t.name,
-      space: t.space,
-      cycle: { n: t.n, unit: t.unit },
-      last: TODAY
-    }, true);
+  /* =========================================================
+     + 추가 시트 · 추천 목록 37종
+     ========================================================= */
+  const IC_PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg>';
+
+  const hasItem = (name, space) => items.some(i => i.name === name && i.space === space);
+  const isWash = d => !!d.tag;
+
+  function recoPool(cat){
+    return DEFAULTS.filter(d => {
+      if(d.cat === 'car' && !store.car.enabled) return false;
+      if(cat === 'all') return true;
+      if(cat === 'wash') return isWash(d);
+      return d.cat === cat;
+    });
   }
 
-  function renderTemplates(){
-    $('#tplGrid').innerHTML = TEMPLATES.map((t, i) => {
-      const sp = spaceOf(t.space);
-      return '<button type="button" class="tpl" data-tpl="' + i + '">' +
-        '<span class="t-ic" style="background:' + sp.soft + '">' + sp.emoji + '</span>' +
-        '<span class="tpl-text"><span class="tpl-name">' + esc(t.name) + '</span>' +
-        '<span class="tpl-cycle">' + sp.name + ' · ' + cycleLabel(t) + '</span></span>' +
-      '</button>';
+  function renderAddWhere(){
+    const el = $('#addWhereTxt');
+    if(!el) return;
+    el.textContent = store.car.enabled
+      ? '추천 항목은 저마다 정해진 공간으로 들어가요 · 차 소모품은 🚗 ' + (store.car.name || '내 차') + '로'
+      : '차 소모품 7종은 설정 → 내 차에서 차량 관리를 켜면 추천 목록에 나와요';
+  }
+
+  function renderReco(){
+    const cats = $('#recoCats');
+    if(!cats) return;
+    cats.innerHTML = RECO_CATS.map(c => {
+      if(c.key === 'car' && !store.car.enabled) return '';
+      const n = recoPool(c.key).length;
+      return '<button class="rcat' + (state.recoCat === c.key ? ' on' : '') + (c.key === 'wash' ? ' wash' : '') + '" ' +
+        'type="button" data-recat="' + c.key + '" aria-pressed="' + (state.recoCat === c.key) + '">' +
+        c.emoji + ' ' + c.label + ' ' + n + '</button>';
     }).join('');
+
+    const list = recoPool(state.recoCat);
+    let html = '';
+    RECO_GROUPS.forEach(g => {
+      const rows = list.filter(d => d.cat === g.key);
+      if(!rows.length) return;
+      if(g.key === 'car' && !store.car.enabled) return;
+      html += '<div class="rgroup"><span>' + g.label + '</span><span class="cnt">' + rows.length + '종</span></div>';
+      html += rows.map(d => {
+        const sp = spaceOf(d.space);
+        const added = hasItem(d.name, d.space);
+        const sub = sp.name + ' · ' + cycleLabel({ n:d.n, unit:d.unit }) +
+          (d.km ? ' · ' + d.km.toLocaleString('ko-KR') + 'km' : '');
+        return '<button class="ritem' + (added ? ' added' : '') + '" type="button" data-reco="' + DEFAULTS.indexOf(d) + '" ' +
+            'aria-label="' + esc(d.name) + ' ' + esc(sp.name) + '에 ' + cycleLabel({ n:d.n, unit:d.unit }) + ' 주기로 추가"' +
+            (added ? ' aria-disabled="true"' : '') + '>' +
+          '<span class="ric" style="background:' + sp.soft + '" aria-hidden="true">' + sp.emoji + '</span>' +
+          '<span class="rtx">' +
+            '<span class="rnm"><em>' + esc(d.name) + '</em>' + (d.tag ? '<span class="rtag">' + d.tag + '</span>' : '') + '</span>' +
+            '<span class="rsub">' + esc(sub) + '</span>' +
+          '</span>' +
+          '<span class="rplus" aria-hidden="true">' + (added ? IC_TICK : IC_PLUS) + '</span>' +
+        '</button>';
+      }).join('');
+    });
+    $('#recoList').innerHTML = html || '<div class="empty"><p>보여 드릴 추천 항목이 없어요.</p></div>';
+  }
+
+  function renderFormAreas(){
+    const box = $('#fArea');
+    if(!box) return;
+    box.innerHTML = [['home','🏠 우리 집'], ['car','🚗 ' + (store.car.name || '내 차')]]
+      .filter(a => a[0] === 'home' || store.car.enabled)
+      .map(a => '<button type="button" class="fchip2' + (state.addArea === a[0] ? ' active' : '') + '" data-farea="' + a[0] + '">' + a[1] + '</button>')
+      .join('');
   }
 
   function renderFormSpaces(){
-    $('#fSpace').innerHTML = zoneList().map(z => {
+    $('#fSpace').innerHTML = zonesOf(state.addArea).map(z => {
       const sp = zoneView(z);
       return '<button type="button" class="fchip2' + (state.addSpace === z.id ? ' active' : '') + '" data-fspace="' + z.id + '">' +
         '<i>' + sp.emoji + '</i>' + esc(sp.name) + '</button>';
@@ -1952,7 +2324,23 @@
     room2:   ['아기방','서재','드레스룸','작업실'],
     living:  ['거실','거실/가전','리빙룸']
   };
+  const CAR_NAME_SUGGEST = {
+    car_cabin:  ['실내','운전석','캐빈'],
+    car_body:   ['외부','차체','바디'],
+    car_engine: ['엔진룸','모터룸','엔진']
+  };
+  const CAR_ALIAS_SUGGEST = ['내 차','아빠차','출퇴근차','패밀리카'];
   let renameZoneId = null;
+  let renameIsCar = false;
+
+  /* 차량 구역 이름은 차 전용 저장소에 넣는다 */
+  function nameStore(z){
+    if(z && z.area === 'car'){
+      if(!store.car.names || typeof store.car.names !== 'object') store.car.names = {};
+      return store.car.names;
+    }
+    return store.names[house().id];
+  }
 
   function renderHouseOptions(){
     const grid = $('#houseGrid');
@@ -2001,15 +2389,85 @@
     }).join('');
   }
 
+  function renderCarNameRows(){
+    const card = $('#carNameCard');
+    if(!card) return;
+    card.innerHTML = CAR_ZONES.map(z => {
+      const name = dispName(z);
+      const changed = name !== z.name;
+      return '<button class="row name-row" data-zone="' + z.id + '" type="button" aria-label="' + esc(name) + ' 이름 바꾸기">' +
+        '<span class="row-label"><i aria-hidden="true">' + z.emoji + '</i>' + esc(name) +
+          (changed ? '<em>(기본 ' + esc(z.name) + ')</em>' : '') + '</span>' +
+        '<span class="row-value">바꾸기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span>' +
+      '</button>';
+    }).join('');
+  }
+
+  function renderCarSettings(){
+    const sw = $('#carSwitch');
+    if(sw) sw.checked = !!store.car.enabled;
+    const inp = $('#carNameInput');
+    if(inp && document.activeElement !== inp) inp.value = store.car.name || '내 차';
+    const chips = $('#carNameChips');
+    if(chips){
+      chips.innerHTML = CAR_ALIAS_SUGGEST.map(n =>
+        '<button type="button" class="fchip2' + ((store.car.name || '내 차') === n ? ' active' : '') + '" data-carname="' + n + '">' + n + '</button>').join('');
+    }
+    const zoneWrap = $('#carZoneWrap');
+    if(zoneWrap) zoneWrap.hidden = !store.car.enabled;
+    renderCarNameRows();
+    const hint = $('#carHint');
+    if(hint){
+      hint.textContent = store.car.enabled
+        ? '차 모드는 홈 위쪽 칩에서 열 수 있어요. 끄더라도 등록한 차 소모품과 이력은 지워지지 않고, 다시 켜면 그대로 돌아옵니다.'
+        : '지금은 꺼져 있어요. 홈의 🚗 칩과 차 모드, 추천 목록의 차 소모품 7종이 모두 숨겨집니다. (등록한 항목은 그대로 보관돼요) · 프로토타입은 처음부터 켜 두었어요.';
+    }
+  }
+
+  function setCarEnabled(on){
+    store.car.enabled = !!on;
+    saveStore();
+    if(!store.car.enabled && state.mode === 'car'){
+      state.mode = 'home';
+      state.scope = 'all';
+      if(state.view === 'list' && state.scope.indexOf('space:car') === 0) state.view = 'home';
+    }
+    if(!store.car.enabled && state.addArea === 'car') state.addArea = 'home';
+    if(!store.car.enabled && state.scope.indexOf('space:car') === 0){ state.scope = 'all'; }
+    buildPlan();
+    renderAll();
+    renderSettings();
+    renderFormAreas();
+    renderFormSpaces();
+    fitPlan();
+    showToast(store.car.enabled
+      ? '차량 관리를 켰어요 · 홈에 🚗 ' + (store.car.name || '내 차') + ' 칩이 생겼어요'
+      : '차량 관리를 껐어요 · 등록한 차 소모품은 그대로 남아 있어요');
+  }
+
+  function setCarName(name){
+    const v = String(name || '').trim().replace(/\s+/g, ' ').slice(0, 8);
+    if(!v) return false;
+    if(store.car.name === v) return true;
+    store.car.name = v;
+    saveStore();
+    renderModeBar();
+    renderCarSettings();
+    renderFormAreas();
+    if(state.mode === 'car'){ buildPlan(); renderPlan(); }
+    return true;
+  }
+
   function renderSettings(){
     renderHouseOptions();
     renderHouseList();
     renderNameRows();
+    renderCarSettings();
   }
 
   function normalizeScope(){
-    if(state.scope.indexOf('space:') === 0 && !zoneById(state.scope.slice(6))) state.scope = 'all';
-    if(!zoneById(state.addSpace)) state.addSpace = zoneList()[0].id;
+    if(state.scope.indexOf('space:') === 0 && !anyZone(state.scope.slice(6))) state.scope = 'all';
+    if(!zonesOf(state.addArea).some(z => z.id === state.addSpace)) state.addSpace = zonesOf(state.addArea)[0].id;
   }
 
   function applyHouse(id, silent){
@@ -2037,15 +2495,20 @@
   }
 
   function openRename(zoneId){
-    const z = zoneById(zoneId);
+    const z = anyZone(zoneId);
     if(!z) return;
     hideToast();
     closeSheets();
     renameZoneId = zoneId;
-    const base = (z.id === 'room2' && house().id === 'tworoom')
-      ? ['침실','안방','서재','드레스룸','작업실']
-      : (NAME_SUGGEST[z.id] || ['방']);
-    $('#renameHint').textContent = house().label + ' · ' + z.emoji + ' ' + z.name + '의 이름을 바꾸면 홈 평면도와 리스트에 바로 반영돼요.';
+    renameIsCar = z.area === 'car';
+    const base = renameIsCar
+      ? (CAR_NAME_SUGGEST[z.id] || [z.name])
+      : ((z.id === 'room2' && house().id === 'tworoom')
+          ? ['침실','안방','서재','드레스룸','작업실']
+          : (NAME_SUGGEST[z.id] || ['방']));
+    $('#renameHint').textContent = renameIsCar
+      ? (store.car.name || '내 차') + ' · ' + z.emoji + ' ' + z.name + ' 구역 이름을 바꾸면 차 도해와 리스트에 바로 반영돼요.'
+      : house().label + ' · ' + z.emoji + ' ' + z.name + '의 이름을 바꾸면 홈 평면도와 리스트에 바로 반영돼요.';
     $('#renameInput').value = dispName(z);
     $('#renameErr').textContent = '';
     $('#renameChips').innerHTML = base.map(n =>
@@ -2057,26 +2520,28 @@
   }
 
   function saveRename(){
-    const z = zoneById(renameZoneId);
+    const z = anyZone(renameZoneId);
     if(!z) return;
     const v = $('#renameInput').value.trim().replace(/\s+/g, ' ');
     const err = $('#renameErr');
-    if(!v){ err.textContent = '방 이름을 입력해 주세요.'; $('#renameInput').focus(); return; }
-    if(v.length > 8){ err.textContent = '방 이름은 8자까지 쓸 수 있어요.'; return; }
-    if(v === z.name) delete store.names[house().id][z.id];
-    else store.names[house().id][z.id] = v;
+    if(!v){ err.textContent = '이름을 입력해 주세요.'; $('#renameInput').focus(); return; }
+    if(v.length > 8){ err.textContent = '이름은 8자까지 쓸 수 있어요.'; return; }
+    const map = nameStore(z);
+    const what = z.area === 'car' ? '구역' : '방';
+    if(v === z.name) delete map[z.id];
+    else map[z.id] = v;
     saveStore();
     err.textContent = '';
     renderAll();
     renderSettings();
     closeSheets();
-    showToast('방 이름을 ‘' + v + '’' + roJosa(v) + ' 바꿨어요');
+    showToast(what + ' 이름을 ‘' + v + '’' + roJosa(v) + ' 바꿨어요');
   }
 
   function resetRename(){
-    const z = zoneById(renameZoneId);
+    const z = anyZone(renameZoneId);
     if(!z) return;
-    delete store.names[house().id][z.id];
+    delete nameStore(z)[z.id];
     saveStore();
     renderAll();
     renderSettings();
@@ -2115,8 +2580,13 @@
 
   function goList(scope){
     if(scope) state.scope = scope;
+    if(state.scope.indexOf('space:') === 0){
+      const z = anyZone(state.scope.slice(6));
+      if(z) state.mode = z.area === 'car' ? 'car' : 'home';
+    }
     state.tab = 'home';
     state.view = 'list';
+    buildPlan();
     $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === 'home'));
     applyView();
     renderAll();
@@ -2167,6 +2637,44 @@
     if(t.closest('#openAdd')){ openAdd(); return; }
     if(t.closest('#closeAdd')){ closeSheets(); return; }
     if(t.closest('#scrim')){ closeSheets(); return; }
+
+    // 🏠 우리 집 ↔ 🚗 내 차 전환
+    const mchip = t.closest('[data-mode]');
+    if(mchip){ setMode(mchip.dataset.mode); return; }
+
+    // 추가 시트 — 탭 / 추천 목록 카테고리 / 추천 항목 / 등록할 곳
+    const atab = t.closest('[data-addtab]');
+    if(atab){ state.addTab = atab.dataset.addtab; renderAddSheet(); return; }
+    const rcat = t.closest('[data-recat]');
+    if(rcat){ state.recoCat = rcat.dataset.recat; renderReco(); $('#addSheet').querySelector('.sheet-inner').scrollTop = 0; return; }
+    const ritem = t.closest('[data-reco]');
+    if(ritem){
+      const d = DEFAULTS[parseInt(ritem.dataset.reco, 10)];
+      if(d){
+        if(hasItem(d.name, d.space)){
+          showToast('이미 있는 항목이에요 · ' + spaceOf(d.space).name, { duration: 1600 });
+          return;
+        }
+        addNew({ name:d.name, space:d.space, cycle:{ n:d.n, unit:d.unit }, last:TODAY,
+                 alerts:d.alerts, km:d.km, memo:'' }, { keepSheet:true });
+      }
+      return;
+    }
+    const farea = t.closest('[data-farea]');
+    if(farea){
+      state.addArea = farea.dataset.farea;
+      state.addSpace = zonesOf(state.addArea)[0].id;
+      renderAddSheet();
+      return;
+    }
+
+    // 차량 이름 추천 칩
+    const cchip = t.closest('[data-carname]');
+    if(cchip){
+      setCarName(cchip.dataset.carname);
+      showToast('차량 이름을 ‘' + (store.car.name || '내 차') + '’' + roJosa(store.car.name || '내 차') + ' 바꿨어요', { duration: 1600 });
+      return;
+    }
 
     // 지금 나 전환
     if(t.closest('#meToggle')){
@@ -2253,10 +2761,6 @@
     const card = t.closest('.item');
     if(card){ openDetail(card.dataset.id); return; }
 
-    // 템플릿
-    const tpl = t.closest('[data-tpl]');
-    if(tpl){ addFromTemplate(TEMPLATES[parseInt(tpl.dataset.tpl, 10)]); return; }
-
     // 추가 폼 공간
     const fs = t.closest('[data-fspace]');
     if(fs){
@@ -2340,10 +2844,26 @@
 
   document.addEventListener('input', function(e){
     if(e.target.closest('#addForm')) updatePreview();
+    if(e.target.id === 'carNameInput'){
+      const v = e.target.value.replace(/\s+/g, ' ').slice(0, 8);
+      if(v.trim()){
+        store.car.name = v.trim();
+        saveStore();
+        renderModeBar();
+        renderFormAreas();
+        if(state.mode === 'car'){ buildPlan(); renderPlan(); }
+      }
+    }
   });
   document.addEventListener('change', function(e){
     if(e.target.closest('#addForm')) updatePreview();
     if(e.target.id === 'meSelect') setMe(e.target.value);
+    if(e.target.id === 'carSwitch') setCarEnabled(e.target.checked);
+    if(e.target.id === 'carNameInput'){
+      const v = e.target.value.trim();
+      if(!v){ e.target.value = store.car.name || '내 차'; return; }
+      setCarName(v);
+    }
   });
 
   $('#addForm').addEventListener('submit', function(e){
@@ -2359,7 +2879,7 @@
       space: state.addSpace,
       cycle: { n:p.n, unit:p.unit },
       last: p.last
-    }, true);
+    }, { closeSheet: true });
   });
 
   document.addEventListener('keydown', function(e){
@@ -2401,8 +2921,8 @@
      ========================================================= */
   loadStore();
   renderToday();
-  renderTemplates();
   buildTimeOptions();
+  renderFormAreas();
   renderFormSpaces();
   $('#fLast').value = fmtISO(TODAY);
   $('#meSelect').value = state.me;
@@ -2425,16 +2945,23 @@
     get scope(){ return state.scope; },
     get view(){ return state.view; },
     get tab(){ return state.tab; },
+    get mode(){ return state.mode; },
     get house(){ return store.house; },
     get houses(){ return HOUSE_ORDER; },
     get names(){ return store.names; },
-    get zones(){ return zoneList().map(z => ({ id:z.id, name:dispName(z), base:z.name })); },
+    get car(){ return { enabled: store.car.enabled, name: store.car.name, names: store.car.names }; },
+    get zones(){ return modeZones().map(z => ({ id:z.id, name:dispName(z), base:z.name, area:z.area || 'home' })); },
+    zonesOf: mode => zonesOf(mode).map(z => ({ id:z.id, name:dispName(z), base:z.name, area:z.area || 'home' })),
+    get defaults(){ return DEFAULTS.map(d => ({ name:d.name, space:d.space, cat:d.cat, tag:d.tag || '', cycle:d.n + d.unit })); },
+    itemsIn: mode => itemsIn(mode).map(it => it.name),
     zoneOf: spaceOf,
     zoneIdOf: zoneIdOf,
+    areaOf: areaOf,
     relay: relayCounts,
     urgent: urgentList,
     badge: roomBadge,
     roomSigs: roomSigs,
+    redCount: redCount,
     today: TODAY
   };
 })();
